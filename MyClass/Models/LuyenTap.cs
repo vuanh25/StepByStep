@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyClass.Models
 {
-    class LuyenTap
+     public class LuyenTap
     {
         [Key]
         public int Id { get; set; }

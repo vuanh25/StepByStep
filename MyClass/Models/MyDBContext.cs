@@ -18,6 +18,6 @@ namespace MyClass.Models
         public DbSet<BaiHoc> BaiHocs { get; set; }
         public DbSet<BaiTap> BaiTaps { get; set; }
         public DbSet<User> Users { get; set; }
-             
+        public DbSet<LuyenTap> LuyenTaps { get; set; }
     }
 }

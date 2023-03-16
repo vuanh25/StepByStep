@@ -34,3 +34,15 @@ D:\WebLearnToCode\WebLearnToCode\MyClass\obj\Debug\MyClass.csproj.CoreCompileInp
 D:\WebLearnToCode\WebLearnToCode\MyClass\obj\Debug\MyClass.csproj.CopyComplete
 D:\WebLearnToCode\WebLearnToCode\MyClass\obj\Debug\MyClass.dll
 D:\WebLearnToCode\WebLearnToCode\MyClass\obj\Debug\MyClass.pdb
+C:\StepByStep\MyClass\bin\Debug\MyClass.dll.config
+C:\StepByStep\MyClass\bin\Debug\MyClass.dll
+C:\StepByStep\MyClass\bin\Debug\MyClass.pdb
+C:\StepByStep\MyClass\bin\Debug\EntityFramework.dll
+C:\StepByStep\MyClass\bin\Debug\EntityFramework.SqlServer.dll
+C:\StepByStep\MyClass\bin\Debug\EntityFramework.xml
+C:\StepByStep\MyClass\bin\Debug\EntityFramework.SqlServer.xml
+C:\StepByStep\MyClass\obj\Debug\MyClass.csproj.AssemblyReference.cache
+C:\StepByStep\MyClass\obj\Debug\MyClass.csproj.CoreCompileInputs.cache
+C:\StepByStep\MyClass\obj\Debug\MyClass.csproj.CopyComplete
+C:\StepByStep\MyClass\obj\Debug\MyClass.dll
+C:\StepByStep\MyClass\obj\Debug\MyClass.pdb

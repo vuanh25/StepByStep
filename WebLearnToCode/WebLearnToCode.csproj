@@ -2232,6 +2232,11 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="Views\LuyenTaps\Create.cshtml" />
+    <Content Include="Views\LuyenTaps\Delete.cshtml" />
+    <Content Include="Views\LuyenTaps\Details.cshtml" />
+    <Content Include="Views\LuyenTaps\Edit.cshtml" />
+    <Content Include="Views\LuyenTaps\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
