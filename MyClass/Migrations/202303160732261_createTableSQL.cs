@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class nhat : DbMigration
+    public partial class createTableSQL : DbMigration
     {
         public override void Up()
         {
@@ -71,6 +71,19 @@
                 .Index(t => t.BaiHoc_IDBaiHoc);
             
             CreateTable(
+                "dbo.LuyenTaps",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        NoiDungLuyenTap = c.String(nullable: false, maxLength: 2000),
+                        TenLuyenTap = c.String(nullable: false, maxLength: 255),
+                        NgonNgu_IDNgonNgu = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.NgonNgu", t => t.NgonNgu_IDNgonNgu)
+                .Index(t => t.NgonNgu_IDNgonNgu);
+            
+            CreateTable(
                 "dbo.User",
                 c => new
                     {
@@ -86,15 +99,18 @@
         
         public override void Down()
         {
+            DropForeignKey("dbo.LuyenTaps", "NgonNgu_IDNgonNgu", "dbo.NgonNgu");
             DropForeignKey("dbo.BaiTap", "BaiHoc_IDBaiHoc", "dbo.BaiHoc");
             DropForeignKey("dbo.BaiHoc", "KhoaHoc_IDKhoaHoc", "dbo.KhoaHoc");
             DropForeignKey("dbo.KhoaHoc", "NgonNgu_IDNgonNgu", "dbo.NgonNgu");
             DropForeignKey("dbo.NgonNgu", "DanhMuc_IDDanhMuc", "dbo.DanhMuc");
+            DropIndex("dbo.LuyenTaps", new[] { "NgonNgu_IDNgonNgu" });
             DropIndex("dbo.BaiTap", new[] { "BaiHoc_IDBaiHoc" });
             DropIndex("dbo.NgonNgu", new[] { "DanhMuc_IDDanhMuc" });
             DropIndex("dbo.KhoaHoc", new[] { "NgonNgu_IDNgonNgu" });
             DropIndex("dbo.BaiHoc", new[] { "KhoaHoc_IDKhoaHoc" });
             DropTable("dbo.User");
+            DropTable("dbo.LuyenTaps");
             DropTable("dbo.BaiTap");
             DropTable("dbo.DanhMuc");
             DropTable("dbo.NgonNgu");

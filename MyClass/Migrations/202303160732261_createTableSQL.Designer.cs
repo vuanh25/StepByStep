@@ -7,13 +7,13 @@ namespace MyClass.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class nhat : IMigrationMetadata
+    public sealed partial class createTableSQL : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(nhat));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(createTableSQL));
         
         string IMigrationMetadata.Id
         {
-            get { return "202303160329157_nhat"; }
+            get { return "202303160732261_createTableSQL"; }
         }
         
         string IMigrationMetadata.Source

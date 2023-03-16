@@ -46,5 +46,5 @@ C:\StepByStep\MyClass\obj\Debug\MyClass.csproj.CoreCompileInputs.cache
 C:\StepByStep\MyClass\obj\Debug\MyClass.csproj.CopyComplete
 C:\StepByStep\MyClass\obj\Debug\MyClass.dll
 C:\StepByStep\MyClass\obj\Debug\MyClass.pdb
-C:\StepByStep\MyClass\obj\Debug\MyClass.Migrations.nhat.resources
+C:\StepByStep\MyClass\obj\Debug\MyClass.Migrations.createTableSQL.resources
 C:\StepByStep\MyClass\obj\Debug\MyClass.csproj.GenerateResource.cache
