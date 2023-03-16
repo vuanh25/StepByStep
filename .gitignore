@@ -1,0 +1,5 @@
+./WebLearnToCode/bin
+./WebLearnToCode/obj
+./MyClass/bin
+./MyClass/obj
+*.suo
