@@ -52,6 +52,7 @@
     <Compile Include="Models\BaiTap.cs" />
     <Compile Include="Models\DanhMuc.cs" />
     <Compile Include="Models\KhoaHoc.cs" />
+    <Compile Include="Models\LuyenTap.cs" />
     <Compile Include="Models\MyDBContext.cs" />
     <Compile Include="Models\NgonNgu.cs" />
     <Compile Include="Models\User.cs" />
