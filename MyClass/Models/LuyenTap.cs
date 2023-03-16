@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyClass.Enum;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace MyClass.Models
 
         public virtual NgonNgu NgonNgu { get; set; }
 
+        public MucDo MucDo { get; set; }
 
     }
 }

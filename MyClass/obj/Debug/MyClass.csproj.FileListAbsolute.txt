@@ -41,10 +41,13 @@ C:\StepByStep\MyClass\bin\Debug\EntityFramework.dll
 C:\StepByStep\MyClass\bin\Debug\EntityFramework.SqlServer.dll
 C:\StepByStep\MyClass\bin\Debug\EntityFramework.xml
 C:\StepByStep\MyClass\bin\Debug\EntityFramework.SqlServer.xml
-C:\StepByStep\MyClass\obj\Debug\MyClass.csproj.AssemblyReference.cache
 C:\StepByStep\MyClass\obj\Debug\MyClass.csproj.CoreCompileInputs.cache
 C:\StepByStep\MyClass\obj\Debug\MyClass.csproj.CopyComplete
 C:\StepByStep\MyClass\obj\Debug\MyClass.dll
 C:\StepByStep\MyClass\obj\Debug\MyClass.pdb
 C:\StepByStep\MyClass\obj\Debug\MyClass.Migrations.createTableSQL.resources
 C:\StepByStep\MyClass\obj\Debug\MyClass.csproj.GenerateResource.cache
+C:\StepByStep\MyClass\obj\Debug\MyClass.Migrations.insertDatabaseLuyenTapTable.resources
+C:\StepByStep\MyClass\obj\Debug\MyClass.Migrations.insertRealDataLuyenTapTable.resources
+C:\StepByStep\MyClass\obj\Debug\MyClass.Migrations.insertRealDataLuyenTapTable_lan2.resources
+C:\StepByStep\MyClass\obj\Debug\MyClass.Migrations.insertRealDataLuyenTapTable_lan21.resources
