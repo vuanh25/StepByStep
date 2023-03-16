@@ -10,11 +10,13 @@ namespace MyClass.Models
     {
         public int IDPhanHoi { get; set; }
         public string NoiDung { get; set; }
+        public string NgayDang { get; set; }
         public int LuotThich { get; set; }  
         //public virtual PhanHoi BinhLuan { get; set; }
         public virtual CauHoi CauHoi { get; set; }
 
         public virtual BaiViet BaiViet { get; set; }
+        public virtual User User { get; set; }
 
     }
 }

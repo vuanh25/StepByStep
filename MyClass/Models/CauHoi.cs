@@ -14,5 +14,6 @@ namespace MyClass.Models
         public int LuotXem { get; set; }
         public virtual NgonNgu NgonNgu { get;set; }
         public virtual DanhMuc DanhMuc { get; set; }
+        public virtual User User { get; set; }
     }
 }
