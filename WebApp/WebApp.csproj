@@ -218,6 +218,14 @@
     <Compile Include="Migrations\202303170339540_initData.Designer.cs">
       <DependentUpon>202303170339540_initData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202303170402033_InsertDataLuyenCodeTable.cs" />
+    <Compile Include="Migrations\202303170402033_InsertDataLuyenCodeTable.Designer.cs">
+      <DependentUpon>202303170402033_InsertDataLuyenCodeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303170436019_InsertData_ChiTietBaiLuyenTable.cs" />
+    <Compile Include="Migrations\202303170436019_InsertData_ChiTietBaiLuyenTable.Designer.cs">
+      <DependentUpon>202303170436019_InsertData_ChiTietBaiLuyenTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\ChiTietBaiLuyen.cs" />
@@ -315,6 +323,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202303170339540_initData.resx">
       <DependentUpon>202303170339540_initData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303170402033_InsertDataLuyenCodeTable.resx">
+      <DependentUpon>202303170402033_InsertDataLuyenCodeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303170436019_InsertData_ChiTietBaiLuyenTable.resx">
+      <DependentUpon>202303170436019_InsertData_ChiTietBaiLuyenTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
