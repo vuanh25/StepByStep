@@ -18,6 +18,7 @@ namespace WebApp.Models.Entities
         public string TenUser { get; set; }
 
         [Required, StringLength(100)]
+        [EmailAddress]
         public string Email { get; set; }
 
         [Required]
@@ -26,6 +27,7 @@ namespace WebApp.Models.Entities
 
         [Required]
         [StringLength(50)]
+        [DataType(DataType.Password)]
         public string MatKhau { get; set; }
 
         // Quan hệ nối ở dưới

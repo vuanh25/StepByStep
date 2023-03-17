@@ -40,7 +40,8 @@ namespace WebApp.Models.Entities
         [Required]
         public int Diem { get; set; }
 
-        public LuyenCode LuyenCode { get; set; }
+        [Required]
+        public virtual LuyenCode LuyenCode { get; set; }
 
     }
 }
