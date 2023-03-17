@@ -1,0 +1,9 @@
+/WebApp/bin
+/WebApp/obj
+/MyClass/bin
+/MyClass/obj
+*.suo
+*.user
+Version.cs
+Version.h
+Version.cpp
