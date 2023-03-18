@@ -16,13 +16,9 @@ namespace WebApp.Models.Entities
         public int IDKhoaHoc { get; set; }
 
         [Required]
-        [StringLength(100)]
+        [StringLength(500)]
         public string TenKhoaHoc { get; set; }
-
-        [Required]
-        public int CapDo { get; set; }
-
         public Nullable<long> IDNgonNgu { get; set; }
-        public virtual NgonNgu NgonNgu { get; set; }
+
     }
 }
