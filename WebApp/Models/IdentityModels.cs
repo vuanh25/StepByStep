@@ -41,5 +41,6 @@ namespace WebApp.Models
         public DbSet<BaiViet> BaiViets { get; set; }
         public DbSet<PhanHoi> PhanHois { get; set; }
         public DbSet<CauHoi> CauHois { get; set; }
+  
     }
 }

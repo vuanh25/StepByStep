@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -152,12 +158,6 @@
     <Reference Include="System.Web.Http.WebHost">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -209,7 +209,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaiHocController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KhoaHocsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -229,6 +231,38 @@
     <Compile Include="Migrations\202303180427537_delete capdo.cs" />
     <Compile Include="Migrations\202303180427537_delete capdo.Designer.cs">
       <DependentUpon>202303180427537_delete capdo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303180447211_InsertDataKhoaHoc.cs" />
+    <Compile Include="Migrations\202303180447211_InsertDataKhoaHoc.Designer.cs">
+      <DependentUpon>202303180447211_InsertDataKhoaHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303180501211_insertdatakhoahoc1.cs" />
+    <Compile Include="Migrations\202303180501211_insertdatakhoahoc1.Designer.cs">
+      <DependentUpon>202303180501211_insertdatakhoahoc1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303180522217_deletecInBaiHoc.cs" />
+    <Compile Include="Migrations\202303180522217_deletecInBaiHoc.Designer.cs">
+      <DependentUpon>202303180522217_deletecInBaiHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303180548100_addtableChiTietBaiHoc.cs" />
+    <Compile Include="Migrations\202303180548100_addtableChiTietBaiHoc.designer.cs">
+      <DependentUpon>202303180548100_addtableChiTietBaiHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303180552492_insertDataBaiHoc.cs" />
+    <Compile Include="Migrations\202303180552492_insertDataBaiHoc.designer.cs">
+      <DependentUpon>202303180552492_insertDataBaiHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303180640179_deleteChiTietBaiHoc.cs" />
+    <Compile Include="Migrations\202303180640179_deleteChiTietBaiHoc.Designer.cs">
+      <DependentUpon>202303180640179_deleteChiTietBaiHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303180644341_capnhapBaiHoc.cs" />
+    <Compile Include="Migrations\202303180644341_capnhapBaiHoc.Designer.cs">
+      <DependentUpon>202303180644341_capnhapBaiHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303180653297_insertDataBaiHocLan2.cs" />
+    <Compile Include="Migrations\202303180653297_insertDataBaiHocLan2.Designer.cs">
+      <DependentUpon>202303180653297_insertDataBaiHocLan2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -432,9 +466,11 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\BaiHoc\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\KhoaHocs\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -453,6 +489,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303180427537_delete capdo.resx">
       <DependentUpon>202303180427537_delete capdo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303180447211_InsertDataKhoaHoc.resx">
+      <DependentUpon>202303180447211_InsertDataKhoaHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303180501211_insertdatakhoahoc1.resx">
+      <DependentUpon>202303180501211_insertdatakhoahoc1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303180522217_deletecInBaiHoc.resx">
+      <DependentUpon>202303180522217_deletecInBaiHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303180548100_addtableChiTietBaiHoc.resx">
+      <DependentUpon>202303180548100_addtableChiTietBaiHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303180552492_insertDataBaiHoc.resx">
+      <DependentUpon>202303180552492_insertDataBaiHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303180640179_deleteChiTietBaiHoc.resx">
+      <DependentUpon>202303180640179_deleteChiTietBaiHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303180644341_capnhapBaiHoc.resx">
+      <DependentUpon>202303180644341_capnhapBaiHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303180653297_insertDataBaiHocLan2.resx">
+      <DependentUpon>202303180653297_insertDataBaiHocLan2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
