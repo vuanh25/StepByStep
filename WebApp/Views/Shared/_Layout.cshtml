@@ -50,7 +50,7 @@
                                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                                 </ul>
                             </li>
-                          
+
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="#">Tri thức</a>
                             </li>
@@ -69,7 +69,20 @@
                                 </ul>
                             </li>
 
+
+
                         </ul>
+                        <div style="display:flex" class="nav-item dropdown align-content-end">
+                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Tài khoản
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="@Url.Action("Login","Account")">Đăng nhập</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("Register","Account")" >Đăng ký</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </div>
 
                     </div>
                 </div>
@@ -104,12 +117,12 @@
     <section class="copyright clearfix bg-footer py-2">
         <div class="container text-center text-light  border-top border-light">
             <div>
-                Bản quyền thuộc về Phạm Anh Vũ
+                Bản quyền thuộc về Phạm Anh Vũ - Lương Xuân Nhất
             </div>
         </div>
     </section>
     <script src="~/Scripts/bootstrap.bundle.js"></script>
     @RenderSection("footer", required: false)
+    @RenderSection("scripts", required: false)
 </body>
-
 </html>
