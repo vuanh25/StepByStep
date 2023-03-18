@@ -1,31 +1,81 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Public/css/_Layout.css" rel="stylesheet" />
+<div class="d-flex flex-wrap justify-content-around">
+    <div class="card" style="width: 18rem;">
+        <img src="https://xuanthulab.net/photo/netcore-4458.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">C# Cơ bản</h5>
+            <p class="card-text">Lập trình ứng dụng đa nền tảng .NET CORE 3.0 với C#</p>
+            <a href="#" class="btn btn-primary">C# NET CORE</a>
+        </div>
+    </div>
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <div class="card" style="width: 18rem;">
+        <img src="https://xuanthulab.net/photo/androidjava-4455.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Lập trình Android (Java)</h5>
+            <p class="card-text">Xây dựng ứng dụng Android với ngôn ngữ lập trình Java bằng Android Studio</p>
+            <a href="#" class="btn btn-primary">Android - Java</a>
+        </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+        <img src="https://xuanthulab.net/photo/html-4465.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">HTML - Cơ bản</h5>
+            <p class="card-text">Viết mã HTML tạo các trang web</p>
+            <a href="#" class="btn btn-primary">HTML</a>
+        </div>
+    </div>
+
+
+    <div class="card" style="width: 18rem;">
+        <img src="https://xuanthulab.net/photo/css-4464.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">CSS</h5>
+            <p class="card-text">Cascading Style Sheets - định nghĩa kiểu hiện thị cho các phần tử HTML</p>
+            <a href="#" class="btn btn-primary">CSS</a>
+        </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+        <img src="https://xuanthulab.net/photo/java-4466.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Lập trình Java</h5>
+            <p class="card-text">Ngôn ngữ lập trình Java cơ bản</p>
+            <a href="#" class="btn btn-primary">Java</a>
+        </div>
+    </div>
+
+
+
+
+
+
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+
+
+
+<div class="card" aria-hidden="true">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title placeholder-glow">
+            <span class="placeholder col-6"></span>
+        </h5>
+        <p class="card-text placeholder-glow">
+            <span class="placeholder col-7"></span>
+            <span class="placeholder col-4"></span>
+            <span class="placeholder col-4"></span>
+            <span class="placeholder col-6"></span>
+            <span class="placeholder col-8"></span>
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
     </div>
 </div>
+

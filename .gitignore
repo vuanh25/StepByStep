@@ -8,6 +8,9 @@
 Version.cs
 Version.h
 Version.cpp
+<<<<<<< HEAD
+/.vs/WebApp/FileContentIndex
+=======
 
 [Dd]ebug/
 [Rr]elease/
@@ -48,3 +51,4 @@ UpgradeLog*.htm
 App_Data/*.mdf
 App_Data/*.ldf
 Desktop.ini
+>>>>>>> d31cad0c398b14924d495934ebf298c567388a01
