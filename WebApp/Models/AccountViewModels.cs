@@ -70,7 +70,7 @@ namespace WebApp.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "{0} phải có ít nhất {2} ký tự", MinimumLength = 2)]
+        [StringLength(100, ErrorMessage = "{0} phải có ít nhất {2} ký tự", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Mật khẩu")]
         public string Password { get; set; }
@@ -89,7 +89,7 @@ namespace WebApp.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "{0} phải có ít nhất {2} ký tự", MinimumLength = 2)]
+        [StringLength(100, ErrorMessage = "{0} phải có ít nhất {2} ký tự", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }

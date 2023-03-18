@@ -28,7 +28,7 @@ namespace WebApp.Models
     public class SetPasswordViewModel
     {
         [Required]
-        [StringLength(100, ErrorMessage = " {0} phải có it nhất {2} ký tự.", MinimumLength = 2)]
+        [StringLength(100, ErrorMessage = " {0} phải có it nhất {2} ký tự.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "New password")]
         public string NewPassword { get; set; }
@@ -47,7 +47,7 @@ namespace WebApp.Models
         public string OldPassword { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = " {0} phải có it nhất {2} ký tự.", MinimumLength = 2)]
+        [StringLength(100, ErrorMessage = " {0} phải có it nhất {2} ký tự.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Mật khẩu mới")]
         public string NewPassword { get; set; }
