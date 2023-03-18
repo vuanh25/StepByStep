@@ -43,7 +43,7 @@ Version.cpp
 *.vsp
 *.vspx
 *.build.csdef
-packages/
+
 *.dbmdl
 
 UpgradeLog*.XML
