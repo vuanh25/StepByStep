@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -47,7 +49,7 @@
                                     <li><a class="dropdown-item" href="#">C/C++ cơ bản</a></li>
                                 </ul>
                             </li>
-                          
+
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="#">Tri thức</a>
                             </li>
@@ -66,8 +68,62 @@
                                 </ul>
                             </li>
 
+
+
                         </ul>
 
+
+                        @*<div style="display:flex" class="nav-item dropdown align-content-end">
+                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Tài khoản
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="@Url.Action("Login","Account")">Đăng nhập</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("Register","Account")">Đăng ký</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </div>*@
+
+
+                        @if (Request.IsAuthenticated)
+                        {
+                            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                            {
+                                @Html.AntiForgeryToken()
+
+                            <div style="display:flex" class="nav-item dropdown align-content-end">
+                                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Tài khoản
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a  class="dropdown-item noUnderlined text-red" href="javascript:document.getElementById('logoutForm').submit()">Đăng xuất</a></li>                                
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Loading...</a></li>
+                                </ul>
+                            </div>
+
+
+
+                        @*<li>
+                            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                        </li>*@
+                            }
+                        }
+                        else
+                        {
+                    <div style="display:flex" class="nav-item dropdown align-content-end">
+                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Tài khoản
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item noUnderlined text-black">@Html.ActionLink("Đăng ký", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                            <li class="dropdown-item noUnderlined text-black">@Html.ActionLink("Đăng nhập", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Loading...</a></li>
+                        </ul>
+                    </div>
+                        }
                     </div>
                 </div>
             </nav>
@@ -101,12 +157,12 @@
     <section class="copyright clearfix bg-footer py-2">
         <div class="container text-center text-light  border-top border-light">
             <div>
-                Bản quyền thuộc về Phạm Anh Vũ
+                Bản quyền thuộc về Phạm Anh Vũ - Lương Xuân Nhất
             </div>
         </div>
     </section>
     <script src="~/Scripts/bootstrap.bundle.js"></script>
     @RenderSection("footer", required: false)
+    @RenderSection("scripts", required: false)
 </body>
-
 </html>
