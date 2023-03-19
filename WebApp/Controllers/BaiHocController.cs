@@ -27,7 +27,7 @@ namespace WebApp.Controllers
         {
             if (id == null)
             {
-                id = 28;
+                id = 55;
             }
 
             ViewBag.IdbaiHoc = id;

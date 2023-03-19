@@ -38,6 +38,7 @@ namespace WebApp.Models.Entities
         public string NoiDung9 { get; set; }
         [StringLength(3000)]
         public string NoiDung10 { get; set; }
+
         public Nullable<long> IdKhoaHoc { get; set; }
      
     

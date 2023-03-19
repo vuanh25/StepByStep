@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class insertDataBaiHocLan2 : DbMigration
+    public partial class AdddataBaiHoc : DbMigration
     {
         public override void Up()
         {

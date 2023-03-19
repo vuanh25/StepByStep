@@ -1,12 +1,16 @@
-namespace WebApp.Migrations
+﻿namespace WebApp.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class capnhapBaiHoc : DbMigration
+    public partial class CapNhapDuLieuBaiHoc : DbMigration
     {
         public override void Up()
         {
+            DropForeignKey("dbo.BaiHocs", "KhoaHoc_IDKhoaHoc", "dbo.KhoaHocs");
+            DropIndex("dbo.BaiHocs", new[] { "KhoaHoc_IDKhoaHoc" });
+            DropColumn("dbo.BaiHocs", "KhoaHoc_IDKhoaHoc");
+
             AddColumn("dbo.BaiHocs", "NoiDung1", c => c.String(maxLength: 3000));
             AddColumn("dbo.BaiHocs", "NoiDung2", c => c.String(maxLength: 3000));
             AddColumn("dbo.BaiHocs", "NoiDung3", c => c.String(maxLength: 3000));
@@ -21,16 +25,7 @@ namespace WebApp.Migrations
         
         public override void Down()
         {
-            DropColumn("dbo.BaiHocs", "NoiDung10");
-            DropColumn("dbo.BaiHocs", "NoiDung9");
-            DropColumn("dbo.BaiHocs", "NoiDung8");
-            DropColumn("dbo.BaiHocs", "NoiDung7");
-            DropColumn("dbo.BaiHocs", "NoiDung6");
-            DropColumn("dbo.BaiHocs", "NoiDung5");
-            DropColumn("dbo.BaiHocs", "NoiDung4");
-            DropColumn("dbo.BaiHocs", "NoiDung3");
-            DropColumn("dbo.BaiHocs", "NoiDung2");
-            DropColumn("dbo.BaiHocs", "NoiDung1");
+
         }
     }
 }
