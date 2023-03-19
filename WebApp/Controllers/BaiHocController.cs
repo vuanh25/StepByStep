@@ -11,11 +11,17 @@ namespace WebApp.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: BaiHoc
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-           
+            if (id == null)
+            {
+                id = 1;
+            }
+
+            ViewBag.IdbaiHoc = id;
             return View(db.BaiHocs.ToList());
         }
+
         [HttpPost]
         public ActionResult Index(int id)
         {
@@ -23,22 +29,22 @@ namespace WebApp.Controllers
             {
                 id = 28;
             }
-            
+
             ViewBag.IdbaiHoc = id;
             return View(db.BaiHocs.ToList());
         }
 
 
-       /* public ActionResult BaiHoc(int id)
-        {
-            ViewBag.IdBaiHoc = id;
-            foreach (var item in db.BaiHocs.ToList())
-            {
-                if (item.IdBaiHoc == id)
-                {
-                    return View(id);
-                }
-            }
-        }*/
+        /* public ActionResult BaiHoc(int id)
+         {
+             ViewBag.IdBaiHoc = id;
+             foreach (var item in db.BaiHocs.ToList())
+             {
+                 if (item.IdBaiHoc == id)
+                 {
+                     return View(id);
+                 }
+             }
+         }*/
     }
 }
