@@ -239,9 +239,7 @@
       <DependentUpon>202303180427537_delete capdo.cs</DependentUpon>
     </Compile>
 
-    <Compile Include="Migrations\202303180837447_initLogin_Register.cs" />
-    <Compile Include="Migrations\202303180837447_initLogin_Register.designer.cs">
-      <DependentUpon>202303180837447_initLogin_Register.cs</DependentUpon>
+    
 
     <Compile Include="Migrations\202303180447211_InsertDataKhoaHoc.cs" />
     <Compile Include="Migrations\202303180447211_InsertDataKhoaHoc.Designer.cs">
