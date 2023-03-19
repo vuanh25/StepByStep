@@ -7,9 +7,10 @@ namespace WebApp.Models.Enums
 {
     public enum NgonNgu
     {
-        C = 0,
-        CPlus = 1,
-        CSharp = 2,
-        Java = 3
+        C_Cplus = 0,
+        CSharp = 1,
+        Java = 2,
+      
+
     }
 }
