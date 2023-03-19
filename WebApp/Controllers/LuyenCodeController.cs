@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebApp.Models;
+using PagedList.Mvc;
+using PagedList;
 
 namespace WebApp.Controllers
 {
@@ -11,11 +13,36 @@ namespace WebApp.Controllers
     {
         ApplicationDbContext db = new ApplicationDbContext();
         // GET: LuyenCode
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var all_baitap = from tt in db.LuyenTaps select tt;
-            return View(all_baitap);
+
+            if (page == null) page = 1;
+            var all_sach = (from s in db.LuyenTaps select s).OrderBy(m => m.Id);
+            int pageSize = 6;
+            int pageNum = page ?? 1;
+            return View(all_sach.ToPagedList(pageNum, pageSize));
+
         }
+
+        
+        public ActionResult ChiTiet(int? id)
+        {
+            if (id != null)
+            foreach (var item in db.LuyenTaps.ToList())
+            {
+                if (item.Id == id)
+                {
+                        ViewBag.TenBaiLuyen = item.TenLuyenTap;
+                }
+            }
+            var BT = db.ChiTietBaiLuyens.Where(a => a.LuyenCode.Id == id);
+            return View(BT);
+        }
+
+    }
+    public class ChiTietBaiHocController : Controller
+    {
+        ApplicationDbContext db = new ApplicationDbContext();
 
     }
 }

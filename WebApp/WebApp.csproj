@@ -56,6 +56,12 @@
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -260,6 +266,14 @@
     <Compile Include="Migrations\202303190427454_Add dataBaiHoc.designer.cs">
       <DependentUpon>202303190427454_Add dataBaiHoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202303190459038_InsertDataLuyenCodeTable_Final.cs" />
+    <Compile Include="Migrations\202303190459038_InsertDataLuyenCodeTable_Final.designer.cs">
+      <DependentUpon>202303190459038_InsertDataLuyenCodeTable_Final.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303190504599_InsertData_ChiTietBaiLuyenTable_Final.cs" />
+    <Compile Include="Migrations\202303190504599_InsertData_ChiTietBaiLuyenTable_Final.designer.cs">
+      <DependentUpon>202303190504599_InsertData_ChiTietBaiLuyenTable_Final.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\ChiTietBaiLuyen.cs" />
@@ -282,6 +296,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\a.jpg" />
+    <Content Include="Content\images\b.jpg" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Public\css\Css_LuyenCode.css" />
     <Content Include="Public\css\_Layout.css" />
     <Content Include="Public\dist\css\adminlte.css" />
     <Content Include="Public\dist\css\adminlte.min.css" />
@@ -356,6 +374,8 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\images\c.jpg" />
+    <Content Include="Public\Js\ChiTietLuyenCode.js" />
     <Content Include="Public\plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.css" />
     <Content Include="Public\plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.min.css" />
     <Content Include="Public\plugins\bootstrap-colorpicker\js\bootstrap-colorpicker.js" />
@@ -2520,6 +2540,9 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Index2.cshtml" />
+    <Content Include="Views\LuyenCode\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout_Ngan.cshtml" />
+    <Content Include="Views\LuyenCode\ChiTiet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\BaiHoc\Index.cshtml" />
@@ -2528,7 +2551,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Views\KhoaHocs\" />
-    <Folder Include="Views\LuyenCode\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -2553,6 +2575,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303190427454_Add dataBaiHoc.resx">
       <DependentUpon>202303190427454_Add dataBaiHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303190459038_InsertDataLuyenCodeTable_Final.resx">
+      <DependentUpon>202303190459038_InsertDataLuyenCodeTable_Final.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303190504599_InsertData_ChiTietBaiLuyenTable_Final.resx">
+      <DependentUpon>202303190504599_InsertData_ChiTietBaiLuyenTable_Final.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
