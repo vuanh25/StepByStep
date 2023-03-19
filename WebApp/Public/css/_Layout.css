@@ -5,3 +5,23 @@
 .bg-footer {
     background-color: #1D2A35;
 }
+
+.noUnderlined {
+    text-decoration: none;
+}
+
+.noUnderlined > a{
+    text-decoration: none;
+}
+
+.text-red > a {
+    color: red;
+}
+
+.text-red {
+    color: red;
+}
+
+.text-black > a {
+    color: black;
+}
