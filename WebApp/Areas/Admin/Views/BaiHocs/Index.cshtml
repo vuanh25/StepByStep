@@ -26,20 +26,20 @@
                 </div>
             </div>
             <div class="card-body">
-                
+
                 <div class="row">
                     @using (Html.BeginForm("Index", "BaiHocs", FormMethod.Get))
                     {
                         <p>
-                            Tìm theo khoá học: @Html.TextBox("TenKhoaHoc",ViewBag.CurrentFilter as string)
+                            Tìm theo khoá học: @Html.TextBox("TenKhoaHoc", ViewBag.CurrentFilter as string)
                             <input type="submit" value="Tìm kiếm" />
                         </p>
                     }
 
-                <div style="margin-left: 10px">
-                    @Html.ActionLink("Create New", "Create")
-                </div>
-                   
+                    <div style="margin-left: 10px">
+                        @Html.ActionLink("Tạo bài học mới", "Create")
+                    </div>
+
 
                 </div>
                 <table class="table">
@@ -58,12 +58,14 @@
                         {
                             <tr>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.TenBaiHoc)
+                                    <a href="@Url.Action("Index","ChiTietBaiHocs",new { @IdBaiHoc = item.IdBaiHoc})">@Html.DisplayFor(modelItem => item.TenBaiHoc)</a>
+
                                 </td>
 
 
                                 <td>
                                 <td>
+
                                     @Html.ActionLink("Edit", "Edit", new { id = item.IdBaiHoc }) |
                                     @Html.ActionLink("Chi tiết bài học", "Details", new { id = item.IdBaiHoc }) |
                                     @Html.ActionLink("Delete", "Delete", new { id = item.IdBaiHoc })
@@ -79,7 +81,7 @@
 
             </div>
             <!-- /.card-body -->
-         
+
         </div>
         <!-- /.card -->
 
@@ -87,4 +89,3 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-

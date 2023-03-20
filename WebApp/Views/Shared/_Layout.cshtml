@@ -44,16 +44,17 @@
                                     Khoá học
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Java cơ bảnn</a></li>
-                                    <li><a class="dropdown-item" href="~/BaiHoc/Index">C# cơ bản</a></li>
-                                    <li><a class="dropdown-item" href="#">C/C++ cơ bản</a></li>
+                                    <li><a class="dropdown-item" href="@Url.Action("Index","BaiHoc",new { @IdKhoaHoc =2})">Java cơ bản</a></li>
+                           
+                                    <li><a class="dropdown-item" href="@Url.Action("Index","BaiHoc",new { @IdKhoaHoc =3})">C# cơ bản</a></li>
+                                    <li><a class="dropdown-item" href="@Url.Action("Index","BaiHoc",new { @IdKhoaHoc =4})">C/C++ cơ bản</a></li>
                                 </ul>
                             </li>
 
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="#">Tri thức</a>
                             </li>
-                           
+                    
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="@Url.Action("Index", "LuyenCode", new { @id = 1})">Luyện code</a>
                             </li>

@@ -7,7 +7,7 @@ namespace WebApp.Migrations
     {
         public override void Up()
         {
-            Sql("INSERT INTO LuyenCodes (TenLuyenTap,YeuThich,DoKho,NgonNgu) VALUES (N'Hello World',1000,0,0)");
+          /*  Sql("INSERT INTO LuyenCodes (TenLuyenTap,YeuThich,DoKho,NgonNgu) VALUES (N'Hello World',1000,0,0)");*/
         }
         
         public override void Down()

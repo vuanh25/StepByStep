@@ -7,18 +7,12 @@ using System.Web;
 
 namespace WebApp.Models.Entities
 {
-    [Table("BaiHocs")]
-    public class BaiHoc
+    [Table("ChiTietBaiHoc")]
+    public class ChiTietBaiHoc
     {
         [Key]
-        public int IdBaiHoc { get; set; }
-
-        [Required]
-        [StringLength(200)]
-        public string TenBaiHoc { get; set; }
-
-        
-    /*    [StringLength(3000)]
+        public int IdChiTietBaiHoc { get; set; }
+        [StringLength(3000)]
         public string NoiDung1 { get; set; }
         [StringLength(3000)]
         public string NoiDung2 { get; set; }
@@ -37,10 +31,8 @@ namespace WebApp.Models.Entities
         [StringLength(3000)]
         public string NoiDung9 { get; set; }
         [StringLength(3000)]
-        public string NoiDung10 { get; set; }*/
+        public string NoiDung10 { get; set; }
 
-        public Nullable<long> IdKhoaHoc { get; set; }
-     
-    
+        public Nullable<long> IdBaiHoc { get; set; }
     }
 }

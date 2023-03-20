@@ -1,4 +1,5 @@
-﻿@model IEnumerable<WebApp.Models.Entities.BaiHoc>
+﻿
+@model IEnumerable<WebApp.Models.Entities.BaiHoc>
 
 @{
     ViewBag.Title = "Index";
@@ -6,11 +7,11 @@
 }
 
 
-                        @*              BÀI HỌC                 *@
+@*              BÀI HỌC                 *@
 <body>
     <div class="row">
         <div class="col-3 ">
-            <span class="list-group-item p-1 p-lg-1 bg-danger text-light">C# cở bản</span>
+            <span class="list-group-item p-1 p-lg-1 bg-danger text-light">@ViewBag.NameKhoaHoc</span>
             @foreach (var item in Model)
             {
 
@@ -26,30 +27,13 @@
             {
                 if (item.IdBaiHoc == @ViewBag.IdbaiHoc)
                 {
-            <a class="list-group-item p-1 p-lg-1 list-group-item-action list-group-item-warning">
-                @Html.DisplayFor(modelItem => item.NoiDung1)
-                <pre></pre>
-                @Html.DisplayFor(modelItem => item.NoiDung2)
-                <pre></pre>
-                @Html.DisplayFor(modelItem => item.NoiDung3)
-                <pre></pre>
-                @Html.DisplayFor(modelItem => item.NoiDung4)
-                <pre></pre>
-                @Html.DisplayFor(modelItem => item.NoiDung5)
-                <pre></pre>
-                @Html.DisplayFor(modelItem => item.NoiDung6)
-                <pre></pre>
-                @Html.DisplayFor(modelItem => item.NoiDung7)
-                <pre></pre>
-                @Html.DisplayFor(modelItem => item.NoiDung8)
-                <pre></pre>
-                @Html.DisplayFor(modelItem => item.NoiDung9)
-                <pre></pre>
-                @Html.DisplayFor(modelItem => item.NoiDung10)
-            </a>
+                    <a class="list-group-item p-1 p-lg-1 list-group-item-action list-group-item-warning">
+                       
+                    </a>
                 }
             }
 
         </div>
     </div>
 </body>
+

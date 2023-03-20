@@ -1,0 +1,132 @@
+﻿@model IEnumerable<WebApp.Models.Entities.ChiTietBaiHoc>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-6 ">
+                        <strong>Danh sách bài học</strong>
+                    </div>
+                    <div class="col-6 float-end">
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+
+                <p>
+                    @Html.ActionLink("Create New", "Create")
+                </p>
+                <p>
+                    @ViewBag.tenBaiHoc
+                </p>
+                <table class="table">
+                    <tr>
+                        
+                            
+                        
+                        <th>
+                            @Html.DisplayNameFor(model => model.NoiDung1)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NoiDung2)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NoiDung3)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NoiDung4)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NoiDung5)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NoiDung6)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NoiDung7)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NoiDung8)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NoiDung9)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NoiDung10)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IdBaiHoc)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NoiDung1)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NoiDung2)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NoiDung3)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NoiDung4)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NoiDung5)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NoiDung6)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NoiDung7)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NoiDung8)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NoiDung9)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NoiDung10)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdBaiHoc)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.IdChiTietBaiHoc }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.IdChiTietBaiHoc }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.IdChiTietBaiHoc })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+
+            </div>
+            <!-- /.card-body -->
+
+        </div>
+        <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

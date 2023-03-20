@@ -11,11 +11,13 @@ using WebApp.Models.Entities;
 
 namespace WebApp.Areas.Admin.Controllers
 {
+    
     public class BaiHocsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Admin/BaiHocs
+        
         public ActionResult Index(string TenKhoaHoc)
         {
             var khoahocs = db.KhoaHocs.Where(p => p.TenKhoaHoc.Contains(TenKhoaHoc)).ToList();
@@ -28,9 +30,6 @@ namespace WebApp.Areas.Admin.Controllers
                     List<BaiHoc> baiHocs = db.BaiHocs.Where(x => x.IdKhoaHoc == item.IDKhoaHoc).ToList();
                     return View(baiHocs);
                 }
-               
-
-
                 }
             return View();
         }

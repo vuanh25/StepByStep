@@ -225,6 +225,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaiHocsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ChiTietBaiHocsController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\LuyenCodeAdminController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -260,14 +261,6 @@
     <Compile Include="Migrations\202303180522217_deletecInBaiHoc.Designer.cs">
       <DependentUpon>202303180522217_deletecInBaiHoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202303180548100_addtableChiTietBaiHoc.cs" />
-    <Compile Include="Migrations\202303180548100_addtableChiTietBaiHoc.designer.cs">
-      <DependentUpon>202303180548100_addtableChiTietBaiHoc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303180640179_deleteChiTietBaiHoc.cs" />
-    <Compile Include="Migrations\202303180640179_deleteChiTietBaiHoc.Designer.cs">
-      <DependentUpon>202303180640179_deleteChiTietBaiHoc.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202303190423506_CapNhapDuLieuBaiHoc.cs" />
     <Compile Include="Migrations\202303190423506_CapNhapDuLieuBaiHoc.designer.cs">
       <DependentUpon>202303190423506_CapNhapDuLieuBaiHoc.cs</DependentUpon>
@@ -284,8 +277,21 @@
     <Compile Include="Migrations\202303190504599_InsertData_ChiTietBaiLuyenTable_Final.designer.cs">
       <DependentUpon>202303190504599_InsertData_ChiTietBaiLuyenTable_Final.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202303201119541_themchitietbaihoc.cs" />
+    <Compile Include="Migrations\202303201119541_themchitietbaihoc.designer.cs">
+      <DependentUpon>202303201119541_themchitietbaihoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303201236285_Data_LuyenTap.cs" />
+    <Compile Include="Migrations\202303201236285_Data_LuyenTap.Designer.cs">
+      <DependentUpon>202303201236285_Data_LuyenTap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303201239436_Data_LuyenTap_Lan2.cs" />
+    <Compile Include="Migrations\202303201239436_Data_LuyenTap_Lan2.Designer.cs">
+      <DependentUpon>202303201239436_Data_LuyenTap_Lan2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Entities\ChiTietBaiHoc.cs" />
     <Compile Include="Models\Entities\ChiTietBaiLuyen.cs" />
     <Compile Include="Models\Entities\PhanHoi.cs" />
     <Compile Include="Models\Entities\CauHoi.cs" />
@@ -2518,7 +2524,14 @@
     <Content Include="Areas\Admin\Views\KhoaHocs\Details.cshtml" />
     <Content Include="Areas\Admin\Views\KhoaHocs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\KhoaHocs\Index.cshtml" />
+
+    <Content Include="Areas\Admin\Views\ChiTietBaiHocs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietBaiHocs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietBaiHocs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietBaiHocs\Index.cshtml" />
+
     <Content Include="Areas\Admin\Views\LuyenCodeAdmin\Edit.cshtml" />
+
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2565,8 +2578,6 @@
     <Content Include="Views\LuyenCode\Index.cshtml" />
     <Content Include="Views\Shared\_Layout_Ngan.cshtml" />
     <Content Include="Views\LuyenCode\ChiTiet.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\BaiHoc\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -2604,6 +2615,15 @@
     <EmbeddedResource Include="Migrations\202303190504599_InsertData_ChiTietBaiLuyenTable_Final.resx">
       <DependentUpon>202303190504599_InsertData_ChiTietBaiLuyenTable_Final.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303201119541_themchitietbaihoc.resx">
+      <DependentUpon>202303201119541_themchitietbaihoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303201236285_Data_LuyenTap.resx">
+      <DependentUpon>202303201236285_Data_LuyenTap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303201239436_Data_LuyenTap_Lan2.resx">
+      <DependentUpon>202303201239436_Data_LuyenTap_Lan2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
@@ -2612,12 +2632,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303180522217_deletecInBaiHoc.resx">
       <DependentUpon>202303180522217_deletecInBaiHoc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303180548100_addtableChiTietBaiHoc.resx">
-      <DependentUpon>202303180548100_addtableChiTietBaiHoc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303180640179_deleteChiTietBaiHoc.resx">
-      <DependentUpon>202303180640179_deleteChiTietBaiHoc.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
