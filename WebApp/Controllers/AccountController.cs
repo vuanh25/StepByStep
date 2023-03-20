@@ -79,6 +79,10 @@ namespace WebApp.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    if (Equals(model.Email,"admin@gmail.com"))
+                    {
+                        return RedirectToAction("Index","Admin");
+                    }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
