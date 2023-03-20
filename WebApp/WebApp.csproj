@@ -211,6 +211,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaiHocsController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\KhoaHocsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaiHocController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -2481,6 +2482,11 @@
     <Content Include="Areas\Admin\Views\BaiHocs\Details.cshtml" />
     <Content Include="Areas\Admin\Views\BaiHocs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\BaiHocs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\KhoaHocs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\KhoaHocs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\KhoaHocs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\KhoaHocs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\KhoaHocs\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
