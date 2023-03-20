@@ -27,25 +27,23 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <form class=" d-flex flex-row align-items-center flex-wrap" action="~/Admin/BaiHocs/Index">
-                        <label for="search" class="mx-2 my-1">Tìm kiếm bài luyện</label>
-                        <input type="search" class="form-control w-auto"
-                               id="id" name="search"
-                               value="@ViewBag.Id"
-                               placeholder="Search" />
-                        <button type="submit" class="btn btn-primary mx-2">Go</button>
-                    </form>
-                    @Html.ActionLink("Create New", "Create")
+                    @using (Html.BeginForm("Index", "LuyenCode", FormMethod.Get))
+                    {
+                        <p>
+                            Tìm theo bài tập: @Html.TextBox("tenBaiTap", ViewBag.CurrentFilter as string)
+                            <input type="submit" value="Tìm kiếm" />
+                        </p>
+                    }
                 </div>
                 <table class="table">
                     <tr>
-                        <th style="padding-left: 0px">
-                            @Html.DisplayNameFor(model => model.TenLuyenTap )
-                        </th>
+                        <br />
 
 
-
-                        <th></th>
+                        <th>Tên Bài Tập</th>
+                        <th>Yêu Thích</th>
+                        <th>Ngôn ngữ lập trình</th>
+                        <th>Cấp độ</th>
                     </tr>
                     @if (Model != null)
                     {
@@ -55,13 +53,22 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.TenLuyenTap)
                                 </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.YeuThich)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NgonNgu)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DoKho)
+                                </td>
 
 
                                 <td>
                                 <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                    @Html.ActionLink("Chi tiết bài học", "Details", new { id = item.Id }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.Id }) |
+                                    @Html.ActionLink("Chi tiết bài tập", "Details", new { id = item.Id }) |
+                                    @Html.ActionLink("Xóa", "Delete", new { id = item.Id })
                                 </td>
                             </tr>
                         }
