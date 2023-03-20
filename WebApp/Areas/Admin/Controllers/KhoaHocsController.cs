@@ -8,140 +8,111 @@ using System.Web;
 using System.Web.Mvc;
 using WebApp.Models;
 using WebApp.Models.Entities;
-
 namespace WebApp.Areas.Admin.Controllers
 {
-    public class BaiHocsController : Controller
+    public class KhoaHocsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Admin/BaiHocs
-        public ActionResult Index(string TenKhoaHoc)
-        {
-            var khoahocs = db.KhoaHocs.Where(p => p.TenKhoaHoc.Contains(TenKhoaHoc)).ToList();
-                foreach (var item in khoahocs)
-                {
-                if (Equals(item.TenKhoaHoc,TenKhoaHoc))
-                {
-
-                    ViewBag.TenKhoaHoc = item.TenKhoaHoc;
-                    List<BaiHoc> baiHocs = db.BaiHocs.Where(x => x.IdKhoaHoc == item.IDKhoaHoc).ToList();
-                    return View(baiHocs);
-                }
-               
-
-
-                }
-            return View();
-        }
-
-
-        public ActionResult IndexKhoaHoc()
+        // GET: Admin/KhoaHocs
+        public ActionResult Index()
         {
             return View(db.KhoaHocs.ToList());
         }
 
-        public ActionResult KhoaHoc(string SearchId)
-        {
-            int id = int.Parse(SearchId);
-            var baiHocs = db.BaiHocs.Where(p => p.IdKhoaHoc == id).ToList();
-            return View(baiHocs);
-        }
+    
 
-
-
-
-        // GET: Admin/BaiHocs/Details/5
+        // GET: Admin/KhoaHocs/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BaiHoc baiHoc = db.BaiHocs.Find(id);
-            if (baiHoc == null)
+            KhoaHoc khoaHoc = db.KhoaHocs.Find(id);
+            if (khoaHoc == null)
             {
                 return HttpNotFound();
             }
-            return View(baiHoc);
+            return View(khoaHoc);
         }
 
-        // GET: Admin/BaiHocs/Create
+        // GET: Admin/KhoaHocs/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/BaiHocs/Create
+        // POST: Admin/KhoaHocs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdBaiHoc,TenBaiHoc,NoiDung1,NoiDung2,NoiDung3,NoiDung4,NoiDung5,NoiDung6,NoiDung7,NoiDung8,NoiDung9,NoiDung10,IdKhoaHoc")] BaiHoc baiHoc)
+        public ActionResult Create([Bind(Include = "IDKhoaHoc,TenKhoaHoc,IDNgonNgu")] KhoaHoc khoaHoc)
         {
             if (ModelState.IsValid)
             {
-                db.BaiHocs.Add(baiHoc);
+                db.KhoaHocs.Add(khoaHoc);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(baiHoc);
+            return View(khoaHoc);
         }
 
-        // GET: Admin/BaiHocs/Edit/5
+        // GET: Admin/KhoaHocs/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BaiHoc baiHoc = db.BaiHocs.Find(id);
-            if (baiHoc == null)
+            KhoaHoc khoaHoc = db.KhoaHocs.Find(id);
+            if (khoaHoc == null)
             {
                 return HttpNotFound();
             }
-            return View(baiHoc);
+            return View(khoaHoc);
         }
 
-        // POST: Admin/BaiHocs/Edit/5
+        // POST: Admin/KhoaHocs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdBaiHoc,TenBaiHoc,NoiDung1,NoiDung2,NoiDung3,NoiDung4,NoiDung5,NoiDung6,NoiDung7,NoiDung8,NoiDung9,NoiDung10,IdKhoaHoc")] BaiHoc baiHoc)
+        public ActionResult Edit([Bind(Include = "IDKhoaHoc,TenKhoaHoc,IDNgonNgu")] KhoaHoc khoaHoc)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(baiHoc).State = EntityState.Modified;
+                db.Entry(khoaHoc).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(baiHoc);
+            return View(khoaHoc);
         }
 
-        // GET: Admin/BaiHocs/Delete/5
+        // GET: Admin/KhoaHocs/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BaiHoc baiHoc = db.BaiHocs.Find(id);
-            if (baiHoc == null)
+            KhoaHoc khoaHoc = db.KhoaHocs.Find(id);
+            if (khoaHoc == null)
             {
                 return HttpNotFound();
             }
-            return View(baiHoc);
+            return View(khoaHoc);
         }
 
-        // POST: Admin/BaiHocs/Delete/5
+        // POST: Admin/KhoaHocs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            BaiHoc baiHoc = db.BaiHocs.Find(id);
-            db.BaiHocs.Remove(baiHoc);
+            KhoaHoc khoaHoc = db.KhoaHocs.Find(id);
+            db.KhoaHocs.Remove(khoaHoc);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
