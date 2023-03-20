@@ -11,28 +11,17 @@ namespace WebApp.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: BaiHoc
-        public ActionResult Index(int? id)
+        public ActionResult Index(int? IdKhoaHoc)
         {
-            if (id == null)
+            var BaiHocss = db.BaiHocs.Where(p => p.IdKhoaHoc == IdKhoaHoc ).ToList();
+            var KhoaHoc = db.KhoaHocs.Where(p => p.IDKhoaHoc == IdKhoaHoc).ToList();
+            foreach (var item in KhoaHoc)
             {
-                id = 1;
+                ViewBag.NameKhoaHoc = item.TenKhoaHoc;
             }
-
-            ViewBag.IdbaiHoc = id;
-            return View(db.BaiHocs.ToList());
+            return View(BaiHocss);
         }
 
-        [HttpPost]
-        public ActionResult Index(int id)
-        {
-            if (id == null)
-            {
-                id = 55;
-            }
-
-            ViewBag.IdbaiHoc = id;
-            return View(db.BaiHocs.ToList());
-        }
 
 
         /* public ActionResult BaiHoc(int id)

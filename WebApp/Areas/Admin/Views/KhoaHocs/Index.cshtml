@@ -30,14 +30,18 @@
             </div>
             <div class="card-body">
                 <p>
-                    @Html.ActionLink("Create New", "Create")
+                    @Html.ActionLink("Thêm mới khoá học", "Create")
                 </p>
                 <table class="table">
                     <tr>
-                     
                         <th>
-                            @Html.DisplayNameFor(model => model.IDNgonNgu)
+                            @Html.DisplayNameFor(model => model.TenKhoaHoc)
                         </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IDKhoaHoc)
+                        </th>
+
+
                         <th></th>
                     </tr>
 
@@ -45,10 +49,8 @@
                     {
                         <tr>
                             <td>
-                                
-                               <a href="#" >@item.TenKhoaHoc</a>
-                                @Html.ActionLink(item.TenKhoaHoc,"KhoaHoc","KhoaHocs", new {@Id = item.IDKhoaHoc },null)
-                    
+                                @Html.DisplayFor(modelItem => item.TenKhoaHoc)
+
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.IDNgonNgu)
