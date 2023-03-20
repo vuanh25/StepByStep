@@ -55,6 +55,12 @@
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel.Abstractions, Version=6.27.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Abstractions.6.27.0\lib\net472\Microsoft.IdentityModel.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=6.25.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.6.25.1\lib\net472\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
@@ -218,7 +224,7 @@
     <Compile Include="Areas\Admin\Controllers\BaiHocsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ChiTietBaiHocsController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
-    <Compile Include="Areas\Admin\Controllers\KhoaHocsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LuyenCodeAdminController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaiHocController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -307,6 +313,7 @@
     <Content Include="Content\images\b.jpg" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Public\css\Css_LuyenCode.css" />
+    <Content Include="Public\css\LuyenCodeAdmin.css" />
     <Content Include="Public\css\_Layout.css" />
     <Content Include="Public\dist\css\adminlte.css" />
     <Content Include="Public\dist\css\adminlte.min.css" />
@@ -2508,15 +2515,20 @@
     <Content Include="Areas\Admin\Views\BaiHocs\Details.cshtml" />
     <Content Include="Areas\Admin\Views\BaiHocs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\BaiHocs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\LuyenCodeAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\KhoaHocs\Create.cshtml" />
     <Content Include="Areas\Admin\Views\KhoaHocs\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\KhoaHocs\Details.cshtml" />
     <Content Include="Areas\Admin\Views\KhoaHocs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\KhoaHocs\Index.cshtml" />
+
     <Content Include="Areas\Admin\Views\ChiTietBaiHocs\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietBaiHocs\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietBaiHocs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietBaiHocs\Index.cshtml" />
+
+    <Content Include="Areas\Admin\Views\LuyenCodeAdmin\Edit.cshtml" />
+
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2560,7 +2572,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Index2.cshtml" />
     <Content Include="Views\LuyenCode\Index.cshtml" />
     <Content Include="Views\Shared\_Layout_Ngan.cshtml" />
     <Content Include="Views\LuyenCode\ChiTiet.cshtml" />
