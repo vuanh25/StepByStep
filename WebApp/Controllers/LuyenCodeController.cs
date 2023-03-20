@@ -25,6 +25,7 @@ namespace WebApp.Controllers
         }
 
         
+        [Authorize]
         public ActionResult ChiTiet(int? id)
         {
             if (id != null)
@@ -32,6 +33,7 @@ namespace WebApp.Controllers
             {
                 if (item.Id == id)
                 {
+
                         ViewBag.TenBaiLuyen = item.TenLuyenTap;
                 }
             }
