@@ -1,0 +1,82 @@
+﻿@model IEnumerable<WebApp.Models.Entities.LuyenCode>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-6 ">
+                        <strong>Danh sách bài luyện</strong>
+                    </div>
+                    <div class="col-6 float-end">
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <form class=" d-flex flex-row align-items-center flex-wrap" action="~/Admin/BaiHocs/Index">
+                        <label for="search" class="mx-2 my-1">Tìm kiếm bài luyện</label>
+                        <input type="search" class="form-control w-auto"
+                               id="id" name="search"
+                               value="@ViewBag.Id"
+                               placeholder="Search" />
+                        <button type="submit" class="btn btn-primary mx-2">Go</button>
+                    </form>
+                    @Html.ActionLink("Create New", "Create")
+                </div>
+                <table class="table">
+                    <tr>
+                        <th style="padding-left: 0px">
+                            @Html.DisplayNameFor(model => model.TenLuyenTap )
+                        </th>
+
+
+
+                        <th></th>
+                    </tr>
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenLuyenTap)
+                                </td>
+
+
+                                <td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                    @Html.ActionLink("Chi tiết bài học", "Details", new { id = item.Id }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                </td>
+                            </tr>
+                        }
+                    }
+
+
+                </table>
+
+            </div>
+            <!-- /.card-body -->
+
+        </div>
+        <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
