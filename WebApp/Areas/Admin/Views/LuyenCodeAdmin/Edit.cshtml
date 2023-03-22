@@ -7,15 +7,15 @@
 
 <link href="~/Public/css/LuyenCodeAdmin.css" rel="stylesheet" />
 
-<h2>Edit</h2>
-<div class="container" style="padding-left: 5em;">
+
+<div class="container font" style="padding-left: 5em;">
 
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Chỉnh sửa thông tin bài tập</h4>
+        <h4 class="p-3">Chỉnh sửa thông tin bài tập</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
