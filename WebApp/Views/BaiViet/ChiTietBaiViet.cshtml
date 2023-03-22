@@ -60,12 +60,10 @@
             data: { idBaiViet: id.toString() },
             success: function (data) {
                 if (data.code == 200) {
-                    alert(data.msg);
-                        $.each(luotthich, function (k, v) {
-
-                            let lt = v + 'lượt thích'
-
-                            $('#luotthich').append(lt);
+                    $.each(luotthich, function (k, v) {
+                        let lt = v + 'lượt thích'
+                        $('#luotthich').append(lt);
+                    } 
                 } else {
                     alert(data.msg);
                 }
