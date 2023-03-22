@@ -13,14 +13,14 @@ namespace WebApp.Models.Entities
         [Key]
         public int IDPhanHoi { get; set; }
 
-        [Required]
+ 
         [StringLength(500)]
         public string NoiDung { get; set; }
 
-        [Required]
-    
+        public string HinhAnh { get; set; }
+
         public string NgayDang { get; set; }
-        [Required]
+ 
         public int LuotThich { get; set; }
 
 

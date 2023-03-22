@@ -26,7 +26,6 @@ namespace WebApp.Models.Entities
         public int Diem { get; set; }
 
         public virtual TrangThaiHoanThanh TrangThaiHoanThanh { get; set; }
-        public Nullable<long> IdBaiHoc { get; set; }
         public virtual BaiHoc BaiHoc { get; set; }
     }
 }

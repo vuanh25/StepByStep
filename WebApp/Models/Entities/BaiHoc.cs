@@ -39,7 +39,7 @@ namespace WebApp.Models.Entities
         [StringLength(3000)]
         public string NoiDung10 { get; set; }
 
-        public Nullable<long> IdKhoaHoc { get; set; }
+        public virtual KhoaHoc KhoaHoc { get; set; }
      
     
     }

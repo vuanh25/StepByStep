@@ -1,0 +1,58 @@
+﻿@model IEnumerable<WebApp.Models.Entities.BaiViet>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row container-sm">
+    <div class="col-md-12">
+        <div class="mb-3">
+            <a class="btn btn-primary" href="@Url.Action("TaoBaiViet", "BaiViet")">Tạo bài viết</a>
+        </div>
+        @foreach (var item in Model)
+        {
+            <!--<div class="counts">
+                <div class="counts-answered">
+                    <div class="mini-counts">
+                        <span>0</span>
+                    </div>
+                    <span>Trả lời</span>
+                </div>
+                <div class="counts-views text-danger">
+                    <div class="mini-counts">
+                        <span>@item.LuotXem</span>
+                    </div>
+                    <span>Lượt xem</span>
+                </div>
+            </div>
+            <div class="summary">
+                <a href="@Url.Action("ChiTietCauHoi")">
+                    <h4 class="h5 mb-5">
+                        <span class="mark-lookup">@item.TieuDe</span>
+                    </h4>
+                </a>
+                <div class="mb-5">
+                    <a href="#" class="post-tag">@item.NgonNgu</a>
+                </div>
+                <div class="font-size-xs mb-5 text-muted">
+                    <span>-->
+            @*<a href="#">@item.User.TenUser</a>
+                <em class="format-time font-w600">
+
+                </em>*@
+            <!--</span>
+                </div>
+            </div>-->
+            <a href="@Url.Action("ChiTietBaiViet", new { @id = item.IdBaiViet})">@item.TieuDe</a>
+            <div class="mb-5">
+                <span>Lượt xem: @item.LuotXem</span>
+                <span>Lượt thích: @item.LuotThich</span>
+                <span>Trả lời: 0</span>
+                <a href="#" class="post-tag">@item.NgonNgu</a>
+            </div>
+            <hr>
+
+        }
+    </div>
+</div>
