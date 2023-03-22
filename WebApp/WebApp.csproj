@@ -281,14 +281,6 @@
     <Compile Include="Migrations\202303201119541_themchitietbaihoc.designer.cs">
       <DependentUpon>202303201119541_themchitietbaihoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202303201236285_Data_LuyenTap.cs" />
-    <Compile Include="Migrations\202303201236285_Data_LuyenTap.Designer.cs">
-      <DependentUpon>202303201236285_Data_LuyenTap.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303201239436_Data_LuyenTap_Lan2.cs" />
-    <Compile Include="Migrations\202303201239436_Data_LuyenTap_Lan2.Designer.cs">
-      <DependentUpon>202303201239436_Data_LuyenTap_Lan2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\ChiTietBaiHoc.cs" />
@@ -367,7 +359,6 @@
     <Content Include="Public\dist\img\user8-128x128.jpg" />
     <Content Include="Public\dist\js\adminlte.js" />
     <Content Include="Public\dist\js\adminlte.min.js" />
-    <Content Include="Public\dist\js\demo.js" />
     <Content Include="Public\dist\js\pages\dashboard.js" />
     <Content Include="Public\dist\js\pages\dashboard2.js" />
     <Content Include="Public\dist\js\pages\dashboard3.js" />
@@ -2524,14 +2515,11 @@
     <Content Include="Areas\Admin\Views\KhoaHocs\Details.cshtml" />
     <Content Include="Areas\Admin\Views\KhoaHocs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\KhoaHocs\Index.cshtml" />
-
     <Content Include="Areas\Admin\Views\ChiTietBaiHocs\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietBaiHocs\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietBaiHocs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietBaiHocs\Index.cshtml" />
-
     <Content Include="Areas\Admin\Views\LuyenCodeAdmin\Edit.cshtml" />
-
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2617,12 +2605,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303201119541_themchitietbaihoc.resx">
       <DependentUpon>202303201119541_themchitietbaihoc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303201236285_Data_LuyenTap.resx">
-      <DependentUpon>202303201236285_Data_LuyenTap.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303201239436_Data_LuyenTap_Lan2.resx">
-      <DependentUpon>202303201239436_Data_LuyenTap_Lan2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

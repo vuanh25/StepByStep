@@ -14,10 +14,10 @@
 }
 
 
-<div class="container  PageList">
+<div class="container  PageList font">
     <table class="styled-table">
         <thead>
-            <tr>
+            <tr class="font">
                 <th style="width: 40em">Tên bài tập</th>
                 <th style="width: 10em">Lượt yêu thích</th>
                 <th style="width: 10em">Cấp độ</th>
@@ -25,7 +25,7 @@
         </thead>
         @foreach (var item in Model)
         {
-            <tbody>
+            <tbody class="font">
                 @if (item.Id % 2 == 1)
                 {
                 <tr>
@@ -36,7 +36,7 @@
                 }
                 else
                 {
-                    <tr class="active-row">
+                    <tr class="active-row font">
                         <td class="active-row"><a class="noUnderlined " href="@Url.Action("ChiTiet", "LuyenCode", new { @id = item.Id})" >@item.TenLuyenTap</a></td>
                         <td>@item.YeuThich</td>
                         <td>@item.DoKho</td>
@@ -52,19 +52,19 @@
 </div>
 
 
+<br />
 
-
-<div class="container ">
+<div class="container font">
     <div class="row">
         @foreach (var item in Model)
         {
-            <div class="col-4 PageList">
+            <div class="col-4 PageList font">
                 <div class="panel panel-default " style="justify-items: center">
                     <div class="panel panel-heading text-danger PageList">
                         <h5>@item.TenLuyenTap</h5>
                     </div>
                     <div class="panel-body ">
-                        <p class="PageList">Yêu thích: <span>@item.YeuThich</span></p>
+                        <p class="PageList">Yêu thích:  <span style="padding-left:4px">@item.YeuThich</span></p>
                         <p>
                             <img style="width : 250px" src="~/Content/images/b.jpg" />
                         </p>
