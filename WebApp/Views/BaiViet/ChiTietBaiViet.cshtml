@@ -52,5 +52,37 @@
 }
 
 <script>
-    $
+    function TaiDsBaiLuyen() {
+        $.ajax({
+            url: '/LuyenCodeAdmin/DsBT',
+            type: 'get',
+            success: function (data) {
+                //    load lại không chèn cũ;
+                $('#BT').empty();
+
+                if (data.code == 200) {
+                    $.each(data.ds, function (k, v) {
+
+                        let tr = '<tr>'
+                        tr += '<td class="pd-l">' + v.TenLuyenTap + '</td>';
+                        tr += '<td>' + v.YeuThich + '</td>';
+                        tr += '<td>' + v.NgonNgu + '</td>';
+                        tr += '<td>' + v.CapDo + '</td>';
+                        tr += '<td>';
+
+                        tr += '<button class = "btn btn-primary">' + 'Thêm' + '</button>';
+                        tr += '<button class = "btn btn-warning mg-lr">' + 'Sửa' + '</button>';
+                        tr += '<button class = "btn btn-danger">' + 'Xóa' + '</button>';
+
+                        tr += '</td>';
+                        tr += '</td>';
+
+
+                        $('#BT').append(tr);
+
+                    })
+                }
+            }
+        })
+    }
 </script>
