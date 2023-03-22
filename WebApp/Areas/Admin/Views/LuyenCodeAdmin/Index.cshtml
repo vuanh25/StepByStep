@@ -1,12 +1,13 @@
-﻿@model IEnumerable<WebApp.Models.Entities.LuyenCode>
+﻿@model WebApp.Models.Entities.LuyenCode
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
 
+<link href="~/Public/css/LuyenCodeAdmin.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 
 
 <!-- Content Wrapper. Contains page content -->
@@ -15,69 +16,32 @@
     <section class="content">
 
         <!-- Default box -->
-        <div class="card">
-            <div class="card-header">
+        <div class="card font container">
+            <div class="card-header can_giua">
                 <div class="row">
-                    <div class="col-6 ">
-                        <strong>Danh sách bài luyện</strong>
+                    <div class="">
+                        <strong>DANH SÁCH BÀI LUYỆN TẬP</strong>
                     </div>
-                    <div class="col-6 float-end">
-                    </div>
+                    
                 </div>
             </div>
-            <div class="card-body">
-                <div class="row">
-                    @using (Html.BeginForm("Index", "LuyenCode", FormMethod.Get))
-                    {
-                        <p>
-                            Tìm theo bài tập: @Html.TextBox("tenBaiTap", ViewBag.CurrentFilter as string)
-                            <input type="submit" value="Tìm kiếm" />
-                        </p>
-                    }
-                </div>
-                <table class="table">
-                    <tr>
-                        <br />
-
-
-                        <th>Tên Bài Tập</th>
-                        <th>Yêu Thích</th>
-                        <th>Ngôn ngữ lập trình</th>
+            <button class="btn btn-success mg-tb" id="btnAdd"  style="width:10.3em">
+                Thêm bài tập
+            </button>
+            <table>
+                <thead>
+                    <tr class="mau_cho_cot ">
+                        <th class="pd-l">Tên bài tập</th>
+                        <th>Yêu thích</th>
+                        <th>Ngôn ngữ</th>
                         <th>Cấp độ</th>
+                        <th></th>
                     </tr>
-                    @if (Model != null)
-                    {
-                        foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TenLuyenTap)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.YeuThich)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.NgonNgu)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.DoKho)
-                                </td>
+                </thead>
+                <tbody id="BT" class="font chieu_cao_dong ">
 
-
-                                <td>
-                                <td>
-                                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.Id }) |
-                                    @Html.ActionLink("Chi tiết bài tập", "Details", new { id = item.Id }) |
-                                    @Html.ActionLink("Xóa", "Delete", new { id = item.Id })
-                                </td>
-                            </tr>
-                        }
-                    }
-
-
-                </table>
-
-            </div>
+                </tbody>
+            </table>
             <!-- /.card-body -->
 
         </div>
@@ -86,4 +50,201 @@
     </section>
     <!-- /.content -->
 </div>
-<!-- /.content-wrapper -->
+
+                                        @*THÊM*@
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div class="modal" tabindex="-1" role="dialog" id="modalBT">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="panel panel-primary font ">
+                <div class="panel-heading can_giua">Thêm bài tập vào danh sách LUYỆN CODE</div>
+                <div class="panel-body pd-lr">
+
+                    <div class="form-group">
+                        <label>Tên bài tập</label>
+                        <input type="text" class="form-control" id="TenLuyenTap" placeholder="Tên bài tập">
+                    </div>
+                    <div class="form-group">
+                        <label>Yêu thích</label>
+                        <input type="text" class="form-control" id="YeuThich" placeholder="Số lượng yêu thích">
+                    </div>
+
+                    @*<script type="text/javascript">
+                        var NgonNgu = { "C_Cplus": 0, "CSharp": 1, "Java": 2 };
+                        $(function () {
+                            $("#ddlColors").change(function () {
+                                switch (parseInt($(this).val())) {
+                                    case NgonNgu.C_Cplus:
+                                        alert("C_Cplus");
+                                        break;
+                                    case NgonNgu.CSharp:
+                                        alert("CSharp");
+                                        break;
+                                    case NgonNgu.Java:
+                                        alert("Java");
+                                        break;
+                                }
+                            });
+                        });
+                    </script>*@
+
+                    <div class="form-group" style="display:inline-flex">
+                        <label class="pd-r">Ngôn ngữ</label>
+                        <select id="NgonNgu">
+                            <option value="0">C/C++</option>
+                            <option value="1">C#</option>
+                            <option value="2">Java</option>
+                        </select>
+                     @*   <input type="text" class="form-control" id="NgonNgu" placeholder="Ngôn ngữ lập trình">*@
+                    
+                    
+                    @*<script type="text/javascript">
+                        var NgonNgu = { "De": 0, "TrungBinh": 1, "Kho": 2,"SieuKho" : 3 };
+                        $(function () {
+                            $("#ddlColors").change(function () {
+                                switch (parseInt($(this).val())) {
+                                    case NgonNgu.C_Cplus:
+                                        alert("C_Cplus");
+                                        break;
+                                    case NgonNgu.CSharp:
+                                        alert("CSharp");
+                                        break;
+                                    case NgonNgu.Java:
+                                        alert("Java");
+                                        break;
+                                }
+                            });
+                        });
+                    </script>*@
+                    
+                    </div>
+                    <div class="form-group mg-l-30" style="display: inline-flex;">
+                        <label class="pd-r">Cấp độ</label>
+                        <select id="CapDo">
+                            <option value="0">Dễ</option>
+                            <option value="1">Trung bình</option>
+                            <option value="2">Khó</option>
+                            <option value="3">Siêu khó</option>
+                        </select>
+
+                        @*<input type="text" class="form-control " id="CapDo" placeholder="Mức độ bài tập">*@
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnSubmit">Lưu</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+
+
+@section scripts {
+
+    <script>
+        $(document).ready(function () {
+            TaiDsBaiLuyen();
+        })
+        // Chỉnh sửa chi tiết
+        $(document).on('click', "button[name='view']", function () {
+            let idBT = $(this).closet('tr').find('.name').attr('id');
+            alert(idBT);
+        });
+
+        // Thêm mới
+        $('#btnSubmit').click(function () {
+            let TenBaiTap = $('#TenLuyenTap').val().trim();
+            let YeuThich = $('#YeuThich').val().trim();
+            let NgonNgu = $('#NgonNgu').val().trim();
+            let CapDo = $('#CapDo').val().trim();
+
+            if (TenBaiTap.length == 0 || YeuThich.length == 0 || NgonNgu.length == 0 || CapDo.length == 0) {
+                alert('Vui lòng điền đây đủ nội dung!');
+                return;
+            }
+
+            // dùng ajax theem moi BT
+            $.ajax({
+                url: '/LuyenCodeAdmin/AddBT',
+                type: 'post',
+                data: {
+                    tenBT: TenBaiTap,
+                    yeuThich: YeuThich,
+                    ngonNgu: NgonNgu,
+                    doKho: CapDo
+                },
+                success: function (data) {
+                    if (data.code == 200) {
+                        alert(data.msg);
+                        TaiDsBaiLuyen();
+                        $('#TenLuyenTap').val('');
+                        $('#YeuThich').val('');
+                    } else {
+                        alert(data.msg);
+                    }
+                }
+            });
+        });
+
+        $('#btnAdd').click(function () {
+            $('#modalBT').modal();
+        })
+
+        
+        // Load danh sách
+        function TaiDsBaiLuyen() {
+            $.ajax({
+            url: '/LuyenCodeAdmin/DsBT',
+            type: 'get',
+                success: function (data) {
+                //    load lại không chèn cũ;
+                    $('#BT').empty();
+
+                if (data.code == 200) {
+                    $.each(data.ds, function (k, v) {
+
+                        let tr = '<tr>'
+                        tr += '<td class="pd-l">' + v.TenLuyenTap + '</td>';
+                        tr += '<td>' + v.YeuThich + '</td>';
+                        tr += '<td>' + v.NgonNgu + '</td>';
+                        tr += '<td>' + v.CapDo + '</td>';
+                        tr += '<td>';
+
+                        tr += '<button class = "btn btn-primary">' + 'Thêm' + '</button>';
+                        tr += '<button class = "btn btn-warning mg-lr">' + 'Sửa' + '</button>';
+                        tr += '<button class = "btn btn-danger">' + 'Xóa' + '</button>';
+                             
+                        tr += '</td>';
+                        tr += '</td>';
+
+
+                        $('#BT').append(tr);
+
+                    })
+                }
+                }
+            })
+        }
+
+        
+    </script>    
+    
+    
+}
+
+
+
+
+

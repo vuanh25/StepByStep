@@ -27,3 +27,7 @@
 .text-black > a {
     color: black;
 }
+
+.font {
+    font-family: Montserrat;
+}

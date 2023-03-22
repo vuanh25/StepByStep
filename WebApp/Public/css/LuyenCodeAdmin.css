@@ -2,4 +2,60 @@
     width: 12em;
 }
 
+.mau_cho_cot {
+    background-color: #808080;
+    color: whitesmoke;
+    font-family:Montserrat;
+}
 
+.font {
+    font-family: Montserrat !important;
+}
+
+.can_giua {
+    display: flex;
+    justify-content:center;
+}
+
+.pd-l {
+    padding-left:10px;
+}
+.pd-r {
+    padding-right:10px;
+}
+
+.pd-lr {
+    padding:0 10px;
+}
+
+.mg-l-30 {
+    margin-left:30px;
+}
+
+.mg-lr {
+    margin: 0 8px;
+}
+
+.mg-tb {
+    margin: 8px 0;
+}
+
+.pd-t {
+    padding: 5px 0;
+}
+
+.panel-primary > .panel-heading {
+    background-color: #198754;
+    color: white;
+}
+
+.panel-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.chieu_cao_dong {
+    line-height: 2.5em;
+}
