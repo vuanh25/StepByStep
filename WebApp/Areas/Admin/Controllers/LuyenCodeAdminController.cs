@@ -47,6 +47,10 @@ namespace WebApp.Areas.Admin.Controllers
         }
 
 
+
+        //              THÊM BÀI TẬP 
+
+
         [HttpPost]
         public JsonResult AddBT(string tenBT, int yeuThich, int ngonNgu,int doKho)
         {
@@ -70,8 +74,105 @@ namespace WebApp.Areas.Admin.Controllers
             }
         }
 
+        [HttpPost]
+        public JsonResult AddCTBT(int id,string tenDB, string yeuCau, string dauVao, string dauRa,string viDuVao, string viDuRa, int diem)
+        {
+            LuyenCode a = db.LuyenTaps.Where(m => m.Id == id).First();
+            try
+            {
+                var l = new ChiTietBaiLuyen();
+                l.Id = id;
+                l.DeBai = tenDB;
+                l.YeuCauDauVao = yeuCau;
+                l.DauVao = dauVao;
+                l.DauRa = dauRa;
+                l.ViduVao = viDuVao;
+                l.ViduRa = viDuRa;
+                l.Diem = diem;
+                l.LuyenCode = a;
+                
 
-                     //              SỬA
+                db.ChiTietBaiLuyens.Add(l);
+                db.SaveChanges();
+                return Json(new { code = 200, msg = "Thêm mới chi tiết bài tập thành công!" }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { code = 500, msg = "Thêm mới chi tiết bài tập thất bại! Lỗi: " + ex.Message }, JsonRequestBehavior.AllowGet);
+
+                throw;
+            }
+        }
+
+
+
+        //                  CHỈNH SỬA
+
+        // PHẦN LẤY DỮ LIỆU
+        [HttpGet]
+        public JsonResult Edit(int id)
+        {
+            try
+            {
+                  
+                var l = db.LuyenTaps.SingleOrDefault(x=>x.Id == id);
+                
+                return Json(new { code = 200, L = l, msg = "Lấy thông tin thành công" }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { code = 500, msg = "Lấy thông tin thất bại" +ex.Message }, JsonRequestBehavior.AllowGet);
+
+                throw;
+            }
+        }
+
+        [HttpGet]
+        public JsonResult EditCTBT(int id)
+        {
+            try
+            {
+
+                var l = db.ChiTietBaiLuyens.SingleOrDefault(x => x.Id == id);
+                l.LuyenCode = db.LuyenTaps.Where(m => m.Id == id).First();
+                return Json(new { code = 200, L = l, msg = "Lấy thông tin thành công" }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { code = 500, msg = "Lấy thông tin thất bại" + ex.Message }, JsonRequestBehavior.AllowGet);
+
+                throw;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //              SỬA
 
         //public ActionResult Edit (int id)
         //{
