@@ -1,0 +1,8 @@
+﻿@model  IEnumerable<WebApp.Models.Entities.KhoaHoc>
+
+@foreach (var item in Model)
+{
+   
+    <li><a class="dropdown-item" href="@Url.Action("Index","BaiHoc", new {IdKhoaHoc = item.IDKhoaHoc})">@item.TenKhoaHoc</a></li>
+
+}

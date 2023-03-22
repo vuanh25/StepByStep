@@ -11,26 +11,28 @@ namespace WebApp.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public ActionResult Index()
+
+        public ActionResult Index(int? IdKhoaHoc)
         {
-            return View();
+            var BaiHocss = db.BaiHocs.Where(p => p.IdKhoaHoc == IdKhoaHoc).ToList();
+            var KhoaHoc = db.KhoaHocs.Where(p => p.IDKhoaHoc == IdKhoaHoc).ToList();
+            foreach (var item in KhoaHoc)
+            {
+                {
+                    ViewBag.NameKhoaHoc = item.TenKhoaHoc;
+                }
+            }
+            return View(BaiHocss);
         }
 
-        [HttpGet]
-        public JsonResult ListBaiHoc()
-        {
-            try
-            {
-                var listBaiHoc = db.BaiHocs.ToList();
-                return Json(new { code = 200, listBaiHoc = listBaiHoc ,msg="Lấy danh sách thành công!"},JsonRequestBehavior.AllowGet);
 
-            }
-            catch (Exception ex)
-            {
-                return Json(new { code = 500,msg= "Lấy danh sách bài học thất bại: "+ex.Message ,JsonRequestBehavior.AllowGet});
-                throw;
-            }
-        }
+
+        /*   public ActionResult ChiTietBaiHoc(int? IdBaiHoc)
+           {
+               var chitietbaihocs = db.ChiTietBaiHocs.Where(p => p.IdBaiHoc == IdBaiHoc).ToList();
+               return PartialView(chitietbaihocs);
+           }
+   */
 
         [HttpPost]
         public JsonResult ListChiTietBaiHoc(int? idBaiHoc)
@@ -53,7 +55,7 @@ namespace WebApp.Controllers
                                         Noidung10 = l.NoiDung10,
                                         idBaiHoc = l.IdBaiHoc,
                                     }).ToList();
-                return Json(new { code = 200, listCTBaiHoc=listCTBaiHoc, msg = idBaiHoc }, JsonRequestBehavior.AllowGet);
+                return Json(new { code = 200, listCTBaiHoc = listCTBaiHoc, msg = idBaiHoc }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
@@ -66,6 +68,8 @@ namespace WebApp.Controllers
 
 
 
-       
+
+
+
     }
 }
