@@ -19,8 +19,8 @@
                     @Model.LuotXem lượt xem
                 </span>
                 <span class="font-italic">
-                    <i class="far fa-fw fa-heart"></i>
-                    <button > </button>
+                    @*<i class="far fa-fw fa-heart"></i>*@
+                    <button class="far fa-fw fa-heart"> </button>
                     @Model.LuotThich lượt thích
                 </span>
                 <span class="font-italic">
@@ -54,11 +54,11 @@
 <script>
     function TaiDsBaiLuyen() {
         $.ajax({
-            url: '/LuyenCodeAdmin/DsBT',
+            url: '/BaiViet/Thich',
             type: 'get',
             success: function (data) {
                 //    load lại không chèn cũ;
-                $('#BT').empty();
+                $('#like').empty();
 
                 if (data.code == 200) {
                     $.each(data.ds, function (k, v) {
@@ -78,7 +78,7 @@
                         tr += '</td>';
 
 
-                        $('#BT').append(tr);
+                        $('#like').append(tr);
 
                     })
                 }
