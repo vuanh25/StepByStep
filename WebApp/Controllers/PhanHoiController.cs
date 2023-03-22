@@ -11,9 +11,5 @@ namespace WebApp.Controllers
     {
         // GET: PhanHoi
         ApplicationDbContext db=new ApplicationDbContext();
-        public JsonResult Index()
-        {
-            return View();
-        }
     }
 }
