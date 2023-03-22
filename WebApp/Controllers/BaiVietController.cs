@@ -64,18 +64,19 @@ namespace WebApp.Controllers
             return file.FileName;
         }
         [HttpGet]
-        public JsonResult Thich(int id)
+        public JsonResult Thich(int idBaiViet)
         {
             try
             {
-                var baiviet = db.BaiViets.Where(m => m.IdBaiViet == id).First();
+                var baiviet = db.BaiViets.Where(m => m.IdBaiViet == idBaiViet).First();
                 baiviet.LuotThich++;
                 UpdateModel(baiviet);
                 db.SaveChanges();
-                return Json(new {code=200, luotthich=baiviet.LuotThich });
+                return Json(new {code=200, luotthich=baiviet.LuotThich,JsonRequestBehavior.AllowGet });
             }
             catch (Exception)
             {
+                return Json(new { code = 500, JsonRequestBehavior.AllowGet });
                 throw;
             }
         }

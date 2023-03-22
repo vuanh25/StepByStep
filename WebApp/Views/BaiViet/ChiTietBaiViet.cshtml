@@ -20,8 +20,7 @@
                 </span>
                 <span class="font-italic">
                     @*<i class="far fa-fw fa-heart"></i>*@
-                    <button class="far fa-fw fa-heart" id="btnLike"> </button>
-                    @Model.LuotThich lượt thích
+                    <button class="far fa-fw fa-heart" data-id="@Model.IdBaiViet" id="btnLike"> </button>
                     <span id="luotthich"> </span>
                 </span>
                 <span class="font-italic">
@@ -54,31 +53,19 @@
 
 <script>
     $('#btnLike').click(function () {
+        var id=$(this).data('id');
         $.ajax({
             url: '/BaiViet/Thich',
             type: 'post',
-            data: ,
+            data: { idBaiViet: id.toString() },
             success: function (data) {
                 if (data.code == 200) {
                     alert(data.msg);
-                        $.each(data.ds, function (k, v) {
+                        $.each(luotthich, function (k, v) {
 
-                            let tr = '<tr>'
-                            tr += '<td class="pd-l">' + v.TenLuyenTap + '</td>';
-                            tr += '<td>' + v.YeuThich + '</td>';
-                            tr += '<td>' + v.NgonNgu + '</td>';
-                            tr += '<td>' + v.CapDo + '</td>';
-                            tr += '<td>';
+                            let lt = v + 'lượt thích'
 
-                            tr += '<button class = "btn btn-primary">' + 'Thêm' + '</button>';
-                            tr += '<button class = "btn btn-warning mg-lr">' + 'Sửa' + '</button>';
-                            tr += '<button class = "btn btn-danger">' + 'Xóa' + '</button>';
-
-                            tr += '</td>';
-                            tr += '</td>';
-
-
-                            $('#BT').append(tr);
+                            $('#luotthich').append(lt);
                 } else {
                     alert(data.msg);
                 }
@@ -86,90 +73,3 @@
         });
     });
 </script>
-<script>
-    $(document).ready(function () {
-        TaiDsBaiLuyen();
-    })
-    // Chỉnh sửa chi tiết
-    $(document).on('click', "button[name='view']", function () {
-        let idBT = $(this).closet('tr').find('.name').attr('id');
-        alert(idBT);
-    });
-
-    // Thêm mới
-    $('#btnSubmit').click(function () {
-        let TenBaiTap = $('#TenLuyenTap').val().trim();
-        let YeuThich = $('#YeuThich').val().trim();
-        let NgonNgu = $('#NgonNgu').val().trim();
-        let CapDo = $('#CapDo').val().trim();
-
-        if (TenBaiTap.length == 0 || YeuThich.length == 0 || NgonNgu.length == 0 || CapDo.length == 0) {
-            alert('Vui lòng điền đây đủ nội dung!');
-            return;
-        }
-
-        // dùng ajax theem moi BT
-        $.ajax({
-            url: '/LuyenCodeAdmin/AddBT',
-            type: 'post',
-            data: {
-                tenBT: TenBaiTap,
-                yeuThich: YeuThich,
-                ngonNgu: NgonNgu,
-                doKho: CapDo
-            },
-            success: function (data) {
-                if (data.code == 200) {
-                    alert(data.msg);
-                    TaiDsBaiLuyen();
-                    $('#TenLuyenTap').val('');
-                    $('#YeuThich').val('');
-                } else {
-                    alert(data.msg);
-                }
-            }
-        });
-    });
-
-    $('#btnAdd').click(function () {
-        $('#modalBT').modal();
-    })
-
-
-    // Load danh sách
-    function TaiDsBaiLuyen() {
-        $.ajax({
-            url: '/LuyenCodeAdmin/DsBT',
-            type: 'get',
-            success: function (data) {
-                //    load lại không chèn cũ;
-                $('#BT').empty();
-
-                if (data.code == 200) {
-                    $.each(data.ds, function (k, v) {
-
-                        let tr = '<tr>'
-                        tr += '<td class="pd-l">' + v.TenLuyenTap + '</td>';
-                        tr += '<td>' + v.YeuThich + '</td>';
-                        tr += '<td>' + v.NgonNgu + '</td>';
-                        tr += '<td>' + v.CapDo + '</td>';
-                        tr += '<td>';
-
-                        tr += '<button class = "btn btn-primary">' + 'Thêm' + '</button>';
-                        tr += '<button class = "btn btn-warning mg-lr">' + 'Sửa' + '</button>';
-                        tr += '<button class = "btn btn-danger">' + 'Xóa' + '</button>';
-
-                        tr += '</td>';
-                        tr += '</td>';
-
-
-                        $('#BT').append(tr);
-
-                    })
-                }
-            }
-        })
-    }
-
-
-</script>    
