@@ -72,7 +72,7 @@ namespace WebApp.Controllers
                 baiviet.LuotThich++;
                 UpdateModel(baiviet);
                 db.SaveChanges();
-                return Json(new {code=200, baiviet.LuotThich });
+                return Json(new {code=200, luotthich=baiviet.LuotThich });
             }
             catch (Exception)
             {
