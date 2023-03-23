@@ -6,6 +6,8 @@
 }
 
 <link href="~/Public/plugins/fontawesome-free/css/all.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="~/Public/css/checkbox_heart.css" rel="stylesheet" />
 
 <div class="container mb-5">
     <div class="media">
@@ -20,8 +22,11 @@
                 </span>
                 <span class="font-italic">
                     @*<i class="far fa-fw fa-heart"></i>*@
-                    <button class="far fa-fw fa-heart" data-id="@Model.IdBaiViet" id="btnLike"> </button>
-                    <span id="luotthich"> </span>
+                    @*<button type="radio" class="far fa-fw fa-heart" data-id="@Model.IdBaiViet" id="btnLike"> </button>*@
+                    <input class="far fa-fw fa-heart" type="checkbox" id="cbLike" checked autocomplete="off">
+                    <input class="heart-checkbox-true" type="checkbox" >
+
+                    <span id="luotthich"> </span> <span>lượt thích</span>
                 </span>
                 <span class="font-italic">
                     <i class="far fa-fw fa-comment mr-5"></i>
@@ -32,41 +37,42 @@
         <div class="mt-5 d-flex justify-content-between">
             <a href="#" class="post">@Model.NgonNgu</a>
         </div>
+
+        <div>
+            <p>@Model.NoiDungBaiViet</p>
+            <img src="@Model.HinhAnh" />
+        </div>
+        <div class="form-group">
+            <div class="col-md-4">
+                <hr />
+                <h2>Phản hồi</h2>
+                <div class="form-group">
+                    <label for="comment">Comment:</label>
+                    <textarea class="form-control input-lg" rows="5" id="comment"></textarea>
+                </div>
+                    <a class="btn btn-success" href="@Url.Action("ThemPhanHoi", "PhanHoi")">Đăng</a>
+                </div>
+            </div>
     </div>
 </div>
 
-<div>
-    <p>@Model.NoiDungBaiViet</p>
-    <img src="@Model.HinhAnh" />
-</div>
-<div class="form-group">
-    <div class="col-md-4">
-        <hr />
-        <input class="form-control" type="text" name="phanhoi" value="" />
-        <a class="btn btn-success" href="@Url.Action("ThemPhanHoi", "PhanHoi")">Đăng</a>
-    </div>
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
 
 <script>
-    $('#btnLike').click(function () {
+    $('#cbLike').click(function () {
         var id=$(this).data('id');
         $.ajax({
             url: '/BaiViet/Thich',
             type: 'post',
+            datatype: 'json',
             data: { idBaiViet: id.toString() },
             success: function (data) {
-                if (data.code == 200) {
-                    $.each(luotthich, function (k, v) {
-                        let lt = v + 'lượt thích'
-                        $('#luotthich').append(lt);
-                    } 
-                } else {
-                    alert(data.msg);
-                }
+                if (code == 200) {
+                    $("luotthich").text(luotthich);
+                } 
             }
         });
     });

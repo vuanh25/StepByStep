@@ -6,7 +6,8 @@
 
 
 <link href="~/Public/css/Css_LuyenCode.css" rel="stylesheet" />
-
+<link href="~/Public/plugins/fontawesome-free/css/all.min.css" rel="stylesheet" />
+<link href="~/Public/css/checkbox_heart.css" rel="stylesheet" />
 
 @{
     ViewBag.Title = "Index";
@@ -19,6 +20,7 @@
         <thead>
             <tr>
                 <th style="width: 40em">Tên bài tập</th>
+                <th style="width: 10em">Lượt xem</th>
                 <th style="width: 10em">Lượt yêu thích</th>
                 <th style="width: 10em">Cấp độ</th>
             </tr>
@@ -30,6 +32,7 @@
                 {
                 <tr>
                     <td><a class="noUnderlined text-black" href="@Url.Action("ChiTiet", "LuyenCode", new { @id = item.Id})">@item.TenLuyenTap</a></td>
+                    <td>@item.LuotXem</td>  
                     <td>@item.YeuThich</td>
                     <td>@item.DoKho</td>
                 </tr>
@@ -38,6 +41,7 @@
                 {
                     <tr class="active-row">
                         <td class="active-row"><a class="noUnderlined " href="@Url.Action("ChiTiet", "LuyenCode", new { @id = item.Id})" >@item.TenLuyenTap</a></td>
+                        <td>@item.LuotXem</td>
                         <td>@item.YeuThich</td>
                         <td>@item.DoKho</td>
                     </tr>
@@ -64,7 +68,13 @@
                         <h5>@item.TenLuyenTap</h5>
                     </div>
                     <div class="panel-body ">
-                        <p class="PageList">Yêu thích: <span>@item.YeuThich</span></p>
+                        <p class="PageList">
+                            <span>
+                                <i class="far fa-fw fa-eye mr-5"></i> @item.LuotXem
+                                <i class="heart-checkbox-true"></i>  @item.YeuThich
+                            </span> 
+                            <br />
+                        </p>
                         <p>
                             <img style="width : 250px" src="~/Content/images/b.jpg" />
                         </p>

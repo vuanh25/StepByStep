@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using WebApp.Models;
 using PagedList.Mvc;
 using PagedList;
+using WebApp.Models.Entities;
 
 namespace WebApp.Controllers
 {
@@ -33,7 +34,9 @@ namespace WebApp.Controllers
             {
                 if (item.Id == id)
                 {
-
+                        item.LuotXem++;
+                        UpdateModel(item);
+                        db.SaveChanges();
                         ViewBag.TenBaiLuyen = item.TenLuyenTap;
                 }
             }

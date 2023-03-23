@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="row container-sm">
+<div class="container">
     <div class="col-md-12">
         <div class="mb-3">
             <a class="btn btn-primary" href="@Url.Action("TaoBaiViet", "BaiViet")">Tạo bài viết</a>
@@ -44,12 +44,14 @@
             <!--</span>
                 </div>
             </div>-->
-            <a href="@Url.Action("ChiTietBaiViet", new { @id = item.IdBaiViet})">@item.TieuDe</a>
+
+
+            <a class="text-black text-decoration-none fs-4" href="@Url.Action("ChiTietBaiViet", new { @id = item.IdBaiViet})">@item.TieuDe</a>
             <div class="mb-5">
-                <span>Lượt xem: @item.LuotXem</span>
-                <span>Lượt thích: @item.LuotThich</span>
-                <span>Trả lời: 0</span>
-                <a href="#" class="post-tag">@item.NgonNgu</a>
+                <span class="fs-4">Lượt thích: @item.LuotThich</span>
+                <span class="fs-4">Lượt xem: @item.LuotXem</span>
+                <span class="fs-4">Phản hồi: 0</span>
+                <a href="#" class="text-black text-decoration-none fs-4">#@item.NgonNgu</a>
             </div>
             <hr>
 
