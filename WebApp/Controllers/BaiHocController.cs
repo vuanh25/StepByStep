@@ -44,7 +44,7 @@ namespace WebApp.Controllers
                                     {
                                         IdChiTietBaiHoc = l.IdChiTietBaiHoc,
                                         Noidung1 = l.NoiDung1,
-                                        Noidung2 = l.NoiDung2,
+                                 /*       Noidung2 = l.NoiDung2,
                                         Noidung3 = l.NoiDung3,
                                         Noidung4 = l.NoiDung4,
                                         Noidung5 = l.NoiDung5,
@@ -52,7 +52,7 @@ namespace WebApp.Controllers
                                         Noidung7 = l.NoiDung7,
                                         Noidung8 = l.NoiDung8,
                                         Noidung9 = l.NoiDung9,
-                                        Noidung10 = l.NoiDung10,
+                                        Noidung10 = l.NoiDung10,*/
                                         idBaiHoc = l.IdBaiHoc,
                                     }).ToList();
                 return Json(new { code = 200, listCTBaiHoc = listCTBaiHoc, msg = idBaiHoc }, JsonRequestBehavior.AllowGet);

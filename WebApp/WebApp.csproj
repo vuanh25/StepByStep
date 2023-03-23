@@ -278,6 +278,14 @@
     <Compile Include="Migrations\202303201119541_themchitietbaihoc.designer.cs">
       <DependentUpon>202303201119541_themchitietbaihoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202303230513421_CapNhapChiTietBaiHoc.cs" />
+    <Compile Include="Migrations\202303230513421_CapNhapChiTietBaiHoc.Designer.cs">
+      <DependentUpon>202303230513421_CapNhapChiTietBaiHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303230524474_CapNhapCotNoiDungCTBaiHoc.cs" />
+    <Compile Include="Migrations\202303230524474_CapNhapCotNoiDungCTBaiHoc.Designer.cs">
+      <DependentUpon>202303230524474_CapNhapCotNoiDungCTBaiHoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\ChiTietBaiHoc.cs" />
@@ -2604,6 +2612,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303201119541_themchitietbaihoc.resx">
       <DependentUpon>202303201119541_themchitietbaihoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303230513421_CapNhapChiTietBaiHoc.resx">
+      <DependentUpon>202303230513421_CapNhapChiTietBaiHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303230524474_CapNhapCotNoiDungCTBaiHoc.resx">
+      <DependentUpon>202303230524474_CapNhapCotNoiDungCTBaiHoc.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
