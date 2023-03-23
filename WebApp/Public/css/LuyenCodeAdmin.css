@@ -59,3 +59,7 @@
 .chieu_cao_dong {
     line-height: 2.5em;
 }
+
+.cung-dong {
+    display: inline-flex;
+}
