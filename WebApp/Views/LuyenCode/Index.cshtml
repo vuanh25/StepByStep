@@ -64,7 +64,13 @@
                         <h5>@item.TenLuyenTap</h5>
                     </div>
                     <div class="panel-body ">
-                        <p class="PageList">Yêu thích:  <span style="padding-left:4px">@item.YeuThich</span></p>
+                        <p class="PageList">
+                            <span>
+                                <i class="far fa-fw fa-eye mr-5"></i> @item.LuotXem
+                                <i class="heart-checkbox-true"></i>  @item.YeuThich
+                            </span>
+                            <br />
+                        </p>
                         <p>
                             <img style="width : 250px" src="~/Content/images/b.jpg" />
                         </p>
