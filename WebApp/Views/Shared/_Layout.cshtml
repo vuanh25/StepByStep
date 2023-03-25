@@ -42,7 +42,7 @@
         </div>
     </section>*@
 
-    <section class="mainmenu clearfix bg-footer font">
+    <section class="mainmenu clearfix bg-footer font" style="position: fixed; width: 100%; top: 0; z-index: 10;">
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-main">
                 <div class="container-fluid white-big">
@@ -52,12 +52,12 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown white-big">
                                 <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Khoá học
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li class="white-big">
+                                    <li class="">
                                         <a class="dropdown-item">@Html.Action("Genre", "KhoaHocs")</a>
                                     </li>
                                 </ul>
@@ -126,6 +126,7 @@
 
     </section>
 
+    @*              FOOTER               *@
 
     <section class="maincontent clearfix font">
 
