@@ -38,10 +38,29 @@
     position: absolute;
     bottom: 10px;
 }
+.pd-t-16{
+    padding-top: 16px;
+}
+
+
+.mg-t-16 {
+    margin-top: 10px;
+}
+
+.mg-lr {
+    margin: 0 0 10px 10px;
+}
 
 .mg-t-10 {
     margin-top:10px;
 }
+
+.can_giua {
+    display: flex;
+    justify-content: center;
+}
+
+
 /*      Nhãn hot        */
 .course-thumb {
     position: relative;
@@ -50,7 +69,6 @@
 .course-thumb a {
     display: block;
 }
-
 
 .cl-badge {
     width: 80px;
@@ -130,9 +148,21 @@
 .view-content-header .course-type.on-or-off {
     background: #09d0da;
 }
+/*          Hover Header        */
+.white-big > a{
+    color: white;
+    font-weight: 400;
+    font-size:16px;
+}
+
+.white-big > a :hover {
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+}
 
 
-/*          Hover CARD      */
+/*          Hover CARD          */
 .home-product-item {
     background-color: var(--while-color);
     /* margin-bottom: 10px; */
@@ -163,4 +193,18 @@
     border-radius: 4px;
     margin: 12px 6px;
     display:inline-flex;
+}
+
+/*          Chuyển vàng thẻ             */
+.chuyen-vang > h5:hover{
+    color: yellow;
+}
+
+.cung-dong {
+    display: inline-flex;
+}
+.a {
+    text-decoration: none;
+    color: none;
+    padding:0px;
 }

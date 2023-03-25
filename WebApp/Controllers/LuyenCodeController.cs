@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using WebApp.Models;
 using PagedList.Mvc;
 using PagedList;
+using WebApp.Models.Entities;
 
 namespace WebApp.Controllers
 {
@@ -17,11 +18,10 @@ namespace WebApp.Controllers
         {
 
             if (page == null) page = 1;
-            var all_sach = (from s in db.LuyenTaps select s).OrderBy(m => m.Id);
+            var BaiTap = (from s in db.LuyenTaps select s).OrderBy(m => m.Id);
             int pageSize = 6;
             int pageNum = page ?? 1;
-            return View(all_sach.ToPagedList(pageNum, pageSize));
-
+            return View(BaiTap.ToPagedList(pageNum, pageSize));
         }
 
         
@@ -40,6 +40,8 @@ namespace WebApp.Controllers
             var BT = db.ChiTietBaiLuyens.Where(a => a.Id == id);
             return View(BT);
         }
+
+        
 
     }
     public class ChiTietBaiHocController : Controller
