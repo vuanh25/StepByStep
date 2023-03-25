@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Web;
 
 namespace WebApp.Models.Entities
@@ -11,6 +12,7 @@ namespace WebApp.Models.Entities
     public class ChiTietBaiLuyen
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]
@@ -40,8 +42,9 @@ namespace WebApp.Models.Entities
         [Required]
         public int Diem { get; set; }
 
-        [Required]
-        public virtual LuyenCode LuyenCode { get; set; }
+
+
+        //public  LuyenCode LuyenCode { get; set; }
 
     }
 }

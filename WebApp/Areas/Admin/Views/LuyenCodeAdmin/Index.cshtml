@@ -100,7 +100,7 @@
                         </div>
                         <div class="form-group">
                             <label>Yêu cầu đầu vào</label>
-                            <input type="text" class="form-control" id="YeuCau" placeholder="Giới hạn">
+                            <input type="text" class="form-control" id="YeuCau" placeholder="">
                         </div>
                         <div class="form-group">
                             <label>Đầu vào</label>
@@ -151,6 +151,37 @@
 
             let IDBT = $(this).closest('tr').attr('id');
 
+                $.ajax({
+                    url: '/LuyenCodeAdmin/EditCTBT',
+                    type: 'get',
+                    data: {
+                        id: IDBT
+                    },
+                    //    LẤY DỮ LIỆU 
+                    success: function (data) {
+                        if (data.code == 200) {
+                            // Nếu lấy dữ liệu thành công thì gán
+                            $('#DeBai').val(data.L.DeBai);
+                            $('#YeuCau').val(data.L.YeuCauDauVao);
+                            $('#Dvao').val(data.L.DauVao);
+                            $('#Dra').val(data.L.DauRa);
+                            $('#Vdv').val(data.L.ViduVao);
+                            $('#Vdr').val(data.L.ViduRa);
+                            $('#Diem').val(data.L.Diem);
+
+                            // gán giá trị cho nút button
+                            //$('#IDBT').val(IDBT);
+
+                            //$('#modalBT').modal();
+                            // ẩn button xác nhận
+                            //$('#btnSubmit').show();
+
+
+                        } else {
+                            alert(data.msg);
+                        }
+                    }
+                })
 
             // BAI TAP
             $.ajax({
@@ -170,6 +201,7 @@
                         // gán giá trị cho nút button
                         $('#IDBT').val(IDBT);
 
+                        // Ẩn form chỉnh sửa
                         $('#modalBT').modal();
                         // ẩn button xác nhận
                         //$('#btnSubmit').show();
@@ -180,43 +212,6 @@
                     }
                 }
             })
-
-            // CHI TIẾT BT
-            $.ajax({
-                url: '/LuyenCodeAdmin/EditCTBT',
-                type: 'get',
-                data: {
-                    id: IDBT
-                },
-
-                //    LƯU DỮ LIỆU 
-                success: function (data) {
-                    if (data.code == 200) {
-                        alert(200);
-                        // Nếu lấy dữ liệu thành công thì gán
-                        $('#DeBai').val(data.L.DeBai);
-                        $('#YeuCau').val(data.L.YeuCau);
-                        $('#Dvao').val(data.L.DauVao);
-                        $('#Dra').val(data.L.DauRa);
-                        $('#Vdv').val(data.L.ViduVao);
-                        $('#Vdr').val(data.L.ViduRa);
-                        $('#Diem').val(data.L.Diem);
-
-                        // gán giá trị cho nút button
-                        $('#IDBT').val(IDBT);
-
-                        $('#modalBT').modal();
-                        // ẩn button xác nhận
-                        //$('#btnSubmit').show();
-
-
-                    } else {
-                        alert(data.msg);
-                    }
-                }
-            })
-
-
         });
 
 
@@ -226,7 +221,8 @@
         //  THÊM BÀI TẬP MỚI
 
         $('#btnSubmit').click(function () {
-            let TenBaiTap = $('#TenLuyenTap').val().trim();
+
+            let TenLuyenTap = $('#TenLuyenTap').val();
             let YeuThich = $('#YeuThich').val().trim();
             let NgonNgu = $('#NgonNgu').val().trim();
             let CapDo = $('#CapDo').val().trim();
@@ -239,20 +235,23 @@
             let Vdr = $('#Vdr').val().trim();
             let Diem = $('#Diem').val().trim();
 
-            if (TenBaiTap.length == 0 || YeuThich.length == 0 || NgonNgu.length == 0 || CapDo.length == 0 ) {
-                alert('Vui lòng điền đây đủ nội dung!');
-                return;
-            }
+    
 
-            // Kiemr tra là thêm hay sửa
+            //      Kiem tra là thêm hay SỬA 
             let idBaiTap = $('#IDBT').val().trim();
 
             if (idBaiTap.length == 0) {
+                if (TenLuyenTap.length == 0 || YeuThich.length == 0 || NgonNgu.length == 0 || CapDo.length == 0) {
+                    alert('Vui lòng điền đây đủ nội dung!');
+                    return;
+                }
+                // thêm mới bài tập
                 $.ajax({
                     url: '/LuyenCodeAdmin/AddBT',
                     type: 'post',
                     data: {
-                        tenBT: TenBaiTap,
+
+                        TenLuyenTap: TenLuyenTap,
                         yeuThich: YeuThich,
                         ngonNgu: NgonNgu,
                         doKho: CapDo
@@ -267,54 +266,103 @@
                             alert(data.msg);
                         }
                     }
-                });
-            } else {
-                // Cập nhập lớp
-                alert(1);
-            }
-
-            // THÊM DỮ LIỆU
-            
+                })
 
 
-          //   Thêm mới Chi Tiết Bài Tập
-            $.ajax({
-                url: '/LuyenCodeAdmin/AddCTBT',
-                type: 'post',
-                data: {
-                    id: 13,
-                    tenDb: DeBai,
-                    yeuCau: YeuCau,
-                    dauVao: Dvao,
-                    dauRa: Dra,
-                    viDuVao: Vdv,
-                    viDuRa: Vdr,
-                    diem: Diem,
+                //   Thêm mới Chi Tiết Bài Tập
+                $.ajax({
+                    url: '/LuyenCodeAdmin/AddCTBT',
+                    type: 'post',
+                    data: {
+                        tenDb: DeBai,
+                        yeuCau: YeuCau,
+                        dauVao: Dvao,
+                        dauRa: Dra,
+                        viDuVao: Vdv,
+                        viDuRa: Vdr,
+                        diem: Diem,
+                    },
+                    success: function (data) {
+                        if (data.code == 200) {
+                            alert(data.msg);
+                            TaiDsBaiLuyen();
 
-                },
-                success: function (data) {
-                    if (data.code == 200) {
-                        alert(data.msg);
-                        TaiDsBaiLuyen();
-                        $('#tenluyentap').val('');
-                        $('#yeuthich').val('');
-                        $('#debai').val('');
-                        $('#yeucau').val('');
-                        $('#dvao').val('');
-                        $('#dra').val('');
-                        $('#vdv').val('');
-                        $('#vdr').val('');
-                        $('#Diem').val('');
+                            $('#DeBai').val('');
+                            $('#YeuCau').val('');
+                            $('#Dvao').val('');
+                            $('#Dra').val('');
+                            $('#Vdv').val('');
+                            $('#Vdr').val('');
+                            $('#Diem').val('');
 
-                    } else {
-                        alert(data.msg);
+                        } else {
+                            alert(data.msg);
+                        }
                     }
-                }
-            });
+                })
+
+            } else {
+
+                // Cập nhập Bài Tập đã tồn tại
+                $.ajax({
+                    url: '/LuyenCodeAdmin/CapNhap',
+                    type: 'post',
+                    data: {
+                        id: idBaiTap,
+                        TenLuyenTap: TenLuyenTap,
+                        yeuThich: YeuThich,
+                        ngonNgu: NgonNgu,
+                        doKho: CapDo
+                    },
+                    success: function (data) {
+                        if (data.code == 200) {
+                            // Cập nhập thành công
+                            alert(data.msg);
+                            //alert(data.msg);
+                            $('#modalBT').modal('hide');
+                            TaiDsBaiLuyen();
+                            //$('#TenLuyenTap').val('');
+                            //$('#YeuThich').val('');
+                        } else {
+                            alert(data.msg);
+                        }
+                    }
+                })
+
+                $.ajax({
+                    url: '/LuyenCodeAdmin/CapNhapCTBT',
+                    type: 'post',
+                    data: {
+                        id: idBaiTap,
+                        DeBai: DeBai,
+                        YeuCau: YeuCau,
+                        DauVao: Dvao,
+                        DauRa: Dra,
+                        ViduVao: Vdv,
+                        ViduRa: Vdr,
+                        Diem: Diem
+                    },
+                    success: function (data) {
+                        if (data.code == 200) {
+                            // Cập nhập CTBT thành công
+                         //   alert(data.msg);
+                            //alert(data.msg);
+                            $('#modalBT').modal('hide');
+                            TaiDsBaiLuyen();
+                            //$('#TenLuyenTap').val('');
+                            //$('#YeuThich').val('');
+                        } else {
+                            alert(data.msg);
+                        }
+                    }
+                })
+
+            }
+          
         });
 
 
-     
+     // Gọi BUTTON THÊM BÀI TẬP
 
         $('#btnAdd').click(function () {
             $('#modalTitle').text('Thêm bài tập vào danh sách luyện code');
@@ -322,6 +370,17 @@
             $('#IDBT').val('');
 
             $('#modalBT').modal();
+
+            // Them moi cho gia trị = null
+            $('#TenLuyenTap').val('');
+            $('#YeuThich').val('');
+            $('#DeBai').val('');
+            $('#YeuCau').val('');
+            $('#Dvao').val('');
+            $('#Dra').val('');
+            $('#Vdv').val('');
+            $('#Vdr').val('');
+            $('#Diem').val('');
         })
 
 
@@ -337,7 +396,7 @@
                     if (data.code == 200) {
                         $.each(data.ds, function (k, v) {
 
-                            let tr = '<tr id="' + v.Id + '">'
+                            let tr = '<tr class="dong-phan-cach" id="' + v.Id + '">'
                             tr += '<td class="pd-l">' + v.TenLuyenTap + '</td>';
                             tr += '<td>' + v.YeuThich + '</td>';
                             tr += '<td>' + v.NgonNgu + '</td>';

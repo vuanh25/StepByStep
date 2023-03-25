@@ -3,7 +3,7 @@
 }
 
 .mau_cho_cot {
-    background-color: #808080;
+    background-color: #0079ff;
     color: whitesmoke;
     font-family:Montserrat;
 }
@@ -62,4 +62,9 @@
 
 .cung-dong {
     display: inline-flex;
+}
+
+.dong-phan-cach {
+    border-bottom: 1px outset #7598ff ;
+    
 }
