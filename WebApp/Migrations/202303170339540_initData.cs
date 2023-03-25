@@ -96,7 +96,7 @@ namespace WebApp.Migrations
                 "dbo.ChiTietBaiLuyens",
                 c => new
                     {
-                        Id = c.Int(nullable: false),
+                        Id = c.Int(nullable: false,identity: true),
                         DeBai = c.String(nullable: false, maxLength: 1000),
                         YeuCauDauVao = c.String(nullable: false, maxLength: 100),
                         DauVao = c.String(nullable: false, maxLength: 100),
@@ -118,7 +118,8 @@ namespace WebApp.Migrations
                         YeuThich = c.Int(nullable: false),
                         NgonNgu = c.Int(nullable: false),
                         DoKho = c.Int(nullable: false),
-                    })
+                        LuotXem = c.Int(nullable: false)
+                })
                 .PrimaryKey(t => t.Id);
             
             CreateTable(

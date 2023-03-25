@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -238,68 +239,13 @@
     <Compile Include="Migrations\202303170339540_initData.Designer.cs">
       <DependentUpon>202303170339540_initData.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202303170402033_InsertDataLuyenCodeTable.cs" />
-    <Compile Include="Migrations\202303170402033_InsertDataLuyenCodeTable.Designer.cs">
-      <DependentUpon>202303170402033_InsertDataLuyenCodeTable.cs</DependentUpon>
+    <Compile Include="Migrations\202303250543098_update.cs" />
+    <Compile Include="Migrations\202303250543098_update.designer.cs">
+      <DependentUpon>202303250543098_update.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202303170436019_InsertData_ChiTietBaiLuyenTable.cs" />
-    <Compile Include="Migrations\202303170436019_InsertData_ChiTietBaiLuyenTable.Designer.cs">
-      <DependentUpon>202303170436019_InsertData_ChiTietBaiLuyenTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303180427537_delete capdo.cs" />
-    <Compile Include="Migrations\202303180427537_delete capdo.Designer.cs">
-      <DependentUpon>202303180427537_delete capdo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303180501211_insertdatakhoahoc1.cs" />
-    <Compile Include="Migrations\202303180501211_insertdatakhoahoc1.Designer.cs">
-      <DependentUpon>202303180501211_insertdatakhoahoc1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303180522217_deletecInBaiHoc.cs" />
-    <Compile Include="Migrations\202303180522217_deletecInBaiHoc.Designer.cs">
-      <DependentUpon>202303180522217_deletecInBaiHoc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303190423506_CapNhapDuLieuBaiHoc.cs" />
-    <Compile Include="Migrations\202303190423506_CapNhapDuLieuBaiHoc.designer.cs">
-      <DependentUpon>202303190423506_CapNhapDuLieuBaiHoc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303190427454_Add dataBaiHoc.cs" />
-    <Compile Include="Migrations\202303190427454_Add dataBaiHoc.designer.cs">
-      <DependentUpon>202303190427454_Add dataBaiHoc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303190459038_InsertDataLuyenCodeTable_Final.cs" />
-    <Compile Include="Migrations\202303190459038_InsertDataLuyenCodeTable_Final.designer.cs">
-      <DependentUpon>202303190459038_InsertDataLuyenCodeTable_Final.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303190504599_InsertData_ChiTietBaiLuyenTable_Final.cs" />
-    <Compile Include="Migrations\202303190504599_InsertData_ChiTietBaiLuyenTable_Final.designer.cs">
-      <DependentUpon>202303190504599_InsertData_ChiTietBaiLuyenTable_Final.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303201119541_themchitietbaihoc.cs" />
-    <Compile Include="Migrations\202303201119541_themchitietbaihoc.designer.cs">
-      <DependentUpon>202303201119541_themchitietbaihoc.cs</DependentUpon>
-    </Compile>
-
-    <Compile Include="Migrations\202303230352591_UPDATE_LUYENCODE_CTBT_TABLE.cs" />
-    <Compile Include="Migrations\202303230352591_UPDATE_LUYENCODE_CTBT_TABLE.designer.cs">
-      <DependentUpon>202303230352591_UPDATE_LUYENCODE_CTBT_TABLE.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303230539107_ThemBang_CTBT1.cs" />
-    <Compile Include="Migrations\202303230539107_ThemBang_CTBT1.designer.cs">
-      <DependentUpon>202303230539107_ThemBang_CTBT1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303230543214_UPDATE-dataCTBT.cs" />
+    <!--<Compile Include="Migrations\202303230543214_UPDATE-dataCTBT.cs" />
     <Compile Include="Migrations\202303230543214_UPDATE-dataCTBT.designer.cs">
-      <DependentUpon>202303230543214_UPDATE-dataCTBT.cs</DependentUpon>
-
-    <Compile Include="Migrations\202303230513421_CapNhapChiTietBaiHoc.cs" />
-    <Compile Include="Migrations\202303230513421_CapNhapChiTietBaiHoc.Designer.cs">
-      <DependentUpon>202303230513421_CapNhapChiTietBaiHoc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303230524474_CapNhapCotNoiDungCTBaiHoc.cs" />
-    <Compile Include="Migrations\202303230524474_CapNhapCotNoiDungCTBaiHoc.Designer.cs">
-      <DependentUpon>202303230524474_CapNhapCotNoiDungCTBaiHoc.cs</DependentUpon>
-
-    </Compile>
+      <DependentUpon>202303230543214_UPDATE-dataCTBT.cs</DependentUpon>-->
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\ChiTietBaiHoc.cs" />
@@ -2603,56 +2549,15 @@
     <EmbeddedResource Include="Migrations\202303170339540_initData.resx">
       <DependentUpon>202303170339540_initData.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303170402033_InsertDataLuyenCodeTable.resx">
-      <DependentUpon>202303170402033_InsertDataLuyenCodeTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202303250543098_update.resx">
+      <DependentUpon>202303250543098_update.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303170436019_InsertData_ChiTietBaiLuyenTable.resx">
-      <DependentUpon>202303170436019_InsertData_ChiTietBaiLuyenTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303180427537_delete capdo.resx">
-      <DependentUpon>202303180427537_delete capdo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303190423506_CapNhapDuLieuBaiHoc.resx">
-      <DependentUpon>202303190423506_CapNhapDuLieuBaiHoc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303190427454_Add dataBaiHoc.resx">
-      <DependentUpon>202303190427454_Add dataBaiHoc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303190459038_InsertDataLuyenCodeTable_Final.resx">
-      <DependentUpon>202303190459038_InsertDataLuyenCodeTable_Final.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303190504599_InsertData_ChiTietBaiLuyenTable_Final.resx">
-      <DependentUpon>202303190504599_InsertData_ChiTietBaiLuyenTable_Final.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303201119541_themchitietbaihoc.resx">
-      <DependentUpon>202303201119541_themchitietbaihoc.cs</DependentUpon>
-    </EmbeddedResource>
-
-    <EmbeddedResource Include="Migrations\202303230352591_UPDATE_LUYENCODE_CTBT_TABLE.resx">
-      <DependentUpon>202303230352591_UPDATE_LUYENCODE_CTBT_TABLE.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303230539107_ThemBang_CTBT1.resx">
-      <DependentUpon>202303230539107_ThemBang_CTBT1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303230543214_UPDATE-dataCTBT.resx">
-      <DependentUpon>202303230543214_UPDATE-dataCTBT.cs</DependentUpon>
-
-    <EmbeddedResource Include="Migrations\202303230513421_CapNhapChiTietBaiHoc.resx">
-      <DependentUpon>202303230513421_CapNhapChiTietBaiHoc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303230524474_CapNhapCotNoiDungCTBaiHoc.resx">
-      <DependentUpon>202303230524474_CapNhapCotNoiDungCTBaiHoc.cs</DependentUpon>
-
-    </EmbeddedResource>
+    <!--<EmbeddedResource Include="Migrations\202303230543214_UPDATE-dataCTBT.resx">
+      <De-->
+    <!--pendentUpon>202303230543214_UPDATE-dataCTBT.cs</DependentUpon>-->
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-    <EmbeddedResource Include="Migrations\202303180501211_insertdatakhoahoc1.resx">
-      <DependentUpon>202303180501211_insertdatakhoahoc1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303180522217_deletecInBaiHoc.resx">
-      <DependentUpon>202303180522217_deletecInBaiHoc.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -2688,8 +2593,11 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
   <Import Project="..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
