@@ -11,35 +11,35 @@
     @RenderSection("header", required: false)
 </head>
 <body>
-    <section class="mainmenu clearfix bg-footer">
+    <section class="mainmenu clearfix bg-footer font" style="position: fixed; width: 100%; top: 0; z-index: 10;">
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-main">
-                <div class="container-fluid">
+                <div class="container-fluid white-big">
                     <a class="navbar-brand text-white" href="~/Home/Index">Trang chủ</a>
                     <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown white-big">
                                 <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Khoá học
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Java cơ bảnn</a></li>
-                                    <li><a class="dropdown-item" href="~/BaiHoc/Index">C# cơ bản</a></li>
-                                    <li><a class="dropdown-item" href="#">C/C++ cơ bản</a></li>
+                                    <li class="">
+                                        <a class="dropdown-item">@Html.Action("Genre", "KhoaHocs")</a>
+                                    </li>
                                 </ul>
                             </li>
 
-                            <li class="nav-item">
+                            <li class="nav-item white-big">
                                 <a class="nav-link text-white" href="#">Tri thức</a>
                             </li>
-                           
-                            <li class="nav-item">
+
+                            <li class="nav-item white-big">
                                 <a class="nav-link text-white" href="@Url.Action("Index", "LuyenCode", new { @id = 1})">Luyện code</a>
                             </li>
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown white-big">
                                 <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Bài tập
                                 </a>
@@ -61,42 +61,59 @@
                             {
                                 @Html.AntiForgeryToken()
 
+                                <div style="display:flex" class="nav-item dropdown align-content-end">
+                                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Xin chào @User.Identity.GetUserName()
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item noUnderlined text-red" href="javascript:document.getElementById('logoutForm').submit()">Đăng xuất</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="#">Loading...</a></li>
+                                    </ul>
+                                </div>
+                            }
+                        }
+                        else
+                        {
                             <div style="display:flex" class="nav-item dropdown align-content-end">
                                 <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Tài khoản
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a  class="dropdown-item noUnderlined text-red" href="javascript:document.getElementById('logoutForm').submit()">Đăng xuất</a></li>                                
+                                    <li class="dropdown-item noUnderlined text-black">@Html.ActionLink("Đăng ký", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                                    <li class="dropdown-item noUnderlined text-black">@Html.ActionLink("Đăng nhập", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
                                     <li><hr class="dropdown-divider"></li>
                                     <li><a class="dropdown-item" href="#">Loading...</a></li>
                                 </ul>
                             </div>
-                            }
-                        }
-                        else
-                        {
-                    <div style="display:flex" class="nav-item dropdown align-content-end">
-                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Tài khoản
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-item noUnderlined text-black">@Html.ActionLink("Đăng ký", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-                            <li class="dropdown-item noUnderlined text-black">@Html.ActionLink("Đăng nhập", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Loading...</a></li>
-                        </ul>
-                    </div>
                         }
                     </div>
                 </div>
             </nav>
 
         </div>
+
     </section>
 
     <section class="maincontent clearfix">
         @RenderBody()
     </section>
+
+
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+
 
     <section class="footer clearfix bg-footer py-3">
         <div class="container">

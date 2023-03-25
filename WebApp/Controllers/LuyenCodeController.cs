@@ -19,7 +19,7 @@ namespace WebApp.Controllers
 
             if (page == null) page = 1;
             var BaiTap = (from s in db.LuyenTaps select s).OrderBy(m => m.Id);
-            int pageSize = 6;
+            int pageSize = 20;
             int pageNum = page ?? 1;
             return View(BaiTap.ToPagedList(pageNum, pageSize));
         }
@@ -28,15 +28,11 @@ namespace WebApp.Controllers
         [Authorize]
         public ActionResult ChiTiet(int? id)
         {
-            if (id != null)
-            foreach (var item in db.LuyenTaps.ToList())
-            {
-                if (item.Id == id)
-                {
-
-                        ViewBag.TenBaiLuyen = item.TenLuyenTap;
-                }
-            }
+            var baiviet = db.LuyenTaps.Where(m => m.Id == id).First();
+            baiviet.LuotXem++;
+            UpdateModel(baiviet);
+            db.SaveChanges();
+            ViewBag.TenBaiLuyen = baiviet.TenLuyenTap;
             var BT = db.ChiTietBaiLuyens.Where(a => a.Id == id);
             return View(BT);
         }

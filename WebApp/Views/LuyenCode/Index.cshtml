@@ -19,6 +19,7 @@
         <thead>
             <tr class="font">
                 <th style="width: 40em">Tên bài tập</th>
+                <th style="width: 10em">Lượt xem</th>
                 <th style="width: 10em">Lượt yêu thích</th>
                 <th style="width: 10em">Cấp độ</th>
             </tr>
@@ -28,18 +29,51 @@
             <tbody class="font">
                 @if (item.Id % 2 == 1)
                 {
-                <tr>
-                    <td><a class="noUnderlined text-black" href="@Url.Action("ChiTiet", "LuyenCode", new { @id = item.Id})">@item.TenLuyenTap</a></td>
-                    <td>@item.YeuThich</td>
-                    <td>@item.DoKho</td>
-                </tr>
+                    <tr>
+                        <td><a class="noUnderlined text-black" href="@Url.Action("ChiTiet", "LuyenCode", new { @id = item.Id})">@item.TenLuyenTap</a></td>
+                        <td>@item.LuotXem</td>
+                        <td>@item.YeuThich</td>
+                        @if (Convert.ToString(item.DoKho) == "De")
+                        {
+                            <td class="btn btn-success" style="padding: 4px 8px; margin-top: 4px;">@item.DoKho</td>
+                        }
+                        @if (Convert.ToString(item.DoKho) == "TrungBinh")
+                        {
+                        <td class="btn btn-warning" style="padding: 4px 8px; margin-top: 4px;">@item.DoKho</td>
+                        }
+                        @if (Convert.ToString(item.DoKho) == "Kho")
+                        {
+                        <td class="btn btn-danger" style="padding: 4px 8px; margin-top: 4px;">@item.DoKho</td>
+                        }
+                        @if (Convert.ToString(item.DoKho) == "SieuKho")
+                        {
+                        <td class="btn btn-dark" style="padding: 4px 8px; margin-top: 4px;">@item.DoKho</td>
+                        }
+                    </tr>
                 }
                 else
                 {
                     <tr class="active-row font">
-                        <td class="active-row"><a class="noUnderlined " href="@Url.Action("ChiTiet", "LuyenCode", new { @id = item.Id})" >@item.TenLuyenTap</a></td>
+                        <td class="active-row"><a class="noUnderlined " href="@Url.Action("ChiTiet", "LuyenCode", new { @id = item.Id})">@item.TenLuyenTap</a></td>
+                        <td>@item.LuotXem</td>
                         <td>@item.YeuThich</td>
-                        <td>@item.DoKho</td>
+                        @if (Convert.ToString(item.DoKho) == "De")
+                        {
+                            <td class="btn btn-success" style="padding: 4px 8px; margin-top: 4px;">@item.DoKho</td>
+                        }
+                        @if (Convert.ToString(item.DoKho) == "TrungBinh")
+                        {
+                        <td class="btn btn-warning" style="padding: 4px 8px; margin-top: 4px;">@item.DoKho</td>
+                        }
+                        @if (Convert.ToString(item.DoKho) == "Kho")
+                        {
+                        <td class="btn btn-danger" style="padding: 4px 8px; margin-top: 4px;">@item.DoKho</td>
+                        }
+                        @if (Convert.ToString(item.DoKho) == "SieuKho")
+                        {
+                        <td class="btn btn-dark" style="padding: 4px 8px; margin-top: 4px;">@item.DoKho</td>
+                        }
+
                     </tr>
                 }
 
@@ -51,10 +85,10 @@
     </table>
 </div>
 
-
+<i class="fa-light fa-heart"></i>
 <br />
 
-<div class="container font">
+@*<div class="container font">
     <div class="row">
         @foreach (var item in Model)
         {
@@ -81,7 +115,7 @@
         }
     </div>
     
-</div>
+</div>*@
 
 
 <div >

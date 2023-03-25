@@ -155,7 +155,7 @@
     font-size:16px;
 }
 
-.white-big > a :hover {
+.white-big > a:hover {
     color: white;
     font-weight: 500;
     font-size: 18px;
@@ -178,7 +178,7 @@
 .home-product-item:hover {
     transform: translateY(-1px);
     border: 0.5px solid #1D2A35;
-    z-index: 2;
+    z-index: 1;
     cursor: pointer;
     padding: 10px;
     box-shadow: 5px 10px 8px #888888;
