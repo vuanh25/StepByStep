@@ -190,6 +190,38 @@ namespace WebApp.Areas.Admin.Controllers
         }
 
 
+        //                  XOA BÀI TẬP
+        [HttpDelete]
+        public JsonResult Xoa(int id)
+        {
+            try
+            {
+                var l = db.LuyenTaps.SingleOrDefault(x => x.Id == id);
+                var m = db.ChiTietBaiLuyens.SingleOrDefault(x => x.Id == id);
+
+                if (l != null)
+                {
+                    db.LuyenTaps.Remove(l);
+                }
+                if (m != null)
+                {
+                    db.ChiTietBaiLuyens.Remove(m);
+                }
+
+                db.SaveChanges();
+                return Json(new { code = 200, msg = "Xóa bài tập thành công!" }, JsonRequestBehavior.AllowGet);
+
+
+            }
+            catch (Exception e)
+            {
+                return Json(new { code = 500, msg = "Xóa bài tập thất bại!" + e.Message }, JsonRequestBehavior.AllowGet);
+
+                throw;
+            }
+        }
+
+
 
 
 

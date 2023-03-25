@@ -143,6 +143,31 @@
         })
 
 
+        //      XÓA BÀI TẬP 
+        $(document).on('click', "button[name='delete']", function () {
+            let IDBT = $(this).closest('tr').attr('id');
+            var thong_bao = "Hãy nhấn OK để xác nhận xóa bài tập này!"
+            if (confirm(thong_bao)) {
+                // true
+                $.ajax({
+                    url: '/LuyenCodeAdmin/Xoa',
+                    type: 'get',
+                    data: {
+                        id: IDBT
+                    },
+                    success: function (data) {
+                        if (data.code == 200) {
+                            alert(data.msg);
+                            TaiDsBaiLuyen();
+                        } else {
+                            alert(data.msg);
+                        }
+                    }
+                })
+            }
+        });
+
+
         // CHINH SUA CHI TIET BAI TAP 
 
         $(document).on('click', "button[name='edit']", function () {
@@ -218,7 +243,7 @@
 
 
 
-        //  THÊM BÀI TẬP MỚI
+        //  THÊM_SỬA BÀI TẬP MỚI
 
         $('#btnSubmit').click(function () {
 
@@ -237,7 +262,7 @@
 
     
 
-            //      Kiem tra là thêm hay SỬA 
+            //      KIỂM TRA HÀNH ĐỘNG THÊM - SỬA
             let idBaiTap = $('#IDBT').val().trim();
 
             if (idBaiTap.length == 0) {
@@ -319,8 +344,8 @@
                             // Cập nhập thành công
                             alert(data.msg);
                             //alert(data.msg);
-                            $('#modalBT').modal('hide');
-                            TaiDsBaiLuyen();
+                         //   $('#modalBT').modal('hide');
+                         //   TaiDsBaiLuyen();
                             //$('#TenLuyenTap').val('');
                             //$('#YeuThich').val('');
                         } else {
