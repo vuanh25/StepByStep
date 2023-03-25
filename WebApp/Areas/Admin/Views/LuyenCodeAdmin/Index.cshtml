@@ -151,7 +151,7 @@
                 // true
                 $.ajax({
                     url: '/LuyenCodeAdmin/Xoa',
-                    type: 'get',
+                    type: 'delete',
                     data: {
                         id: IDBT
                     },
@@ -428,8 +428,8 @@
                             tr += '<td>' + v.CapDo + '</td>';
                             tr += '<td>';
 
-                            tr += '<button class = "btn btn-warning mg-lr" name="edit">' + 'Chỉnh sửa chi tiết' + '</button>';
-                            tr += '<button class = "btn btn-danger" name="delete">' + 'Xóa' + '</button>';
+                            tr += '<button class = "btn btn-warning mg-lr float-end" name="edit">' + 'Chỉnh sửa chi tiết' + '</button>';
+                            tr += '<button class = "btn btn-danger float-end" name="delete">' + 'Xóa' + '</button>';
 
                             tr += '</td>';
                             tr += '</td>';
