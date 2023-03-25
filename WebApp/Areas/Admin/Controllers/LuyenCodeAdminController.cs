@@ -24,7 +24,6 @@ namespace WebApp.Areas.Admin.Controllers
         [HttpGet]
         public JsonResult DsBT()
         {
-             NgonNgu nn = new NgonNgu();
             try
             {
 
@@ -75,13 +74,11 @@ namespace WebApp.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public JsonResult AddCTBT(int id,string tenDB, string yeuCau, string dauVao, string dauRa,string viDuVao, string viDuRa, int diem)
+        public JsonResult AddCTBT(string tenDB, string yeuCau, string dauVao, string dauRa,string viDuVao, string viDuRa, int diem)
         {
-            LuyenCode a = db.LuyenTaps.Where(m => m.Id == id).First();
             try
             {
                 var l = new ChiTietBaiLuyen();
-                l.Id = id;
                 l.DeBai = tenDB;
                 l.YeuCauDauVao = yeuCau;
                 l.DauVao = dauVao;
@@ -89,7 +86,7 @@ namespace WebApp.Areas.Admin.Controllers
                 l.ViduVao = viDuVao;
                 l.ViduRa = viDuRa;
                 l.Diem = diem;
-                l.LuyenCode = a;
+         
                 
 
                 db.ChiTietBaiLuyens.Add(l);
@@ -134,7 +131,7 @@ namespace WebApp.Areas.Admin.Controllers
             {
 
                 var l = db.ChiTietBaiLuyens.SingleOrDefault(x => x.Id == id);
-                l.LuyenCode = db.LuyenTaps.Where(m => m.Id == id).First();
+             //   l.LuyenCode = db.LuyenTaps.Where(m => m.Id == id).First();
                 return Json(new { code = 200, L = l, msg = "Lấy thông tin thành công" }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
@@ -144,6 +141,87 @@ namespace WebApp.Areas.Admin.Controllers
                 throw;
             }
         }
+
+        //          ĐỔ DỮ LIỆU ĐỂ --- CẬP NHẬP 
+
+        [HttpPost]
+        public JsonResult CapNhap(int id, string TenLuyenTap, int YeuThich, int NgonNgu, int DoKho)
+        {
+            try
+            {
+                var l = db.LuyenTaps.SingleOrDefault(x => x.Id == id);
+                l.TenLuyenTap = TenLuyenTap;
+                l.YeuThich = YeuThich;
+                l.NgonNgu = (Models.Enums.NgonNgu)NgonNgu;
+                l.DoKho = (Models.Enums.DoKho)DoKho;
+                db.SaveChanges();
+                return Json(new { code = 200, msg = "Cập nhập bài tập thành công!" }, JsonRequestBehavior.AllowGet);
+
+            }
+            catch (Exception ex)
+            {
+                return Json(new { code = 200, msg = "Cập nhập bài tập thất bại!" }, JsonRequestBehavior.AllowGet);
+                throw;
+            }
+        }
+
+        [HttpPost]
+        public JsonResult CapNhapCTBT(int id, string DeBai, string YeuCau, string DauVao, string DauRa, string ViDuVao,string ViDuRa, int Diem)
+        {
+            try
+            {
+                var l = db.ChiTietBaiLuyens.SingleOrDefault(x => x.Id == id);
+                l.DeBai = DeBai;
+                l.YeuCauDauVao = YeuCau;
+                l.DauVao = DauVao;
+                l.DauRa = DauRa;
+                l.ViduVao = ViDuVao;
+                l.ViduRa = ViDuRa;
+                l.Diem = Diem;
+                db.SaveChanges();
+                return Json(new { code = 200, msg = "Cập nhập chi tiết bài tập thành công!" }, JsonRequestBehavior.AllowGet);
+
+            }
+            catch (Exception ex)
+            {
+                return Json(new { code = 200, msg = "Cập nhập chi tiết bài tập thất bại!" }, JsonRequestBehavior.AllowGet);
+                throw;
+            }
+        }
+
+
+        //                  XOA BÀI TẬP
+        [HttpDelete]
+        public JsonResult Xoa(int id)
+        {
+            try
+            {
+                var l = db.LuyenTaps.SingleOrDefault(x => x.Id == id);
+                var m = db.ChiTietBaiLuyens.SingleOrDefault(x => x.Id == id);
+
+                if (l != null)
+                {
+                    db.LuyenTaps.Remove(l);
+                }
+                if (m != null)
+                {
+                    db.ChiTietBaiLuyens.Remove(m);
+                }
+
+                db.SaveChanges();
+                return Json(new { code = 200, msg = "Xóa bài tập thành công!" }, JsonRequestBehavior.AllowGet);
+
+
+            }
+            catch (Exception e)
+            {
+                return Json(new { code = 500, msg = "Xóa bài tập thất bại!" + e.Message }, JsonRequestBehavior.AllowGet);
+
+                throw;
+            }
+        }
+
+
 
 
 

@@ -46,13 +46,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.6.4.4\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.IdentityModel.Abstractions, Version=6.27.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -278,6 +278,19 @@
     <Compile Include="Migrations\202303201119541_themchitietbaihoc.designer.cs">
       <DependentUpon>202303201119541_themchitietbaihoc.cs</DependentUpon>
     </Compile>
+
+    <Compile Include="Migrations\202303230352591_UPDATE_LUYENCODE_CTBT_TABLE.cs" />
+    <Compile Include="Migrations\202303230352591_UPDATE_LUYENCODE_CTBT_TABLE.designer.cs">
+      <DependentUpon>202303230352591_UPDATE_LUYENCODE_CTBT_TABLE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303230539107_ThemBang_CTBT1.cs" />
+    <Compile Include="Migrations\202303230539107_ThemBang_CTBT1.designer.cs">
+      <DependentUpon>202303230539107_ThemBang_CTBT1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303230543214_UPDATE-dataCTBT.cs" />
+    <Compile Include="Migrations\202303230543214_UPDATE-dataCTBT.designer.cs">
+      <DependentUpon>202303230543214_UPDATE-dataCTBT.cs</DependentUpon>
+
     <Compile Include="Migrations\202303230513421_CapNhapChiTietBaiHoc.cs" />
     <Compile Include="Migrations\202303230513421_CapNhapChiTietBaiHoc.Designer.cs">
       <DependentUpon>202303230513421_CapNhapChiTietBaiHoc.cs</DependentUpon>
@@ -285,6 +298,7 @@
     <Compile Include="Migrations\202303230524474_CapNhapCotNoiDungCTBaiHoc.cs" />
     <Compile Include="Migrations\202303230524474_CapNhapCotNoiDungCTBaiHoc.Designer.cs">
       <DependentUpon>202303230524474_CapNhapCotNoiDungCTBaiHoc.cs</DependentUpon>
+
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -2613,11 +2627,22 @@
     <EmbeddedResource Include="Migrations\202303201119541_themchitietbaihoc.resx">
       <DependentUpon>202303201119541_themchitietbaihoc.cs</DependentUpon>
     </EmbeddedResource>
+
+    <EmbeddedResource Include="Migrations\202303230352591_UPDATE_LUYENCODE_CTBT_TABLE.resx">
+      <DependentUpon>202303230352591_UPDATE_LUYENCODE_CTBT_TABLE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303230539107_ThemBang_CTBT1.resx">
+      <DependentUpon>202303230539107_ThemBang_CTBT1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303230543214_UPDATE-dataCTBT.resx">
+      <DependentUpon>202303230543214_UPDATE-dataCTBT.cs</DependentUpon>
+
     <EmbeddedResource Include="Migrations\202303230513421_CapNhapChiTietBaiHoc.resx">
       <DependentUpon>202303230513421_CapNhapChiTietBaiHoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303230524474_CapNhapCotNoiDungCTBaiHoc.resx">
       <DependentUpon>202303230524474_CapNhapCotNoiDungCTBaiHoc.cs</DependentUpon>
+
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -37,7 +37,7 @@ namespace WebApp.Controllers
                         ViewBag.TenBaiLuyen = item.TenLuyenTap;
                 }
             }
-            var BT = db.ChiTietBaiLuyens.Where(a => a.LuyenCode.Id == id);
+            var BT = db.ChiTietBaiLuyens.Where(a => a.Id == id);
             return View(BT);
         }
 
