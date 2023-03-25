@@ -8,7 +8,7 @@
 
 <div class="row container-sm">
     <div class="col-md-12">
-        <section id="loginForm">
+        <section id="loginForm" >
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal container ", role = "form" }))
             {
                 <h4>@ViewBag.Title</h4>
