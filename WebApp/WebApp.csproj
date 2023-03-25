@@ -278,6 +278,7 @@
     <Compile Include="Migrations\202303201119541_themchitietbaihoc.designer.cs">
       <DependentUpon>202303201119541_themchitietbaihoc.cs</DependentUpon>
     </Compile>
+
     <Compile Include="Migrations\202303230352591_UPDATE_LUYENCODE_CTBT_TABLE.cs" />
     <Compile Include="Migrations\202303230352591_UPDATE_LUYENCODE_CTBT_TABLE.designer.cs">
       <DependentUpon>202303230352591_UPDATE_LUYENCODE_CTBT_TABLE.cs</DependentUpon>
@@ -289,6 +290,15 @@
     <Compile Include="Migrations\202303230543214_UPDATE-dataCTBT.cs" />
     <Compile Include="Migrations\202303230543214_UPDATE-dataCTBT.designer.cs">
       <DependentUpon>202303230543214_UPDATE-dataCTBT.cs</DependentUpon>
+
+    <Compile Include="Migrations\202303230513421_CapNhapChiTietBaiHoc.cs" />
+    <Compile Include="Migrations\202303230513421_CapNhapChiTietBaiHoc.Designer.cs">
+      <DependentUpon>202303230513421_CapNhapChiTietBaiHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303230524474_CapNhapCotNoiDungCTBaiHoc.cs" />
+    <Compile Include="Migrations\202303230524474_CapNhapCotNoiDungCTBaiHoc.Designer.cs">
+      <DependentUpon>202303230524474_CapNhapCotNoiDungCTBaiHoc.cs</DependentUpon>
+
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -2617,6 +2627,7 @@
     <EmbeddedResource Include="Migrations\202303201119541_themchitietbaihoc.resx">
       <DependentUpon>202303201119541_themchitietbaihoc.cs</DependentUpon>
     </EmbeddedResource>
+
     <EmbeddedResource Include="Migrations\202303230352591_UPDATE_LUYENCODE_CTBT_TABLE.resx">
       <DependentUpon>202303230352591_UPDATE_LUYENCODE_CTBT_TABLE.cs</DependentUpon>
     </EmbeddedResource>
@@ -2625,6 +2636,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303230543214_UPDATE-dataCTBT.resx">
       <DependentUpon>202303230543214_UPDATE-dataCTBT.cs</DependentUpon>
+
+    <EmbeddedResource Include="Migrations\202303230513421_CapNhapChiTietBaiHoc.resx">
+      <DependentUpon>202303230513421_CapNhapChiTietBaiHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303230524474_CapNhapCotNoiDungCTBaiHoc.resx">
+      <DependentUpon>202303230524474_CapNhapCotNoiDungCTBaiHoc.cs</DependentUpon>
+
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

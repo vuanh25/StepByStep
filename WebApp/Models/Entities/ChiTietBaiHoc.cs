@@ -12,9 +12,9 @@ namespace WebApp.Models.Entities
     {
         [Key]
         public int IdChiTietBaiHoc { get; set; }
-        [StringLength(3000)]
+        [StringLength(100000)]
         public string NoiDung1 { get; set; }
-        [StringLength(3000)]
+    /*    [StringLength(100000)]
         public string NoiDung2 { get; set; }
         [StringLength(3000)]
         public string NoiDung3 { get; set; }
@@ -31,7 +31,7 @@ namespace WebApp.Models.Entities
         [StringLength(3000)]
         public string NoiDung9 { get; set; }
         [StringLength(3000)]
-        public string NoiDung10 { get; set; }
+        public string NoiDung10 { get; set; }*/
 
         public Nullable<long> IdBaiHoc { get; set; }
     }
