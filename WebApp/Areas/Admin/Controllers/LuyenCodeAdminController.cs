@@ -19,7 +19,7 @@ namespace WebApp.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            if (KiemTraDangNhap())
+            if (KiemTraDangNhapAdmin())
             {
                 return View();
             }
