@@ -27,7 +27,14 @@ namespace WebApp.Controllers
             return PartialView(khoahocs);
         }
 
+        public ActionResult DKKhoaHoc (int id)
+        {
 
+
+
+
+        return View();
+        }
 
 
     }

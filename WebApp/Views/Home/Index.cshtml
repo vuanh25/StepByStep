@@ -10,7 +10,7 @@
 
 
     @*                       HEADER                           *@
-    <div>
+    <div style="margin-top: 55px;">
         <a href="#">
             <img style="width:100%;" src="~/Public/images/banner-sm.jpg" alt="banner lập trình" />
         </a>
@@ -27,8 +27,8 @@
         <h5 style="font-family: Montserrat; font-style: unset; ">KHÓA HỌC</h5>
     </div>
     <div class="container ">
-        <div class="d-flex flex-wrap justify-content-around mg-t-16">
-            <div class="card home-product-item bg-white " style="width: 18rem;">
+        <div class="d-flex flex-wrap justify-content-around ">
+            <div class="card home-product-item bg-white mg-t-16" style="width: 18rem;">
                 <div class="course-thumb ">
                     <a href="#">
                         <img src="https://xuanthulab.net/photo/netcore-4458.png" class="card-img-top" alt="...">
@@ -45,7 +45,7 @@
                     </div>
                     <h5 class="card-title">C# Cơ bản</h5>
                     <p class="card-text" style="height:72px">Lập trình ứng dụng đa nền tảng .NET CORE 3.0 với C#</p>
-                    <a href="#" class="btn btn-primary ">C# NET CORE</a>
+                    <a href="#" class="btn btn-primary ">Vào học</a>
                 </div>
             </div>
 
@@ -67,7 +67,7 @@
                     </div>
                     <h5 class="card-title">Lập trình Android</h5>
                     <p class="card-text" style="height:72px">Học lập trình ứng dụng Android với Java</p>
-                    <a href="#" class="btn btn-primary">Android - Java</a>
+                    <a href="#" class="btn btn-primary">Vào học</a>
                 </div>
             </div>
 
@@ -89,11 +89,9 @@
                     </div>
                     <h5 class="card-title">HTML - Cơ bản</h5>
                     <p class="card-text" style="height:72px">Viết mã HTML tạo các trang web</p>
-                    <a href="#" class="btn btn-primary">HTML</a>
+                    <a href="@Url.Action("DKKhoaHoc", "KhoaHocs", new { @id = 4}) " class="btn btn-primary" style="font-weight: 700;">Đăng ký</a>
                 </div>
             </div>
-
-
             <div class="card home-product-item bg-white mg-t-16" style="width: 18rem;">
                 <div class="course-thumb ">
                     <a href="#">
@@ -112,7 +110,7 @@
                     </div>
                     <h5 class="card-title">CSS</h5>
                     <p class="card-text" style="height:72px">Cascading Style Sheets - định nghĩa kiểu hiện thị cho các phần tử HTML</p>
-                    <a href="#" class="btn btn-primary">CSS</a>
+                    <a href="#" class="btn btn-primary">Vào học</a>
                 </div>
             </div>
 
@@ -120,31 +118,98 @@
         </div>
     </div>
     <br />
-    <div class="d-flex flex-wrap justify-content-around">
-        <div class="card home-product-item bg-white mg-t-16" style="width: 18rem;">
-            <div class="course-thumb ">
-                <a href="#">
-                    <img src="https://xuanthulab.net/photo/java-4466.png" class="card-img-top" alt="...">
-                </a>
-                @*<div class="cl-badge hot">
-                        <span>Hot</span>
-                    </div>*@
-            </div>
 
-            <div class="card-body">
-                <div class="view-content-header text-end">
-                    <span class="course-type online">
-                        Miễn phí
-                    </span>
-                </div>
-                <h5 class="card-title">Lập trình Java</h5>
-                <p class="card-text" style="height:72px">Ngôn ngữ lập trình Java cơ bản</p>
-                <a href="#" class="btn btn-primary">Java</a>
-            </div>
+    @*              Dòng 2                   *@
+<div class="container d-flex flex-wrap justify-content-start justify-content-around ">
+    <div class="card home-product-item bg-white mg-t-16" style="width: 18rem;">
+        <div class="course-thumb ">
+            <a href="#">
+                <img src="https://xuanthulab.net/photo/java-4466.png" class="card-img-top" alt="...">
+            </a>
+            @*<div class="cl-badge hot">
+                    <span>Hot</span>
+                </div>*@
         </div>
 
-
+        <div class="card-body">
+            <div class="view-content-header text-end">
+                <span class="course-type online">
+                    Miễn phí
+                </span>
+            </div>
+            <h5 class="card-title">Lập trình Java</h5>
+            <p class="card-text" style="height:72px">Ngôn ngữ lập trình Java cơ bản</p>
+            <a href="#" class="btn btn-primary">Vào học</a>
+        </div>
     </div>
+    @*    home-product-item       *@
+    <div class="card  bg-white mg-t-16" style="width: 18rem;">
+        <div class="course-thumb ">
+            <a href="#">
+                <img src="https://xuanthulab.net/photo/angular-4456.png" class="card-img-top" alt="...">
+            </a>
+            @*<div class="cl-badge hot">
+                    <span>Hot</span>
+                </div>*@
+        </div>
+
+        <div class="card-body">
+            <div class="view-content-header  text-end">
+                <span class="course-type online">
+                    Miễn phí
+                </span>
+            </div>
+            <h5 class="card-title">Angular</h5>
+            <p class="card-text" style="height:72px">Một nền tảng cung cấp cách thức để xây dựng app chạy chạy trên web, desktop ...</p>
+            <div href="#" class="btn btn-gray">Sắp ra mắt</div>
+        </div>
+    </div>
+    @*  home-product-item *@
+    <div class="card  bg-white mg-t-16" style="width: 18rem;">
+        <div class="course-thumb ">
+            <a href="#">
+                <img src="https://xuanthulab.net/photo/git-4462.png" class="card-img-top" alt="...">
+            </a>
+            @*<div class="cl-badge hot">
+                    <span>Hot</span>
+                </div>*@
+        </div>
+
+        <div class="card-body">
+            <div class="view-content-header  text-end">
+                <span class=" course-type online">
+                    Miễn phí
+                </span>
+            </div>
+            <h5 class="card-title">Git & GitHub</h5>
+            <p class="card-text" style="height:72px">Quản lý phiên bản phân tán với Git và Repository Git thông dụng GitHub</p>
+            <div href="#" class="btn btn-gray">Sắp ra mắt</div>
+        </div>
+    </div>
+    @*  home-product-item *@
+    <div class="card  bg-white mg-t-16" style="width: 18rem;">
+        <div class="course-thumb ">
+            <a href="#">
+                <img src="https://xuanthulab.net/photo/sql-4470.png" class="card-img-top" alt="...">
+            </a>
+            @*<div class="cl-badge hot">
+                    <span>Hot</span>
+                </div>*@
+        </div>
+
+        <div class="card-body">
+            <div class="view-content-header  text-end">
+                <span class=" course-type online">
+                    Miễn phí
+                </span>
+            </div>
+            <h5 class="card-title">Học SQL</h5>
+            <p class="card-text" style="height:72px">Ngôn ngữ truy vấn có cấu trúc (SQL) phục vụ việc lưu trữ và xử lý thông tin </p>
+            <div href="#" class="btn btn-gray">Sắp ra mắt</div>
+        </div>
+    </div>
+
+</div>
 
     <br />
     <br />
@@ -173,7 +238,7 @@
             {
                 dem++;
                     
-                <div class="col-4 font can_giua">
+                <div class="col-sm font can_giua">
                     <a href="@Url.Action("ChiTiet", "LuyenCode", new { @id = item.Id}) " class="cung-dong a text-white">
                         <div class="panel panel-default " style="justify-items: center; ">
                             <div class="panel panel-heading text-white PageList can_giua chuyen-vang">
@@ -198,7 +263,7 @@
                     </a>
                 </div>
                     
-                if (dem == 6)
+                if (dem == 4)
                 {
                     break;
                 }
