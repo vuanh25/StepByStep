@@ -243,14 +243,17 @@
     <Compile Include="Migrations\202303250543098_update.designer.cs">
       <DependentUpon>202303250543098_update.cs</DependentUpon>
     </Compile>
+
     <Compile Include="Migrations\202303260705340_update-dataBaiHoc.cs" />
     <Compile Include="Migrations\202303260705340_update-dataBaiHoc.designer.cs">
       <DependentUpon>202303260705340_update-dataBaiHoc.cs</DependentUpon>
+
     </Compile>
     <!--<Compile Include="Migrations\202303230543214_UPDATE-dataCTBT.cs" />
     <Compile Include="Migrations\202303230543214_UPDATE-dataCTBT.designer.cs">
       <DependentUpon>202303230543214_UPDATE-dataCTBT.cs</DependentUpon>-->
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\ChiTietBaiHoc.cs" />
     <Compile Include="Models\Entities\ChiTietBaiLuyen.cs" />
@@ -280,6 +283,7 @@
     <Content Include="Public\css\Css_LuyenCode.css" />
     <Content Include="Public\css\login.css" />
     <Content Include="Public\css\LuyenCodeAdmin.css" />
+    <Content Include="Public\css\Site.css" />
     <Content Include="Public\css\_Layout.css" />
     <Content Include="Public\dist\css\adminlte.css" />
     <Content Include="Public\dist\css\adminlte.min.css" />
@@ -2535,7 +2539,7 @@
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\LoginPartial.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\LuyenCode\Index.cshtml" />
     <Content Include="Views\Shared\_Layout_Ngan.cshtml" />
@@ -2543,7 +2547,16 @@
     <Content Include="Views\KhoaHocs\Genre.cshtml" />
     <Content Include="Views\BaiHoc\Index.cshtml" />
     <Content Include="Views\BaiHoc\ChiTietBaiHoc.cshtml" />
+
+    <Content Include="Views\Shared\_UserLayout.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\User\ShowInfor.cshtml" />
+    <Content Include="Views\User\ChangeInfor.cshtml" />
+    <Content Include="Views\User\ChangePassword.cshtml" />
+
     <Content Include="Views\KhoaHocs\DKKhoaHoc.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2562,8 +2575,10 @@
     <EmbeddedResource Include="Migrations\202303250543098_update.resx">
       <DependentUpon>202303250543098_update.cs</DependentUpon>
     </EmbeddedResource>
+
     <EmbeddedResource Include="Migrations\202303260705340_update-dataBaiHoc.resx">
       <DependentUpon>202303260705340_update-dataBaiHoc.cs</DependentUpon>
+
     </EmbeddedResource>
     <!--<EmbeddedResource Include="Migrations\202303230543214_UPDATE-dataCTBT.resx">
       <De-->
