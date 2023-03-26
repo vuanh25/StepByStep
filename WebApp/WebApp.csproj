@@ -243,6 +243,10 @@
     <Compile Include="Migrations\202303250543098_update.designer.cs">
       <DependentUpon>202303250543098_update.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202303260705340_update-dataBaiHoc.cs" />
+    <Compile Include="Migrations\202303260705340_update-dataBaiHoc.designer.cs">
+      <DependentUpon>202303260705340_update-dataBaiHoc.cs</DependentUpon>
+    </Compile>
     <!--<Compile Include="Migrations\202303230543214_UPDATE-dataCTBT.cs" />
     <Compile Include="Migrations\202303230543214_UPDATE-dataCTBT.designer.cs">
       <DependentUpon>202303230543214_UPDATE-dataCTBT.cs</DependentUpon>-->
@@ -2557,6 +2561,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303250543098_update.resx">
       <DependentUpon>202303250543098_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303260705340_update-dataBaiHoc.resx">
+      <DependentUpon>202303260705340_update-dataBaiHoc.cs</DependentUpon>
     </EmbeddedResource>
     <!--<EmbeddedResource Include="Migrations\202303230543214_UPDATE-dataCTBT.resx">
       <De-->
