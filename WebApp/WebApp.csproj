@@ -229,6 +229,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaiHocController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KiemTraController.cs" />
     <Compile Include="Controllers\LuyenCodeController.cs" />
     <Compile Include="Controllers\KhoaHocsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -243,11 +244,9 @@
     <Compile Include="Migrations\202303250543098_update.designer.cs">
       <DependentUpon>202303250543098_update.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Migrations\202303260705340_update-dataBaiHoc.cs" />
     <Compile Include="Migrations\202303260705340_update-dataBaiHoc.designer.cs">
       <DependentUpon>202303260705340_update-dataBaiHoc.cs</DependentUpon>
-
     </Compile>
     <!--<Compile Include="Migrations\202303230543214_UPDATE-dataCTBT.cs" />
     <Compile Include="Migrations\202303230543214_UPDATE-dataCTBT.designer.cs">
@@ -2547,21 +2546,19 @@
     <Content Include="Views\KhoaHocs\Genre.cshtml" />
     <Content Include="Views\BaiHoc\Index.cshtml" />
     <Content Include="Views\BaiHoc\ChiTietBaiHoc.cshtml" />
-
     <Content Include="Views\Shared\_UserLayout.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\ShowInfor.cshtml" />
     <Content Include="Views\User\ChangeInfor.cshtml" />
     <Content Include="Views\User\ChangePassword.cshtml" />
-
     <Content Include="Views\KhoaHocs\DKKhoaHoc.cshtml" />
-
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Guest\" />
+    <Folder Include="Views\KiemTra\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -2575,10 +2572,8 @@
     <EmbeddedResource Include="Migrations\202303250543098_update.resx">
       <DependentUpon>202303250543098_update.cs</DependentUpon>
     </EmbeddedResource>
-
     <EmbeddedResource Include="Migrations\202303260705340_update-dataBaiHoc.resx">
       <DependentUpon>202303260705340_update-dataBaiHoc.cs</DependentUpon>
-
     </EmbeddedResource>
     <!--<EmbeddedResource Include="Migrations\202303230543214_UPDATE-dataCTBT.resx">
       <De-->

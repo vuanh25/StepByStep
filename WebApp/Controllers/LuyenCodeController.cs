@@ -10,7 +10,7 @@ using WebApp.Models.Entities;
 
 namespace WebApp.Controllers
 {
-    public class LuyenCodeController : Controller
+    public class LuyenCodeController : KiemTraController
     {
         ApplicationDbContext db = new ApplicationDbContext();
         // GET: LuyenCode
@@ -25,16 +25,20 @@ namespace WebApp.Controllers
         }
 
         
-        [Authorize]
+        
         public ActionResult ChiTiet(int? id)
         {
-            var baiviet = db.LuyenTaps.Where(m => m.Id == id).First();
-            baiviet.LuotXem++;
-            UpdateModel(baiviet);
-            db.SaveChanges();
-            ViewBag.TenBaiLuyen = baiviet.TenLuyenTap;
-            var BT = db.ChiTietBaiLuyens.Where(a => a.Id == id);
-            return View(BT);
+            if (KiemTraDangNhap())
+            {
+                var baiviet = db.LuyenTaps.Where(m => m.Id == id).First();
+                baiviet.LuotXem++;
+                UpdateModel(baiviet);
+                db.SaveChanges();
+                ViewBag.TenBaiLuyen = baiviet.TenLuyenTap;
+                var BT = db.ChiTietBaiLuyens.Where(a => a.Id == id);
+                return View(BT);
+            }
+            return RedirectToAction("Login", "User");
         }
 
         

@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebApp.Controllers;
 using WebApp.Models;
 using WebApp.Models.Entities;
 using WebApp.Models.Enums;
 
 namespace WebApp.Areas.Admin.Controllers
 {
-    public class LuyenCodeAdminController : Controller
+    public class LuyenCodeAdminController : KiemTraController
     {
         // GET: Admin/LuyenCode
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -17,8 +18,12 @@ namespace WebApp.Areas.Admin.Controllers
         //[Authorize]
 
         public ActionResult Index()
-        {  
-            return View();
+        {
+            if (KiemTraDangNhap())
+            {
+                return View();
+            }
+            return RedirectToAction("Login", "User");
         }
 
         [HttpGet]

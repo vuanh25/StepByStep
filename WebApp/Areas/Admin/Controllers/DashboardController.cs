@@ -5,21 +5,21 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using System.Web.UI;
+using WebApp.Controllers;
 
 namespace WebApp.Areas.Admin.Controllers
 {
-    public class DashboardController : Controller
+    public class DashboardController : KiemTraController
     {
         // GET: Admin/Dashboard
         [Authorize]
         public ActionResult Index()
         {
-           
-            if (Equals( User.Identity.Name, "admin@gmail.com"))
+            if (KiemTraDangNhapAdmin())
             {
                 return View();
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "User");
         }
     }
 }

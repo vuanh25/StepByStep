@@ -6,13 +6,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WebApp.Controllers;
 using WebApp.Models;
 using WebApp.Models.Entities;
 
 namespace WebApp.Areas.Admin.Controllers
 {
     
-    public class BaiHocsController : Controller
+    public class BaiHocsController : KiemTraController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
@@ -20,18 +21,22 @@ namespace WebApp.Areas.Admin.Controllers
         
         public ActionResult Index(string TenKhoaHoc)
         {
-            var khoahocs = db.KhoaHocs.Where(p => p.TenKhoaHoc.Contains(TenKhoaHoc)).ToList();
+            if (KiemTraDangNhapAdmin())
+            {
+                var khoahocs = db.KhoaHocs.Where(p => p.TenKhoaHoc.Contains(TenKhoaHoc)).ToList();
                 foreach (var item in khoahocs)
                 {
-                if (Equals(item.TenKhoaHoc,TenKhoaHoc))
-                {
+                    if (Equals(item.TenKhoaHoc, TenKhoaHoc))
+                    {
 
-                    ViewBag.TenKhoaHoc = item.TenKhoaHoc;
-                    List<BaiHoc> baiHocs = db.BaiHocs.Where(x => x.IdKhoaHoc == item.IDKhoaHoc).ToList();
-                    return View(baiHocs);
+                        ViewBag.TenKhoaHoc = item.TenKhoaHoc;
+                        List<BaiHoc> baiHocs = db.BaiHocs.Where(x => x.IdKhoaHoc == item.IDKhoaHoc).ToList();
+                        return View(baiHocs);
+                    }
                 }
-                }
-            return View();
+                return View();
+            }
+            return RedirectToAction("Login", "User");         
         }
 
 

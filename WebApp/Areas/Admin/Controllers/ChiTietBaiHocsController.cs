@@ -6,26 +6,31 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WebApp.Controllers;
 using WebApp.Models;
 using WebApp.Models.Entities;
 
 namespace WebApp.Areas.Admin.Controllers
 {
-    public class ChiTietBaiHocsController : Controller
+    public class ChiTietBaiHocsController : KiemTraController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Admin/ChiTietBaiHocs
         public ActionResult Index(int? IdBaiHoc)
         {
-            var Chitietbaihocs = db.ChiTietBaiHocs.Where(p => p.IdBaiHoc == IdBaiHoc).ToList();
-            var BaiHocs = db.BaiHocs.Where(p=>p.IdBaiHoc==IdBaiHoc).ToList();
-            foreach (var item in BaiHocs)
+            if (KiemTraDangNhapAdmin())
             {
-                ViewBag.tenBaiHoc = item.TenBaiHoc;
+                var Chitietbaihocs = db.ChiTietBaiHocs.Where(p => p.IdBaiHoc == IdBaiHoc).ToList();
+                var BaiHocs = db.BaiHocs.Where(p => p.IdBaiHoc == IdBaiHoc).ToList();
+                foreach (var item in BaiHocs)
+                {
+                    ViewBag.tenBaiHoc = item.TenBaiHoc;
+                }
+                return View(Chitietbaihocs);
             }
-           
-            return View(Chitietbaihocs);
+            return RedirectToAction("Login", "User");
+            
         }
 
         // GET: Admin/ChiTietBaiHocs/Details/5
