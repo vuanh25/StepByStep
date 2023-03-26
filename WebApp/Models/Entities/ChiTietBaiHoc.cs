@@ -14,24 +14,7 @@ namespace WebApp.Models.Entities
         public int IdChiTietBaiHoc { get; set; }
         [StringLength(100000)]
         public string NoiDung1 { get; set; }
-    /*    [StringLength(100000)]
-        public string NoiDung2 { get; set; }
-        [StringLength(3000)]
-        public string NoiDung3 { get; set; }
-        [StringLength(3000)]
-        public string NoiDung4 { get; set; }
-        [StringLength(3000)]
-        public string NoiDung5 { get; set; }
-        [StringLength(3000)]
-        public string NoiDung6 { get; set; }
-        [StringLength(3000)]
-        public string NoiDung7 { get; set; }
-        [StringLength(3000)]
-        public string NoiDung8 { get; set; }
-        [StringLength(3000)]
-        public string NoiDung9 { get; set; }
-        [StringLength(3000)]
-        public string NoiDung10 { get; set; }*/
+  
 
         public Nullable<long> IdBaiHoc { get; set; }
     }
