@@ -3,7 +3,7 @@ namespace WebApp.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initData : DbMigration
+    public partial class init : DbMigration
     {
         public override void Up()
         {
@@ -14,23 +14,8 @@ namespace WebApp.Migrations
                         IdBaiHoc = c.Int(nullable: false, identity: true),
                         TenBaiHoc = c.String(nullable: false, maxLength: 200),
                         IdKhoaHoc = c.Long(),
-                        KhoaHoc_IDKhoaHoc = c.Int(),
                     })
-                .PrimaryKey(t => t.IdBaiHoc)
-                .ForeignKey("dbo.KhoaHocs", t => t.KhoaHoc_IDKhoaHoc)
-                .Index(t => t.KhoaHoc_IDKhoaHoc);
-            
-            CreateTable(
-                "dbo.KhoaHocs",
-                c => new
-                    {
-                        IDKhoaHoc = c.Int(nullable: false, identity: true),
-                        TenKhoaHoc = c.String(nullable: false, maxLength: 100),
-                        CapDo = c.Int(nullable: false),
-                        IDNgonNgu = c.Long(),
-                        NgonNgu = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.IDKhoaHoc);
+                .PrimaryKey(t => t.IdBaiHoc);
             
             CreateTable(
                 "dbo.BaiTaps",
@@ -93,10 +78,20 @@ namespace WebApp.Migrations
                 .Index(t => t.User_IdUser);
             
             CreateTable(
+                "dbo.ChiTietBaiHoc",
+                c => new
+                    {
+                        IdChiTietBaiHoc = c.Int(nullable: false, identity: true),
+                        NoiDung1 = c.String(),
+                        IdBaiHoc = c.Long(),
+                    })
+                .PrimaryKey(t => t.IdChiTietBaiHoc);
+            
+            CreateTable(
                 "dbo.ChiTietBaiLuyens",
                 c => new
                     {
-                        Id = c.Int(nullable: false,identity: true),
+                        Id = c.Int(nullable: false, identity: true),
                         DeBai = c.String(nullable: false, maxLength: 1000),
                         YeuCauDauVao = c.String(nullable: false, maxLength: 100),
                         DauVao = c.String(nullable: false, maxLength: 100),
@@ -105,9 +100,17 @@ namespace WebApp.Migrations
                         ViduRa = c.String(nullable: false, maxLength: 100),
                         Diem = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.LuyenCodes", t => t.Id)
-                .Index(t => t.Id);
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.KhoaHocs",
+                c => new
+                    {
+                        IDKhoaHoc = c.Int(nullable: false, identity: true),
+                        TenKhoaHoc = c.String(nullable: false, maxLength: 500),
+                        IDNgonNgu = c.Long(),
+                    })
+                .PrimaryKey(t => t.IDKhoaHoc);
             
             CreateTable(
                 "dbo.LuyenCodes",
@@ -116,10 +119,10 @@ namespace WebApp.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         TenLuyenTap = c.String(nullable: false, maxLength: 255),
                         YeuThich = c.Int(nullable: false),
+                        LuotXem = c.Int(nullable: false),
                         NgonNgu = c.Int(nullable: false),
                         DoKho = c.Int(nullable: false),
-                        LuotXem = c.Int(nullable: false)
-                })
+                    })
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
@@ -221,11 +224,9 @@ namespace WebApp.Migrations
             DropForeignKey("dbo.PhanHois", "User_IdUser", "dbo.Users");
             DropForeignKey("dbo.PhanHois", "CauHoi_IdCauHoi", "dbo.CauHois");
             DropForeignKey("dbo.PhanHois", "BaiViet_IdBaiViet", "dbo.BaiViets");
-            DropForeignKey("dbo.ChiTietBaiLuyens", "Id", "dbo.LuyenCodes");
             DropForeignKey("dbo.CauHois", "User_IdUser", "dbo.Users");
             DropForeignKey("dbo.BaiViets", "User_IdUser", "dbo.Users");
             DropForeignKey("dbo.BaiTaps", "BaiHoc_IdBaiHoc", "dbo.BaiHocs");
-            DropForeignKey("dbo.BaiHocs", "KhoaHoc_IDKhoaHoc", "dbo.KhoaHocs");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
@@ -235,11 +236,9 @@ namespace WebApp.Migrations
             DropIndex("dbo.PhanHois", new[] { "User_IdUser" });
             DropIndex("dbo.PhanHois", new[] { "CauHoi_IdCauHoi" });
             DropIndex("dbo.PhanHois", new[] { "BaiViet_IdBaiViet" });
-            DropIndex("dbo.ChiTietBaiLuyens", new[] { "Id" });
             DropIndex("dbo.CauHois", new[] { "User_IdUser" });
             DropIndex("dbo.BaiViets", new[] { "User_IdUser" });
             DropIndex("dbo.BaiTaps", new[] { "BaiHoc_IdBaiHoc" });
-            DropIndex("dbo.BaiHocs", new[] { "KhoaHoc_IDKhoaHoc" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
@@ -247,12 +246,13 @@ namespace WebApp.Migrations
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.PhanHois");
             DropTable("dbo.LuyenCodes");
+            DropTable("dbo.KhoaHocs");
             DropTable("dbo.ChiTietBaiLuyens");
+            DropTable("dbo.ChiTietBaiHoc");
             DropTable("dbo.CauHois");
             DropTable("dbo.Users");
             DropTable("dbo.BaiViets");
             DropTable("dbo.BaiTaps");
-            DropTable("dbo.KhoaHocs");
             DropTable("dbo.BaiHocs");
         }
     }
