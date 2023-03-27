@@ -30,7 +30,7 @@
                     Thêm bài tập
                 </button>
                 <div class="col-md-8" style="margin-top: 8px;" >
-                    @using (Html.BeginForm("Index", "LuyenCodeAdmin", FormMethod.Get))
+                    @using (Html.BeginForm("DsBT", "LuyenCodeAdmin", FormMethod.Get))
                     {
                         <div>
                             Tìm theo tên bài tập: @Html.TextBox("TenBaiTap", ViewBag.CurrentFilter as string)
