@@ -30,6 +30,7 @@ namespace WebApp.Controllers
         {
             if (KiemTraDangNhap())
             {
+
                 var baiviet = db.LuyenTaps.Where(m => m.Id == id).First();
                 baiviet.LuotXem++;
                 UpdateModel(baiviet);
@@ -37,6 +38,15 @@ namespace WebApp.Controllers
                 ViewBag.TenBaiLuyen = baiviet.TenLuyenTap;
                 var BT = db.ChiTietBaiLuyens.Where(a => a.Id == id);
                 return View(BT);
+
+                if (item.Id == id)
+                {
+                        item.LuotXem++;
+                        UpdateModel(item);
+                        db.SaveChanges();
+                        ViewBag.TenBaiLuyen = item.TenLuyenTap;
+                }
+
             }
             return RedirectToAction("Login", "User");
         }

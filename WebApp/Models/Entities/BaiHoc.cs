@@ -20,7 +20,7 @@ namespace WebApp.Models.Entities
         
 
 
-        public Nullable<long> IdKhoaHoc { get; set; }
+        public virtual KhoaHoc KhoaHoc { get; set; }
      
     
     }

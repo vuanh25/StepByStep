@@ -1,0 +1,12 @@
+﻿
+.heart-checkbox {
+    background: url('/Public/images/heart_check_false.png') no-repeat;
+    background-size: contain;
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+.heart-checkbox:checked {
+    background-image: url('/Public/images/heart_check_true.png');
+}
+
