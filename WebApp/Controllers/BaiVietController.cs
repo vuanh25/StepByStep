@@ -63,7 +63,8 @@ namespace WebApp.Controllers
             file.SaveAs(Server.MapPath(file.FileName));
             return file.FileName;
         }
-        [HttpGet]
+
+        [HttpPost]
         public JsonResult Thich(int idBaiViet)
         {
             try
@@ -72,7 +73,21 @@ namespace WebApp.Controllers
                 baiviet.LuotThich++;
                 UpdateModel(baiviet);
                 db.SaveChanges();
-                return Json(new {code=200, luotthich=baiviet.LuotThich,JsonRequestBehavior.AllowGet });
+                return Json(new { code = 200, JsonRequestBehavior.AllowGet });
+            }
+            catch (Exception)
+            {
+                return Json(new { code = 500, JsonRequestBehavior.AllowGet });
+                throw;
+            }
+        }
+        [HttpGet]
+        public JsonResult LuotThich(int idBaiViet)
+        {
+            try
+            {
+                var baiviet = db.BaiViets.Where(m => m.IdBaiViet == idBaiViet).First();
+                return Json(new { code = 200, luotthich = baiviet.LuotThich, JsonRequestBehavior.AllowGet });
             }
             catch (Exception)
             {

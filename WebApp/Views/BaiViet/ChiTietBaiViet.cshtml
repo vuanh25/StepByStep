@@ -8,9 +8,10 @@
 <link href="~/Public/plugins/fontawesome-free/css/all.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="~/Public/css/checkbox_heart.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.4.1.min.js"></script> 
 
-<div class="container mb-5">
-    <div class="media">
+<div class="container">
+    <div class="media" id="ctbaiviet">
         <h1 class="mb-10 font-size-h2">
             @Model.TieuDe
         </h1>
@@ -21,28 +22,22 @@
                     @Model.LuotXem lượt xem
                 </span>
                 <span class="font-italic">
-                    @*<i class="far fa-fw fa-heart"></i>*@
-                    @*<button type="radio" class="far fa-fw fa-heart" data-id="@Model.IdBaiViet" id="btnLike"> </button>*@
-                    <input class="far fa-fw fa-heart" type="checkbox" id="cbLike" checked autocomplete="off">
-                    <input class="heart-checkbox-true" type="checkbox" >
-
-                    <span id="luotthich"> </span> <span>lượt thích</span>
+                    <input class="far fa-fw fa-heart" type="checkbox" data-id="@Model.IdBaiViet" id="cbLike">
+                    <span>lượt thích</span>
                 </span>
                 <span class="font-italic">
                     <i class="far fa-fw fa-comment mr-5"></i>
                     5 phản hồi
                 </span>
+                <a href="#" class="link-secondary">#@Model.NgonNgu</a>
             </span>
         </div>
-        <div class="mt-5 d-flex justify-content-between">
-            <a href="#" class="post">@Model.NgonNgu</a>
-        </div>
 
-        <div>
+        <div class="mt-5 d-flex justify-content-between">
             <p>@Model.NoiDungBaiViet</p>
             <img src="@Model.HinhAnh" />
         </div>
-        <div class="form-group">
+        <div class="container">
             <div class="col-md-4">
                 <hr />
                 <h2>Phản hồi</h2>
@@ -50,30 +45,60 @@
                     <label for="comment">Comment:</label>
                     <textarea class="form-control input-lg" rows="5" id="comment"></textarea>
                 </div>
-                    <a class="btn btn-success" href="@Url.Action("ThemPhanHoi", "PhanHoi")">Đăng</a>
-                </div>
+                <a class="btn btn-success" href="@Url.Action("ThemPhanHoi", "PhanHoi")">Đăng</a>
+                <a class="btn btn-success" href="@Url.">Đăng</a>
             </div>
+        </div>
     </div>
 </div>
 
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+@section scripts
+{
+    <script>
 
-<script>
-    $('#cbLike').click(function () {
-        var id=$(this).data('id');
-        $.ajax({
-            url: '/BaiViet/Thich',
-            type: 'post',
-            datatype: 'json',
-            data: { idBaiViet: id.toString() },
-            success: function (data) {
-                if (code == 200) {
-                    $("luotthich").text(luotthich);
-                } 
+        $(document).ready(function () {
+            alert('hello world');
+        })
+
+
+
+        $('#cbLike').click(function () {
+            if (this.checked) {
+
+                var id = $(this).data('id');
+                $.ajax({
+                    url: '/BaiViet/Thich',
+                    type: 'post',
+                    datatype: 'json',
+                    data: { idBaiViet: id.toString() },
+                    success: function (data) {
+                        if (data.code == 200) {
+                            let lt = data.luotthich;
+                            $('#luotthich').append(lt);
+                            console.log(id)
+                        }
+                    }
+                });
             }
         });
-    });
-</script>
+
+        $('#luotthich').click(function () {
+            var id = $(this).data('id');
+            $.ajax({
+                url: '/BaiViet/Thich',
+                type: 'get',
+                datatype: 'json',
+                data: { idBaiViet: id.toString() },
+                success: function (data) {
+                    if (data.code == 200) {
+                        let lt = data.luotthich;
+                        $('#luotthich').append(lt);
+                        console.log(id)
+                    }
+                }
+            });
+        });
+    </script>
+}
+

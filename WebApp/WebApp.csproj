@@ -272,6 +272,7 @@
     <Content Include="Content\PagedList.css" />
     <Content Include="Public\css\checkbox_heart.css" />
     <Content Include="Public\css\Css_LuyenCode.css" />
+    <Content Include="Public\css\heart_checkbox.css" />
     <Content Include="Public\css\LuyenCodeAdmin.css" />
     <Content Include="Public\css\_Layout.css" />
     <Content Include="Public\dist\css\adminlte.css" />
