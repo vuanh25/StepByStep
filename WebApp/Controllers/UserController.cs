@@ -5,12 +5,13 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using WebApp.Controllers;
 using WebApp.Models;
 using WebApp.Models.Entities;
 
 namespace WebApp.Migrations
 {
-    public class UserController : Controller
+    public class UserController : KiemTraController
     {
 
 
@@ -97,6 +98,11 @@ namespace WebApp.Migrations
                     {
                         disableCookie("tendn");
                         disableCookie("matkhau");
+                    }
+                    if (KiemTraDangNhapAdmin())
+                    {
+                        return RedirectToAction("IndexAdmin", "Admin/Dashboard");
+                        //return Redirect("Home/MyIndex");
                     }
                     return RedirectToAction("Index", "Home");
                 }
