@@ -1,4 +1,4 @@
-﻿@model WebApp.Models.Entities.ChiTietBaiHoc
+﻿@model WebApp.Models.Entities.BaiHoc
 
 @{
     ViewBag.Title = "Details";
@@ -8,100 +8,28 @@
 <h2>Details</h2>
 
 <div>
-    <h4>ChiTietBaiHoc</h4>
+    <h4>BaiHoc</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.NoiDung1)
+            @Html.DisplayNameFor(model => model.TenBaiHoc)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NoiDung1)
+            @Html.DisplayFor(model => model.TenBaiHoc)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NoiDung2)
+            @Html.DisplayNameFor(model => model.IdKhoaHoc)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NoiDung2)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NoiDung3)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NoiDung3)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NoiDung4)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NoiDung4)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NoiDung5)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NoiDung5)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NoiDung6)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NoiDung6)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NoiDung7)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NoiDung7)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NoiDung8)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NoiDung8)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NoiDung9)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NoiDung9)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NoiDung10)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NoiDung10)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IdBaiHoc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IdBaiHoc)
+            @Html.DisplayFor(model => model.IdKhoaHoc)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdChiTietBaiHoc }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdBaiHoc }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
