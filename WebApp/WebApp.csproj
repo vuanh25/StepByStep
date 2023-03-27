@@ -2558,7 +2558,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Guest\" />
     <Folder Include="Views\KiemTra\" />
   </ItemGroup>
   <ItemGroup>

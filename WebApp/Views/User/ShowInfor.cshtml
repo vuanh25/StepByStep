@@ -18,30 +18,25 @@
             <div class="col-md-12">
                 <div class="hero-ct">
                     <h1> @Model.TenUser</h1>
-                    <ul class="breadcumb">
+                    @*<ul class="breadcumb">
                         <li class="active"><a href="@Url.Action("Index","Home")" style="font-weight: bold; }">Trang chủ</a></li>
                         <li> <span class="ion-ios-arrow-right"></span> Thông tin tài khoản</li>
-                    </ul>
+                    </ul>*@
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="page-single">
+<div class="page-single font">
     <div class="container">
         <div class="row ipad-width">
             <div class="col-md-3 col-sm-12 col-xs-12">
                 <div class="user-information">
-                    <div class="user-fav">
+                    <div class="user-fav pd-t-16">
                         <p>Chi tiết tài khoản</p>
                         <ul class="tab-links">
                             <li class="@ViewBag.info"><a href="@Url.Action("ShowInfor","User")">Tài khoản</a></li>
-                        </ul>
-                    </div>
-                    <div class="user-fav">
-                        <p>Khác</p>
-                        <ul>
                             <li class="@ViewBag.pass"><a href="@Url.Action("ShowInfor","User",new {mode = "changepass"})">Đổi mật khuẩu</a></li>
                             <li><a href="@Url.Action("LogOut","User")">Đăng xuất</a></li>
                         </ul>

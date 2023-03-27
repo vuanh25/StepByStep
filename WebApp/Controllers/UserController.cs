@@ -258,10 +258,10 @@ namespace WebApp.Migrations
         public ActionResult LogOut()
         {
             Session.Clear();
-            return RedirectToAction("Home", "Index");
+            return RedirectToAction("Index", "Home");
         }
 
-
+        //public ActionResult ThongTinTaiKhoan ()
 
     }
 }
