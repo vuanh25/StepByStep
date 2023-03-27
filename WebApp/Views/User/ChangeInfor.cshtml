@@ -2,23 +2,37 @@
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-    <h4>Thông tin tài khoản</h4>
-    <div class="row">
-        <div class="col-md-6 form-it">
+    <h4 class="p-5">Thông tin tài khoản</h4>
+    <div class="row p-2">
+        <div class="col-md-3 form-it">
             <label>Họ tên</label>
-            <input type="text" placeholder="Nguyễn Văn A" value="@Model.TenUser" style="border-radius:100px!important" name="TenUser">
+        </div>
+        <div class="col-md-9">
+            <input type="text" placeholder="Nguyễn Văn A" value="@Model.TenUser" style="border-radius:10px!important" name="TenUser">
+
         </div>
     </div>
-    <div class="row">
-        </div>
-        <div class="col-md-6 form-it">
+    <div class="row p-2">
+
+        <div class="col-md-3 form-it">
             <label>Email</label>
-            <input type="email" placeholder="example@email.com" value="@Model.Email" style="border-radius:100px!important" name="Email">
             @* @ViewData["Err"]*@
         </div>
-    <div class="row">
-        <div class="col-md-2">
-            <input class="submit" type="submit" value="Lưu">
+        <div class="col-md-9">
+            <input type="email" placeholder="example@email.com" value="@Model.Email" style="border-radius:10px!important" name="Email">
+
         </div>
     </div>
+    <div class="row p-2">
+        <div class="col-md-2">
+            <input class="submit btn btn-primary" type="submit" value="Lưu thay đổi">
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 }

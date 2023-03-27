@@ -20,7 +20,7 @@ namespace WebApp.Areas.Admin.Controllers
         public ActionResult Index()
         {
             if (KiemTraDangNhapAdmin())
-            {
+            {             
                 return View();
             }
             return RedirectToAction("Login", "User");
@@ -31,17 +31,17 @@ namespace WebApp.Areas.Admin.Controllers
         {
             try
             {
-
-                var ds = (from l in db.LuyenTaps.Where(x => x.Id != 0) // Laays danh sach
-                          select new
-                          {
-                              Id = l.Id,
-                              TenLuyenTap = l.TenLuyenTap,
-                              YeuThich = l.YeuThich,
-                              NgonNgu = l.NgonNgu.ToString(),
-                              CapDo = l.DoKho.ToString()
-                          }).ToList();
-                return Json(new { code = 200, ds = ds }, JsonRequestBehavior.AllowGet );
+                
+                    var ds = (from l in db.LuyenTaps.Where(x => x.Id != 0) // Laays danh sach
+                              select new
+                              {
+                                  Id = l.Id,
+                                  TenLuyenTap = l.TenLuyenTap,
+                                  YeuThich = l.YeuThich,
+                                  NgonNgu = l.NgonNgu.ToString(),
+                                  CapDo = l.DoKho.ToString()
+                              }).ToList();
+                    return Json(new { code = 200, ds = ds }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {

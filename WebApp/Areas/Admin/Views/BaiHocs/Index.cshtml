@@ -9,6 +9,8 @@
 
 
 
+
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Main content -->
@@ -65,10 +67,15 @@
 
                                 <td>
                                 <td>
-
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.IdBaiHoc }) |
-                                    @Html.ActionLink("Chi tiết bài học", "Details", new { id = item.IdBaiHoc }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.IdBaiHoc })
+                                    <a class="noUnderlined" href=" @Url.Action("Edit","BaiHocs", new { id = item.IdBaiHoc })">
+                                        <i class="far fa-edit"></i>
+                                    </a>
+                                    <a class="noUnderlined" href=" @Url.Action("Details","BaiHocs", new { id = item.IdBaiHoc })">
+                                        <i class="fa-solid fa-circle-info"></i>
+                                    </a>
+                                    <a href=" @Url.Action("Delete","BaiHocs", new { id = item.IdBaiHoc })">
+                                        <i class="fa-regular fa-trash"></i>
+                                    </a>
                                 </td>
                             </tr>
 
