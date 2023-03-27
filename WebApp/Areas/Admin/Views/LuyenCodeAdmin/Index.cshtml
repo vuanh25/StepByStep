@@ -25,9 +25,20 @@
 
                 </div>
             </div>
-            <button class="btn btn-success mg-tb" id="btnAdd" style="width:10.3em">
-                Thêm bài tập
-            </button>
+            <div class="row">
+                <button class=" btn btn-success mg-tb col-md-4" id="btnAdd" style="width:10.3em; margin-left: 12px">
+                    Thêm bài tập
+                </button>
+                <div class="col-md-8" style="margin-top: 8px;" >
+                    @using (Html.BeginForm("Index", "LuyenCodeAdmin", FormMethod.Get))
+                    {
+                        <div>
+                            Tìm theo tên bài tập: @Html.TextBox("TenBaiTap", ViewBag.CurrentFilter as string)
+                            <input type="submit" value="Tìm kiếm" />
+                        </div>
+                    }
+                </div>
+            </div>
             <table>
                 <thead>
                     <tr class="mau_cho_cot ">

@@ -4,15 +4,15 @@
     {
         @Html.AntiForgeryToken()
 
-        <div style="display:flex" class="nav-item dropdown align-content-end">
+        <div style="display:flex" class="nav-item dropdown align-content-end ">
             <a class="nav-link dropdown-toggle text-white" href="@Url.Action("ShowInfor","User")" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Xin chào  @Session["TenNguoiDung"]
             </a>
             <ul class="dropdown-menu">
-                <li class="dropdown-item noUnderlined">
+                <li class="dropdown-item noUnderlined font" style="font-size: 16px;">
                     <a href="@Url.Action("ShowInfor","User")">Cài đặt</a>
                 </li>
-                <li><a class="dropdown-item noUnderlined text-red" href="javascript:document.getElementById('logoutForm').submit(0)">Đăng xuất</a></li>
+                <li><a class="dropdown-item noUnderlined text-red " style="font-size: 16px;" href="javascript:document.getElementById('logoutForm').submit(0)">Đăng xuất</a></li>
             
                
             </ul>

@@ -17,10 +17,19 @@ namespace WebApp.Areas.Admin.Controllers
 
         //[Authorize]
 
-        public ActionResult Index()
+        public ActionResult Index(string TenBaiTap)
         {
             if (KiemTraDangNhapAdmin())
             {
+                var BaiTap = db.LuyenTaps.Where(p => p.TenLuyenTap.Contains(TenBaiTap)).ToList();
+                foreach (var item in BaiTap)
+                {
+                    if (Equals(item.TenLuyenTap, TenBaiTap))
+                    {
+                        List<LuyenCode> baiHocs = db.LuyenTaps.Where(x => x.Id == item.Id).ToList();
+                        return View(baiHocs);
+                    }
+                }
                 return View();
             }
             return RedirectToAction("Login", "User");
