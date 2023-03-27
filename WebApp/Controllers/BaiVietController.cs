@@ -21,6 +21,8 @@ namespace WebApp.Controllers
         {
             var baiviet = db.BaiViets.Where(m => m.IdBaiViet == id).First();
             baiviet.LuotXem++;
+            Session["BaiViet"]=baiviet;
+            ViewBag.LuotThich = baiviet.LuotThich;
             UpdateModel(baiviet);
             db.SaveChanges();
             return View(baiviet);
@@ -65,12 +67,16 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public JsonResult Thich(int idBaiViet)
+        public JsonResult Thich(int idBaiViet,bool attr)
         {
             try
             {
                 var baiviet = db.BaiViets.Where(m => m.IdBaiViet == idBaiViet).First();
-                baiviet.LuotThich++;
+                if (attr)
+                    baiviet.LuotThich++;
+                else 
+                    baiviet.LuotThich--;
+                Session["BaiViet"] = baiviet;
                 UpdateModel(baiviet);
                 db.SaveChanges();
                 return Json(new { code = 200, JsonRequestBehavior.AllowGet });
@@ -81,7 +87,8 @@ namespace WebApp.Controllers
                 throw;
             }
         }
-        [HttpGet]
+
+        [HttpPost]
         public JsonResult LuotThich(int idBaiViet)
         {
             try
