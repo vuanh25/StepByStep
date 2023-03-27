@@ -5,12 +5,13 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using WebApp.Controllers;
 using WebApp.Models;
 using WebApp.Models.Entities;
 
 namespace WebApp.Migrations
 {
-    public class UserController : Controller
+    public class UserController : KiemTraController
     {
 
 
@@ -53,13 +54,13 @@ namespace WebApp.Migrations
         [HttpGet]
         public ActionResult Login()
         {
+            Session["TenTaiKhoan"] = "0";
             string tendn = requestCookie("tendn");
             if (!string.IsNullOrEmpty(tendn))
             {
                 ViewBag.tendn = tendn;
                 ViewBag.matkhau = requestCookie("makhau");
             }
-            Session.Clear();
             return View();
         }
 
@@ -97,6 +98,11 @@ namespace WebApp.Migrations
                     {
                         disableCookie("tendn");
                         disableCookie("matkhau");
+                    }
+                    if (KiemTraDangNhapAdmin())
+                    {
+                        return RedirectToAction("IndexAdmin", "Admin/Dashboard");
+                        //return Redirect("Home/MyIndex");
                     }
                     return RedirectToAction("Index", "Home");
                 }
@@ -258,6 +264,7 @@ namespace WebApp.Migrations
         public ActionResult LogOut()
         {
             Session.Clear();
+            Session["TenTaiKhoan"] = "0";
             return RedirectToAction("Index", "Home");
         }
 

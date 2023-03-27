@@ -25,7 +25,7 @@ namespace WebApp.Controllers
             try
             {
                 var TaiKhoan = Session["TenTaiKhoan"].ToString();
-                if (Session["TenTaiKhoan"].ToString() == null)
+                if (Session["TenTaiKhoan"].ToString() == "0")
                 {
                     return false;
                 }

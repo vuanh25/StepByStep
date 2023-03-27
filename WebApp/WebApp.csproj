@@ -2481,7 +2481,7 @@
     <Content Include="Public\plugins\summernote\summernote.js.map" />
     <Content Include="Public\plugins\summernote\summernote.min.js.map" />
     <Content Include="Public\plugins\toastr\toastr.js.map" />
-    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\IndexAdmin.cshtml" />
     <Content Include="Areas\Admin\Views\BaiHocs\Create.cshtml" />
     <Content Include="Areas\Admin\Views\BaiHocs\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\BaiHocs\Details.cshtml" />
@@ -2497,7 +2497,6 @@
     <Content Include="Areas\Admin\Views\ChiTietBaiHocs\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietBaiHocs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietBaiHocs\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\LuyenCodeAdmin\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

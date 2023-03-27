@@ -17,7 +17,7 @@ namespace WebApp.Areas.Admin.Controllers
 
         //[Authorize]
 
-        public ActionResult Index(string TenBaiTap)
+        public ActionResult Index()
         {
             if (KiemTraDangNhapAdmin())
             {             
@@ -27,32 +27,11 @@ namespace WebApp.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public JsonResult DsBT(string TenBaiTap)
+        public JsonResult DsBT()
         {
             try
             {
-                if (TenBaiTap != null)
-                {
-                    var BaiTap = db.LuyenTaps.Where(p => p.TenLuyenTap.Contains(TenBaiTap)).ToList();
-                    foreach (var item in BaiTap)
-                    {
-                        if (Equals(item.TenLuyenTap, TenBaiTap))
-                        {
-                            var ds = (from l in db.LuyenTaps.Where(x => x.Id == item.Id) // Laays danh sach
-                                      select new
-                                      {
-                                          Id = l.Id,
-                                          TenLuyenTap = l.TenLuyenTap,
-                                          YeuThich = l.YeuThich,
-                                          NgonNgu = l.NgonNgu.ToString(),
-                                          CapDo = l.DoKho.ToString()
-                                      }).ToList();
-                            return Json(new { code = 200, ds = ds }, JsonRequestBehavior.AllowGet);
-                        }
-                    }
-                }
-                else
-                {
+                
                     var ds = (from l in db.LuyenTaps.Where(x => x.Id != 0) // Laays danh sach
                               select new
                               {
@@ -63,8 +42,6 @@ namespace WebApp.Areas.Admin.Controllers
                                   CapDo = l.DoKho.ToString()
                               }).ToList();
                     return Json(new { code = 200, ds = ds }, JsonRequestBehavior.AllowGet);
-                }
-                return Json(new { code = 200 }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
