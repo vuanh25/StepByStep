@@ -86,39 +86,6 @@
 
                         </ul>
                        @Html.Partial("LoginPartial")
-                        
-              @*          @if (@Session["TaiKhoan"] != null)
-                        {
-                            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-                            {
-                                @Html.AntiForgeryToken()
-
-                                <div style="display:flex" class="nav-item dropdown align-content-end">
-                                    <a class="nav-link dropdown-toggle text-white" href="@Url.Action("ShowInfor","User")" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Xin chào  @Session["TenNguoiDung"]
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item noUnderlined text-red" href="javascript:document.getElementById('logoutForm').submit(0)">Đăng xuất</a></li>
-                                        <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="#">Loading...</a></li>
-                                    </ul>
-                                </div>
-                            }
-                        }
-                        else
-                        {
-                            <div style="display:flex" class="nav-item dropdown align-content-end">
-                                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Tài khoản
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="dropdown-item noUnderlined text-black">@Html.ActionLink("Đăng ký", "Register", "User", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-                                    <li class="dropdown-item noUnderlined text-black">@Html.ActionLink("Đăng nhập", "Login", "User", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Loading...</a></li>
-                                </ul>
-                            </div>
-                        }*@
                     </div>
                 </div>
             </nav>
@@ -130,7 +97,6 @@
     @*              FOOTER               *@
 
     <section class="maincontent clearfix font">
-
         @RenderBody()
     </section>
 
