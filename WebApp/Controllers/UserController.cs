@@ -54,13 +54,13 @@ namespace WebApp.Migrations
         [HttpGet]
         public ActionResult Login()
         {
+            Session["TenTaiKhoan"] = "0";
             string tendn = requestCookie("tendn");
             if (!string.IsNullOrEmpty(tendn))
             {
                 ViewBag.tendn = tendn;
                 ViewBag.matkhau = requestCookie("makhau");
             }
-            Session.Clear();
             return View();
         }
 
@@ -264,6 +264,7 @@ namespace WebApp.Migrations
         public ActionResult LogOut()
         {
             Session.Clear();
+            Session["TenTaiKhoan"] = "0";
             return RedirectToAction("Index", "Home");
         }
 
