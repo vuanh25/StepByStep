@@ -258,6 +258,10 @@
     <Compile Include="Migrations\202303280725446_capnhaplai khoahoa va muakhoahoc.Designer.cs">
       <DependentUpon>202303280725446_capnhaplai khoahoa va muakhoahoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202303281342348_doi ten khoa hoc thanh idkhoahoc.cs" />
+    <Compile Include="Migrations\202303281342348_doi ten khoa hoc thanh idkhoahoc.Designer.cs">
+      <DependentUpon>202303281342348_doi ten khoa hoc thanh idkhoahoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities\ChiTietBaiHoc.cs" />
     <Compile Include="Models\Entities\ChiTietBaiLuyen.cs" />
@@ -284,8 +288,6 @@
     <Content Include="Content\images\a.jpg" />
     <Content Include="Content\images\b.jpg" />
     <Content Include="Content\PagedList.css" />
-    <Content Include="css\plugins.css" />
-    <Content Include="css\style.css" />
     <Content Include="Public\css\Css_KhoaHoc.css" />
     <Content Include="Public\css\Css_LuyenCode.css" />
     <Content Include="Public\css\login.css" />
@@ -2569,6 +2571,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303280725446_capnhaplai khoahoa va muakhoahoc.resx">
       <DependentUpon>202303280725446_capnhaplai khoahoa va muakhoahoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303281342348_doi ten khoa hoc thanh idkhoahoc.resx">
+      <DependentUpon>202303281342348_doi ten khoa hoc thanh idkhoahoc.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

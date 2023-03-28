@@ -12,12 +12,12 @@ namespace WebApp.Models.Entities
     {
         [Key]
         public int IdMua { get; set; }
-        public string TenKhoaHoc { get; set; }
+        public int IdKhoaHoc { get; set; }
         public int IdUser { get; set; }
         public DateTime NgayThanhToan { get; set; }
         [Column(TypeName ="money")]
         public decimal? ThanhTien { get; set; }
         public virtual User User { get; set; }
-        public virtual KhoaHoc KhoaHoc { get; set; }
+
     }
 }

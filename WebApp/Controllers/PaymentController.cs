@@ -111,12 +111,12 @@ namespace WebApp.Controllers
                 string vnp_HashSecret = ConfigurationManager.AppSettings["vnp_HashSecret"];//chuoi bi mat
                 var vnpayData = Request.QueryString;
                 VnPayLibrary vnpay = new VnPayLibrary();
-                foreach (string item in vnpayData)
+                foreach (string ss in vnpayData)
                 {
                     //get all querystring data
-                    if (!string.IsNullOrEmpty(item) && item.StartsWith("vnp_"))
+                    if (!string.IsNullOrEmpty(ss) && ss.StartsWith("vnp_"))
                     {
-                        vnpay.AddResponseData(item, vnpayData[item]);
+                        vnpay.AddResponseData(ss, vnpayData[ss]);
                     }
                 }
                 //vnp_TxnRef: Ma don hang merchant gui VNPAY tai command=pay    
@@ -142,7 +142,7 @@ namespace WebApp.Controllers
                         ApplicationDbContext db = new ApplicationDbContext();
 
                         MuaKhoaHoc muaKhoaHoc = new MuaKhoaHoc();
-                        muaKhoaHoc.TenKhoaHoc = k.ToString();
+                        muaKhoaHoc.IdKhoaHoc = k;
                         string tentaikhoan = Session["TenTaiKhoan"].ToString();
                         User user = db.Users.FirstOrDefault(x => x.TenTaiKHoan == tentaikhoan);
                         muaKhoaHoc.IdUser = user.IdUser;
