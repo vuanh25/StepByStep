@@ -97,12 +97,12 @@ namespace WebApp.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         DeBai = c.String(nullable: false, maxLength: 1000),
-                        YeuCauDauVao = c.String(nullable: false, maxLength: 100),
-                        DauVao = c.String(nullable: false, maxLength: 100),
-                        DauRa = c.String(nullable: false, maxLength: 100),
-                        ViduVao = c.String(nullable: false, maxLength: 100),
-                        ViduRa = c.String(nullable: false, maxLength: 100),
-                        Diem = c.Int(nullable: false),
+                        YeuCauDauVao = c.String(nullable: true, maxLength: 100),
+                        DauVao = c.String(nullable: true, maxLength: 100),
+                        DauRa = c.String(nullable: true, maxLength: 100),
+                        ViduVao = c.String(nullable: true, maxLength: 100),
+                        ViduRa = c.String(nullable: true, maxLength: 100),
+                        Diem = c.Int(nullable: true),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -112,7 +112,7 @@ namespace WebApp.Migrations
                     {
                         IDKhoaHoc = c.Int(nullable: false, identity: true),
                         TenKhoaHoc = c.String(nullable: false, maxLength: 500),
-                        NgonNgu = c.Int(nullable: false),
+                        NgonNgu = c.Int(nullable: true),
                     })
                 .PrimaryKey(t => t.IDKhoaHoc);
             
@@ -122,8 +122,8 @@ namespace WebApp.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         TenLuyenTap = c.String(nullable: false, maxLength: 255),
-                        LuotXem = c.Int(nullable: false),
-                        YeuThich = c.Int(nullable: false),
+                        LuotXem = c.Int(nullable: true),
+                        YeuThich = c.Int(nullable: true),
                         NgonNgu = c.Int(nullable: false),
                         DoKho = c.Int(nullable: false),
                     })
@@ -137,7 +137,7 @@ namespace WebApp.Migrations
                         NoiDung = c.String(maxLength: 500),
                         HinhAnh = c.String(),
                         NgayDang = c.String(),
-                        LuotThich = c.Int(nullable: false),
+                        LuotThich = c.Int(nullable: true),
                         BaiViet_IdBaiViet = c.Int(),
                         CauHoi_IdCauHoi = c.Int(),
                         User_IdUser = c.Int(),
@@ -150,115 +150,13 @@ namespace WebApp.Migrations
                 .Index(t => t.CauHoi_IdCauHoi)
                 .Index(t => t.User_IdUser);
             
-            CreateTable(
-                "dbo.AspNetRoles",
-                c => new
-                    {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        Name = c.String(nullable: false, maxLength: 256),
-                    })
-                .PrimaryKey(t => t.Id)
-                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
-            
-            CreateTable(
-                "dbo.AspNetUserRoles",
-                c => new
-                    {
-                        UserId = c.String(nullable: false, maxLength: 128),
-                        RoleId = c.String(nullable: false, maxLength: 128),
-                    })
-                .PrimaryKey(t => new { t.UserId, t.RoleId })
-                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId)
-                .Index(t => t.RoleId);
-            
-            CreateTable(
-                "dbo.AspNetUsers",
-                c => new
-                    {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        Email = c.String(maxLength: 256),
-                        EmailConfirmed = c.Boolean(nullable: false),
-                        PasswordHash = c.String(),
-                        SecurityStamp = c.String(),
-                        PhoneNumber = c.String(),
-                        PhoneNumberConfirmed = c.Boolean(nullable: false),
-                        TwoFactorEnabled = c.Boolean(nullable: false),
-                        LockoutEndDateUtc = c.DateTime(),
-                        LockoutEnabled = c.Boolean(nullable: false),
-                        AccessFailedCount = c.Int(nullable: false),
-                        UserName = c.String(nullable: false, maxLength: 256),
-                    })
-                .PrimaryKey(t => t.Id)
-                .Index(t => t.UserName, unique: true, name: "UserNameIndex");
-            
-            CreateTable(
-                "dbo.AspNetUserClaims",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        UserId = c.String(nullable: false, maxLength: 128),
-                        ClaimType = c.String(),
-                        ClaimValue = c.String(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId);
-            
-            CreateTable(
-                "dbo.AspNetUserLogins",
-                c => new
-                    {
-                        LoginProvider = c.String(nullable: false, maxLength: 128),
-                        ProviderKey = c.String(nullable: false, maxLength: 128),
-                        UserId = c.String(nullable: false, maxLength: 128),
-                    })
-                .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId);
+          
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.PhanHois", "User_IdUser", "dbo.Users");
-            DropForeignKey("dbo.PhanHois", "CauHoi_IdCauHoi", "dbo.CauHois");
-            DropForeignKey("dbo.PhanHois", "BaiViet_IdBaiViet", "dbo.BaiViets");
-            DropForeignKey("dbo.CauHois", "User_IdUser", "dbo.Users");
-            DropForeignKey("dbo.BaiViets", "User_IdUser", "dbo.Users");
-            DropForeignKey("dbo.BaiTaps", "BaiHoc_IdBaiHoc", "dbo.BaiHocs");
-            DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
-            DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
-            DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
-            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
-            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.PhanHois", new[] { "User_IdUser" });
-            DropIndex("dbo.PhanHois", new[] { "CauHoi_IdCauHoi" });
-            DropIndex("dbo.PhanHois", new[] { "BaiViet_IdBaiViet" });
-            DropIndex("dbo.CauHois", new[] { "User_IdUser" });
-            DropIndex("dbo.BaiViets", new[] { "User_IdUser" });
-            DropIndex("dbo.BaiTaps", new[] { "BaiHoc_IdBaiHoc" });
-            DropTable("dbo.AspNetUserLogins");
-            DropTable("dbo.AspNetUserClaims");
-            DropTable("dbo.AspNetUsers");
-            DropTable("dbo.AspNetUserRoles");
-            DropTable("dbo.AspNetRoles");
-            DropTable("dbo.PhanHois");
-            DropTable("dbo.LuyenCodes");
-            DropTable("dbo.KhoaHocs");
-            DropTable("dbo.ChiTietBaiLuyens");
-            DropTable("dbo.ChiTietBaiHoc");
-            DropTable("dbo.CauHois");
-            DropTable("dbo.Users");
-            DropTable("dbo.BaiViets");
-            DropTable("dbo.BaiTaps");
-            DropTable("dbo.BaiHocs");
+           
         }
     }
 }
