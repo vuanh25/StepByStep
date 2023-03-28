@@ -18,7 +18,8 @@ namespace WebApp.Models.Entities
         [StringLength(255)]
         public string TenLuyenTap { get; set; }
 
-        [Required]
+        public int LuotXem { get; set; }
+
         public int YeuThich { get; set; }
         [Required]
         public int LuotXem { get; set; }

@@ -23,8 +23,14 @@ namespace WebApp.Areas.Admin.Controllers
                 var khoahocs = db.KhoaHocs.Where(p => p.TenKhoaHoc.Contains(TenKhoaHoc)).ToList();
                 foreach (var item in khoahocs)
                 {
-                    if (Equals(item.TenKhoaHoc, TenKhoaHoc))
-                    {
+                if (Equals(item.TenKhoaHoc,TenKhoaHoc))
+                {
+
+                    ViewBag.TenKhoaHoc = item.TenKhoaHoc;
+                    List<BaiHoc> baiHocs = db.BaiHocs.Where(x => x.KhoaHoc.IDKhoaHoc == item.IDKhoaHoc).ToList();
+                    return View(baiHocs);
+                }
+
 
                         ViewBag.TenKhoaHoc = item.TenKhoaHoc;
                         List<BaiHoc> baiHocs = db.BaiHocs.Where(x => x.IdKhoaHoc == item.IDKhoaHoc).ToList();
@@ -45,7 +51,7 @@ namespace WebApp.Areas.Admin.Controllers
         public ActionResult KhoaHoc(string SearchId)
         {
             int id = int.Parse(SearchId);
-            var baiHocs = db.BaiHocs.Where(p => p.IdKhoaHoc == id).ToList();
+            var baiHocs = db.BaiHocs.Where(p => p.KhoaHoc.IDKhoaHoc == id).ToList();
             return View(baiHocs);
         }
 

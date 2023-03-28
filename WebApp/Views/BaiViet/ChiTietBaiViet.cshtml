@@ -1,0 +1,140 @@
+﻿@model WebApp.Models.Entities.BaiViet
+@{
+    ViewBag.Title = "ChiTietBaiViet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    WebApp.Models.Entities.BaiViet baiviet = (WebApp.Models.Entities.BaiViet)Session["BaiViet"];
+}
+
+
+<link href="~/Public/plugins/fontawesome-free/css/all.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="~/Public/css/checkbox_heart.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+
+<div class="container">
+    <div class="media">
+        <h1 class="mb-10 font-size-h2">
+            @baiviet.TieuDe
+        </h1>
+        <div class="text-muted font-size-xs">
+            <span class="mr-5 mt-5 d-block d-md-inline">
+                <span class="font-italic">
+                    <i class="far fa-fw fa-eye mr-5"></i>
+                    @baiviet.LuotXem lượt xem
+                </span>
+                <span class="font-italic">
+                    <input class="far fa-fw fa-heart" type="checkbox" data-id="@baiviet.IdBaiViet" id="cbLike">
+                    <span id="luotthich" data-id="@baiviet.IdBaiViet" ></span> lượt thích
+                </span>
+                <span class="font-italic">
+                    <i class="far fa-fw fa-comment mr-5"></i>
+                    5 phản hồi
+                </span>
+                <a href="#" class="link-secondary">#@baiviet.NgonNgu</a>
+            </span>
+        </div>
+
+        <div class="mt-5 d-flex justify-content-between">
+            <p>@baiviet.NoiDungBaiViet</p>
+            <img src="@baiviet.HinhAnh" />
+        </div>
+        <div class="container">
+            <div class="col-md-4">
+                <hr />
+                <h2>Phản hồi</h2>
+                <div class="form-group">
+                    <label for="comment">Phản hồi:</label>
+                    <textarea class="form-control" cols="2" rows="2" id="phanhoi" placeholder="Thêm bình luận"></textarea>
+                </div>
+                <a class="btn btn-success" id="addComment" data-id="@baiviet.IdBaiViet" >Đăng</a>
+                <div id="dsphanhoi" data-id="@baiviet.IdBaiViet"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts
+{
+    <script>
+
+        $(document).ready(function () {
+            LuotThich();
+            DsPhanHoi();
+        })
+
+
+        $('#cbLike').click(function () {
+            $.ajax({
+                url: '/BaiViet/Thich',
+                type: 'post',
+                datatype: 'json',
+                data: { idBaiViet: $(this).data('id'), attr: this.checked },
+                success: function (data) {
+                    if (data.code == 200) {
+                        console.log(id);
+                    }
+                }
+            });
+            LuotThich();
+        });
+
+        $('#addComment').click(function () {
+            let noidung = $('#phanhoi').val().trim();
+            if (noidung.length == 0) {
+                alert('Phản hồi không được để trống !');
+                return;
+            }
+            $.ajax({
+                url: '/PhanHoi/ThemPhanHoi',
+                type: 'post',
+                datatype: 'json',
+                data: { id: $(this).data('id'), noidung: noidung,loai: 0},
+                success: function (data) {
+                    if (data.code == 200) {
+                        $('#phanhoi').val('');
+                        DsPhanHoi();
+                        console.log(id);
+                    }
+                }
+            });
+        });
+
+        function LuotThich() {
+            $.ajax({
+                url: '/BaiViet/LuotThich',
+                type: 'post',
+                datatype: 'json',
+                data: { idBaiViet: $('#luotthich').data('id')},
+                success: function (data) {
+                    $('#luotthich').empty();
+                    if (data.code == 200) {
+                        let lt = data.luotthich;
+                        $('#luotthich').append(lt);
+                    }
+                }
+            });
+        }
+
+        function DsPhanHoi() {
+            $.ajax({
+                url: '/PhanHoi/DsPhanHoi',
+                type: 'post',
+                datatype: 'json',
+                data: { idBaiViet: $('#dsphanhoi').data('id') },
+                success: function (data) {
+                    $('#dsphanhoi').empty();
+                    if (data.code == 200) {
+                        $.each(data.ds, function (k, v) {
+                            let tr = '<div>' + v.NoiDung + '</div>';
+                            $('#dsphanhoi').append(tr);
+                        })
+                    }
+                }
+            });
+        }
+
+    </script>
+}
+
