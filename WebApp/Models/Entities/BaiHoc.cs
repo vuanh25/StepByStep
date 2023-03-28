@@ -17,11 +17,11 @@ namespace WebApp.Models.Entities
         [StringLength(200)]
         public string TenBaiHoc { get; set; }
 
-        
 
 
-        public virtual KhoaHoc KhoaHoc { get; set; }
-     
-    
+
+        public Nullable<long> IdKhoaHoc { get; set; }
+
+
     }
 }

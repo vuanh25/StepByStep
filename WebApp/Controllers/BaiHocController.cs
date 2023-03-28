@@ -14,7 +14,7 @@ namespace WebApp.Controllers
 
         public ActionResult Index(int? IdKhoaHoc)
         {
-            var BaiHocss = db.BaiHocs.Where(p => p.IdBaiHoc == IdKhoaHoc).ToList();
+            var BaiHocss = db.BaiHocs.Where(p => p.IdKhoaHoc == IdKhoaHoc).ToList();
             var KhoaHoc = db.KhoaHocs.Where(p => p.IDKhoaHoc == IdKhoaHoc).ToList();
             foreach (var item in KhoaHoc)
             {

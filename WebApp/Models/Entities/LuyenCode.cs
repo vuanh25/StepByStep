@@ -22,7 +22,7 @@ namespace WebApp.Models.Entities
 
         public int YeuThich { get; set; }
         [Required]
-        public int LuotXem { get; set; }
+        //public int LuotXem { get; set; }
 
         public virtual NgonNgu NgonNgu { get; set; }
         public virtual DoKho DoKho { get; set; }

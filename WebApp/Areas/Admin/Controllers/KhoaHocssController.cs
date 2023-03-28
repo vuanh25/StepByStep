@@ -32,7 +32,7 @@ namespace WebApp.Areas.Admin.Controllers
                           {
                               Id = l.IDKhoaHoc,
                               TenKhoaHoc = l.TenKhoaHoc,
-                              IdNgonNgu = l.IDNgonNgu
+                              IdNgonNgu = l.NgonNgu
                           }).ToList();
                 return Json(new { code = 200, ds = ds }, JsonRequestBehavior.AllowGet);
             }
@@ -51,7 +51,7 @@ namespace WebApp.Areas.Admin.Controllers
             {
                 var l = new KhoaHoc();
                 l.TenKhoaHoc = tenKH;
-                l.IDNgonNgu = (int)(Models.Enums.NgonNgu)ngonngu;
+                l.NgonNgu = (Models.Enums.NgonNgu)ngonngu;
                 db.KhoaHocs.Add(l);
                 db.SaveChanges();
                 return Json(new { code = 200, msg = "Thêm mới khoá học thành công!" }, JsonRequestBehavior.AllowGet);
