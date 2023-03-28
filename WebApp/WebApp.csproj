@@ -238,11 +238,6 @@
     <Compile Include="Migrations\202303230543214_UPDATE-dataCTBT.designer.cs">
       <DependentUpon>202303230543214_UPDATE-dataCTBT.cs</DependentUpon>-->
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Migrations\202303271142233_init.cs" />
-    <Compile Include="Migrations\202303271142233_init.Designer.cs">
-      <DependentUpon>202303271142233_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities\ChiTietBaiHoc.cs" />
     <Compile Include="Models\Entities\ChiTietBaiLuyen.cs" />
     <Compile Include="Models\Entities\PhanHoi.cs" />
@@ -2531,11 +2526,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202303271142233_init.resx">
-      <DependentUpon>202303271142233_init.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
