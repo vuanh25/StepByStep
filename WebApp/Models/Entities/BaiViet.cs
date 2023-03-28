@@ -13,15 +13,15 @@ namespace WebApp.Models.Entities
     {
         [Key]
         public int IdBaiViet { get; set; }
-
-        [Required]
+        public string TieuDe { get; set; }
         public string NoiDungBaiViet { get; set; }
+        public string HinhAnh { get; set; }
 
-        [Required]
         public string NgayDang { get; set; }
 
-        [Required]
         public int LuotXem { get; set; }
+
+        public int LuotThich { get; set; }
 
         public virtual NgonNgu NgonNgu { get; set; }
         public virtual DanhMuc DanhMuc { get; set; }

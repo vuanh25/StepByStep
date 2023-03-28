@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebApp.Controllers;
 using WebApp.Models;
 using WebApp.Models.Entities;
 using WebApp.Models.Enums;
 
 namespace WebApp.Areas.Admin.Controllers
 {
-    public class LuyenCodeAdminController : Controller
+    public class LuyenCodeAdminController : KiemTraController
     {
         // GET: Admin/LuyenCode
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -17,8 +18,12 @@ namespace WebApp.Areas.Admin.Controllers
         //[Authorize]
 
         public ActionResult Index()
-        {  
-            return View();
+        {
+            if (KiemTraDangNhapAdmin())
+            {             
+                return View();
+            }
+            return RedirectToAction("Login", "User");
         }
 
         [HttpGet]
@@ -26,17 +31,17 @@ namespace WebApp.Areas.Admin.Controllers
         {
             try
             {
-
-                var ds = (from l in db.LuyenTaps.Where(x => x.Id != 0) // Laays danh sach
-                          select new
-                          {
-                              Id = l.Id,
-                              TenLuyenTap = l.TenLuyenTap,
-                              YeuThich = l.YeuThich,
-                              NgonNgu = l.NgonNgu.ToString(),
-                              CapDo = l.DoKho.ToString()
-                          }).ToList();
-                return Json(new { code = 200, ds = ds }, JsonRequestBehavior.AllowGet );
+                
+                    var ds = (from l in db.LuyenTaps.Where(x => x.Id != 0) // Laays danh sach
+                              select new
+                              {
+                                  Id = l.Id,
+                                  TenLuyenTap = l.TenLuyenTap,
+                                  YeuThich = l.YeuThich,
+                                  NgonNgu = l.NgonNgu.ToString(),
+                                  CapDo = l.DoKho.ToString()
+                              }).ToList();
+                    return Json(new { code = 200, ds = ds }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {

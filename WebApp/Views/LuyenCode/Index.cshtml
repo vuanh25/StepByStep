@@ -6,11 +6,12 @@
 
 
 <link href="~/Public/css/Css_LuyenCode.css" rel="stylesheet" />
-
+<link href="~/Public/plugins/fontawesome-free/css/all.min.css" rel="stylesheet" />
+<link href="~/Public/css/checkbox_heart.css" rel="stylesheet" />
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout_Ngan.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <br /> <br />
@@ -29,25 +30,26 @@
             <tbody class="font">
                 @if (item.Id % 2 == 1)
                 {
+
                     <tr>
                         <td><a class="noUnderlined text-black" href="@Url.Action("ChiTiet", "LuyenCode", new { @id = item.Id})">@item.TenLuyenTap</a></td>
                         <td>@item.LuotXem</td>
                         <td>@item.YeuThich</td>
                         @if (Convert.ToString(item.DoKho) == "De")
                         {
-                            <td class="btn btn-success" style="padding: 4px 8px; margin-top: 4px;">@item.DoKho</td>
+                            <td class="btn btn-success" style="padding: 4px 8px; margin-top: 10px;">@item.DoKho</td>
                         }
                         @if (Convert.ToString(item.DoKho) == "TrungBinh")
                         {
-                        <td class="btn btn-warning" style="padding: 4px 8px; margin-top: 4px;">@item.DoKho</td>
+                        <td class="btn btn-warning" style="padding: 4px 8px; margin-top: 10px;">@item.DoKho</td>
                         }
                         @if (Convert.ToString(item.DoKho) == "Kho")
                         {
-                        <td class="btn btn-danger" style="padding: 4px 8px; margin-top: 4px;">@item.DoKho</td>
+                        <td class="btn btn-danger" style="padding: 4px 8px; margin-top: 10px;">@item.DoKho</td>
                         }
                         @if (Convert.ToString(item.DoKho) == "SieuKho")
                         {
-                        <td class="btn btn-dark" style="padding: 4px 8px; margin-top: 4px;">@item.DoKho</td>
+                        <td class="btn btn-dark" style="padding: 4px 8px; margin-top: 10px;">@item.DoKho</td>
                         }
                     </tr>
                 }
@@ -55,23 +57,36 @@
                 {
                     <tr class="active-row font">
                         <td class="active-row"><a class="noUnderlined " href="@Url.Action("ChiTiet", "LuyenCode", new { @id = item.Id})">@item.TenLuyenTap</a></td>
+
+                <tr>
+                    <td><a class="noUnderlined text-black" href="@Url.Action("ChiTiet", "LuyenCode", new { @id = item.Id})">@item.TenLuyenTap</a></td>
+                    <td>@item.LuotXem</td>  
+                    <td>@item.YeuThich</td>
+                    <td>@item.DoKho</td>
+                </tr>
+                }
+                else
+                {
+                    <tr class="active-row">
+                        <td class="active-row"><a class="noUnderlined " href="@Url.Action("ChiTiet", "LuyenCode", new { @id = item.Id})" >@item.TenLuyenTap</a></td>
+
                         <td>@item.LuotXem</td>
                         <td>@item.YeuThich</td>
                         @if (Convert.ToString(item.DoKho) == "De")
                         {
-                            <td class="btn btn-success" style="padding: 4px 8px; margin-top: 4px;">@item.DoKho</td>
+                            <td class="btn btn-success" style="padding: 4px 8px; margin-top: 10px;">@item.DoKho</td>
                         }
                         @if (Convert.ToString(item.DoKho) == "TrungBinh")
                         {
-                        <td class="btn btn-warning" style="padding: 4px 8px; margin-top: 4px;">@item.DoKho</td>
+                        <td class="btn btn-warning" style="padding: 4px 8px; margin-top: 10px;">@item.DoKho</td>
                         }
                         @if (Convert.ToString(item.DoKho) == "Kho")
                         {
-                        <td class="btn btn-danger" style="padding: 4px 8px; margin-top: 4px;">@item.DoKho</td>
+                        <td class="btn btn-danger" style="padding: 4px 8px; margin-top: 10px;">@item.DoKho</td>
                         }
                         @if (Convert.ToString(item.DoKho) == "SieuKho")
                         {
-                        <td class="btn btn-dark" style="padding: 4px 8px; margin-top: 4px;">@item.DoKho</td>
+                        <td class="btn btn-dark" style="padding: 4px 8px; margin-top: 10px;">@item.DoKho</td>
                         }
 
                     </tr>
@@ -88,34 +103,7 @@
 <i class="fa-light fa-heart"></i>
 <br />
 
-@*<div class="container font">
-    <div class="row">
-        @foreach (var item in Model)
-        {
-            <div class="col-4 PageList font">
-                <div class="panel panel-default " style="justify-items: center">
-                    <div class="panel panel-heading text-danger PageList">
-                        <h5>@item.TenLuyenTap</h5>
-                    </div>
-                    <div class="panel-body ">
-                        <p class="PageList">
-                            <span>
-                                <i class="far fa-fw fa-eye mr-5"></i> @item.LuotXem
-                                <i class="heart-checkbox-true"></i>  @item.YeuThich
-                            </span>
-                            <br />
-                        </p>
-                        <p>
-                            <img style="width : 250px" src="~/Content/images/b.jpg" />
-                        </p>
-                        <br />
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
-    
-</div>*@
+
 
 
 <div >

@@ -11,27 +11,35 @@ using WebApp.Models.Entities;
 
 namespace WebApp.Areas.Admin.Controllers
 {
-    
     public class BaiHocsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Admin/BaiHocs
-        
         public ActionResult Index(string TenKhoaHoc)
         {
-            var khoahocs = db.KhoaHocs.Where(p => p.TenKhoaHoc.Contains(TenKhoaHoc)).ToList();
+           /* if (KiemTraDangNhapAdmin())
+            {*/
+                var khoahocs = db.KhoaHocs.Where(p => p.TenKhoaHoc.Contains(TenKhoaHoc)).ToList();
                 foreach (var item in khoahocs)
                 {
                 if (Equals(item.TenKhoaHoc,TenKhoaHoc))
                 {
 
                     ViewBag.TenKhoaHoc = item.TenKhoaHoc;
-                    List<BaiHoc> baiHocs = db.BaiHocs.Where(x => x.IdKhoaHoc == item.IDKhoaHoc).ToList();
+                    List<BaiHoc> baiHocs = db.BaiHocs.Where(x => x.KhoaHoc.IDKhoaHoc == item.IDKhoaHoc).ToList();
                     return View(baiHocs);
                 }
+
+
+                        ViewBag.TenKhoaHoc = item.TenKhoaHoc;
+                        List<BaiHoc> baiHocs = db.BaiHocs.Where(x => x.IdKhoaHoc == item.IDKhoaHoc).ToList();
+                        return View(baiHocs);
+                    }
                 }
-            return View();
+                return View();
+      /*      }
+            return RedirectToAction("Login", "User");*/
         }
 
 
@@ -43,12 +51,9 @@ namespace WebApp.Areas.Admin.Controllers
         public ActionResult KhoaHoc(string SearchId)
         {
             int id = int.Parse(SearchId);
-            var baiHocs = db.BaiHocs.Where(p => p.IdKhoaHoc == id).ToList();
+            var baiHocs = db.BaiHocs.Where(p => p.KhoaHoc.IDKhoaHoc == id).ToList();
             return View(baiHocs);
         }
-
-
-
 
         // GET: Admin/BaiHocs/Details/5
         public ActionResult Details(int? id)
@@ -76,7 +81,7 @@ namespace WebApp.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdBaiHoc,TenBaiHoc,NoiDung1,NoiDung2,NoiDung3,NoiDung4,NoiDung5,NoiDung6,NoiDung7,NoiDung8,NoiDung9,NoiDung10,IdKhoaHoc")] BaiHoc baiHoc)
+        public ActionResult Create([Bind(Include = "IdBaiHoc,TenBaiHoc,IdKhoaHoc")] BaiHoc baiHoc)
         {
             if (ModelState.IsValid)
             {
@@ -108,7 +113,7 @@ namespace WebApp.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdBaiHoc,TenBaiHoc,NoiDung1,NoiDung2,NoiDung3,NoiDung4,NoiDung5,NoiDung6,NoiDung7,NoiDung8,NoiDung9,NoiDung10,IdKhoaHoc")] BaiHoc baiHoc)
+        public ActionResult Edit([Bind(Include = "IdBaiHoc,TenBaiHoc,IdKhoaHoc")] BaiHoc baiHoc)
         {
             if (ModelState.IsValid)
             {
