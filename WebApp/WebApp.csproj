@@ -234,7 +234,6 @@
     <Compile Include="Controllers\KiemTraController.cs" />
     <Compile Include="Controllers\LuyenCodeController.cs" />
     <Compile Include="Controllers\KhoaHocsController.cs" />
-
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -242,25 +241,10 @@
     <Compile Include="Migrations\202303230543214_UPDATE-dataCTBT.designer.cs">
       <DependentUpon>202303230543214_UPDATE-dataCTBT.cs</DependentUpon>-->
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Migrations\202303271142233_init.cs" />
-    <Compile Include="Migrations\202303271142233_init.Designer.cs">
-      <DependentUpon>202303271142233_init.cs</DependentUpon>
-
-    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PhanHoiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202303201437214_CapNhatData1.cs" />
-    <Compile Include="Migrations\202303201437214_CapNhatData1.designer.cs">
-      <DependentUpon>202303201437214_CapNhatData1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303221705492_update_modelLuyenCode.cs" />
-    <Compile Include="Migrations\202303221705492_update_modelLuyenCode.designer.cs">
-      <DependentUpon>202303221705492_update_modelLuyenCode.cs</DependentUpon>
-
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities\ChiTietBaiHoc.cs" />
     <Compile Include="Models\Entities\ChiTietBaiLuyen.cs" />
     <Compile Include="Models\Entities\PhanHoi.cs" />
@@ -283,15 +267,12 @@
     <Content Include="Content\images\a.jpg" />
     <Content Include="Content\images\b.jpg" />
     <Content Include="Content\PagedList.css" />
-
     <Content Include="Public\css\Css_KhoaHoc.css" />
     <Content Include="Public\css\Css_LuyenCode.css" />
     <Content Include="Public\css\login.css" />
-
     <Content Include="Public\css\checkbox_heart.css" />
     <Content Include="Public\css\Css_LuyenCode.css" />
     <Content Include="Public\css\heart_checkbox.css" />
-
     <Content Include="Public\css\LuyenCodeAdmin.css" />
     <Content Include="Public\css\Site.css" />
     <Content Include="Public\css\_Layout.css" />
@@ -347,15 +328,12 @@
     <Content Include="Public\dist\js\pages\dashboard.js" />
     <Content Include="Public\dist\js\pages\dashboard2.js" />
     <Content Include="Public\dist\js\pages\dashboard3.js" />
-
     <Content Include="Public\images\banner-sm.jpg" />
     <Content Include="Public\images\banner.jpg" />
     <Content Include="Public\images\banner_khoahoc.jpg" />
     <Content Include="Public\images\bgDangKy.png" />
-
     <Content Include="Public\images\heart_check_false.png" />
     <Content Include="Public\images\heart_check_true.png" />
-
     <Content Include="Public\images\logo.png" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -2537,9 +2515,7 @@
     <Content Include="Views\LuyenCode\Index.cshtml" />
     <Content Include="Views\Shared\_Layout_Ngan.cshtml" />
     <Content Include="Views\LuyenCode\ChiTiet.cshtml" />
-
     <Content Include="Views\KhoaHocs\Genre.cshtml" />
-
     <Content Include="Views\CauHoi\Index.cshtml" />
     <Content Include="Views\CauHoi\ChiTietCauHoi.cshtml" />
     <Content Include="Views\CauHoi\DatCauHoi.cshtml" />
@@ -2561,9 +2537,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-
     <Folder Include="Views\KiemTra\" />
-    <Folder Include="Views\KhoaHocs\" />
     <Folder Include="Views\PhanHoi\" />
   </ItemGroup>
   <ItemGroup>
@@ -2575,17 +2549,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-
-    <EmbeddedResource Include="Migrations\202303271142233_init.resx">
-      <DependentUpon>202303271142233_init.cs</DependentUpon>
-
-    <EmbeddedResource Include="Migrations\202303201437214_CapNhatData1.resx">
-      <DependentUpon>202303201437214_CapNhatData1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303221705492_update_modelLuyenCode.resx">
-      <DependentUpon>202303221705492_update_modelLuyenCode.cs</DependentUpon>
-
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
