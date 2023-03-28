@@ -12,13 +12,11 @@ using WebApp.Models.Entities;
 
 namespace WebApp.Areas.Admin.Controllers
 {
-    
     public class BaiHocsController : KiemTraController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Admin/BaiHocs
-        
         public ActionResult Index(string TenKhoaHoc)
         {
             if (KiemTraDangNhapAdmin())
@@ -26,7 +24,7 @@ namespace WebApp.Areas.Admin.Controllers
                 var khoahocs = db.KhoaHocs.Where(p => p.TenKhoaHoc.Contains(TenKhoaHoc)).ToList();
                 foreach (var item in khoahocs)
                 {
-                    if (Equals(item.TenKhoaHoc, TenKhoaHoc))
+                    if (Equals(item.TenKhoaHoc,TenKhoaHoc))
                     {
 
                         ViewBag.TenKhoaHoc = item.TenKhoaHoc;
@@ -36,7 +34,7 @@ namespace WebApp.Areas.Admin.Controllers
                 }
                 return View();
             }
-            return RedirectToAction("Login", "User");         
+            return RedirectToAction("Login", "User");
         }
 
 
@@ -51,9 +49,6 @@ namespace WebApp.Areas.Admin.Controllers
             var baiHocs = db.BaiHocs.Where(p => p.IdKhoaHoc == id).ToList();
             return View(baiHocs);
         }
-
-
-
 
         // GET: Admin/BaiHocs/Details/5
         public ActionResult Details(int? id)
@@ -81,7 +76,7 @@ namespace WebApp.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdBaiHoc,TenBaiHoc,NoiDung1,NoiDung2,NoiDung3,NoiDung4,NoiDung5,NoiDung6,NoiDung7,NoiDung8,NoiDung9,NoiDung10,IdKhoaHoc")] BaiHoc baiHoc)
+        public ActionResult Create([Bind(Include = "IdBaiHoc,TenBaiHoc,IdKhoaHoc")] BaiHoc baiHoc)
         {
             if (ModelState.IsValid)
             {
@@ -113,7 +108,7 @@ namespace WebApp.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdBaiHoc,TenBaiHoc,NoiDung1,NoiDung2,NoiDung3,NoiDung4,NoiDung5,NoiDung6,NoiDung7,NoiDung8,NoiDung9,NoiDung10,IdKhoaHoc")] BaiHoc baiHoc)
+        public ActionResult Edit([Bind(Include = "IdBaiHoc,TenBaiHoc,IdKhoaHoc")] BaiHoc baiHoc)
         {
             if (ModelState.IsValid)
             {

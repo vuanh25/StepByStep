@@ -7,6 +7,7 @@ namespace WebApp.Models.Enums
 {
     public enum DanhMuc
     {
-
+        a=1,
+        b=2
     }
 }

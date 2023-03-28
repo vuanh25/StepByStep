@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<link href="~/Public/css/_Layout.css" rel="stylesheet" />
+
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper font">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Quản lý trang web - Admin</h1>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+
+    <section class="content row ">
+        <div class="col TheThongKe ">
+            <div>Số lượng tài khoản</div>
+            <div class="number_count">@ViewBag.user </div>
+        </div>
+        <div class="col TheThongKe">
+            <div>Số khóa học</div>
+            <div class="number_count">@ViewBag.khoahoc</div>
+        </div>
+        <div class="col TheThongKe">
+            <div>Số lượng bài tập</div>
+            <div class="number_count">@ViewBag.baitap</div>
+        </div>
+        <div class="col TheThongKe">
+            <div>Số lượng người truy cập</div>
+            <div class="number_count">@ViewBag.baitap</div>
+        </div>
+
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

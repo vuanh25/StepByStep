@@ -72,6 +72,7 @@
     color: black;
 }
 
+
 .font {
     font-family: Montserrat;
 }
@@ -292,3 +293,24 @@
     position: absolute;
     right: 0;
 }
+
+.TheThongKe{
+    background-color: #ffcdcd;
+    border-radius: 8px;
+    justify-content: center;
+    display: block;
+    margin: 8px 12px;
+    text-align: center;
+    color: #000000;
+
+
+}
+
+.number_count {
+    color: #e8505b;
+    font-size: 4em;
+    bottom: 10px;
+    font-weight: 800;
+}
+
+
