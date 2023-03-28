@@ -9,6 +9,8 @@
 
 
 
+
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Main content -->
@@ -26,20 +28,20 @@
                 </div>
             </div>
             <div class="card-body">
-                
+
                 <div class="row">
                     @using (Html.BeginForm("Index", "BaiHocs", FormMethod.Get))
                     {
                         <p>
-                            Tìm theo khoá học: @Html.TextBox("TenKhoaHoc",ViewBag.CurrentFilter as string)
+                            Tìm theo khoá học: @Html.TextBox("TenKhoaHoc", ViewBag.CurrentFilter as string)
                             <input type="submit" value="Tìm kiếm" />
                         </p>
                     }
 
-                <div style="margin-left: 10px">
-                    @Html.ActionLink("Create New", "Create")
-                </div>
-                   
+                    <div style="margin-left: 10px">
+                        @Html.ActionLink("Tạo bài học mới", "Create")
+                    </div>
+
 
                 </div>
                 <table class="table">
@@ -58,15 +60,22 @@
                         {
                             <tr>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.TenBaiHoc)
+                                    <a href="@Url.Action("Index","ChiTietBaiHocs",new { @IdBaiHoc = item.IdBaiHoc})">@Html.DisplayFor(modelItem => item.TenBaiHoc)</a>
+
                                 </td>
 
 
                                 <td>
                                 <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.IdBaiHoc }) |
-                                    @Html.ActionLink("Chi tiết bài học", "Details", new { id = item.IdBaiHoc }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.IdBaiHoc })
+                                    <a class="noUnderlined" href=" @Url.Action("Edit","BaiHocs", new { id = item.IdBaiHoc })">
+                                        <i class="far fa-edit"></i>
+                                    </a>
+                                    <a class="noUnderlined" href=" @Url.Action("Details","BaiHocs", new { id = item.IdBaiHoc })">
+                                        <i class="fa-solid fa-circle-info"></i>
+                                    </a>
+                                    <a href=" @Url.Action("Delete","BaiHocs", new { id = item.IdBaiHoc })">
+                                        <i class="fa-regular fa-trash"></i>
+                                    </a>
                                 </td>
                             </tr>
 
@@ -79,7 +88,7 @@
 
             </div>
             <!-- /.card-body -->
-         
+
         </div>
         <!-- /.card -->
 
@@ -87,4 +96,3 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-

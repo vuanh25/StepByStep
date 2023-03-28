@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout_Ngan.cshtml";
+}
+<link href="~/Public/css/_Layout.css" rel="stylesheet" />
+
+
+
+<h4 style="color:red; text-align: center">@ViewBag.ThongBao</h4>
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="container font">
+    <!-- Outer Row -->
+    <div class="row small-bg" style="position: relative">
+        <div class="col-xl-8 col-lg-6" style="position: relative">
+
+            <div class="block-head-text justify-content-end">
+                <div class="h11">Bước từng bước <br /></div>
+                <div class="h33">Khơi dậy niềm đam mê lập trình</div>
+                <p></p>
+            </div>
+            <div class="wrap-block-head-text">
+            </div>
+        </div>
+        <div class="col-xl-4 row small-bg">
+            <div class="card o-hidden border-0 shadow-lg my-5 col-xl-12">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="">
+                        <div class="">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">ĐĂNG NHẬP</h1>
+                                </div>
+                                @using (Html.BeginForm(new { @class = "user" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary(true)
+                                    <div class="form-group p-2">
+                                        @Html.TextBox("Tendn", (string)ViewBag.tendn, new { @class = "form-control form-control-user", id = "exampleInputUsername", placeholder = "Nhập vào tên tài khoản", value = ViewBag.tendn })
+                                        <div class="text-danger"> @ViewData["Err1"] </div>
+                                    </div>
+                                    <div class="form-group p-2">
+                                        @Html.TextBox("Matkhau", (string)ViewBag.matkhau, new { type = "password", @class = "form-control form-control-user", id = "exampleInputPassword", placeholder = "Nhập vào mật khẩu" })
+                                        <div class="text-danger"> @ViewData["Err2"] </div>
+                                    </div>
+                                    <div class="form-group p-2">
+                                        <div class="custom-control custom-checkbox small">
+                                            @Html.CheckBox("Ghinho", false, new { @class = "custom-control-input", id = "customCheck" })
+                                            @* <input type="checkbox" class="custom-control-input" id="customCheck"> *@
+                                            <label class="custom-control-label" for="customCheck">
+                                                Ghi nhớ đăng nhập
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group dt-center  p-2 ">
+                                        <input type="submit" class="form-control form-control-user btn-dangnhap" value="Đăng nhập" />
+                                    </div>
+                                }
+                                <div class="p-2 text-end noUnderlined text-black">
+                                    @Html.ActionLink("Quên mật khẩu", "ForgotPassword", new { @class = "small" })
+                                </div>
+                                <div class=" text-end noUnderlined text-black" style="padding-right:8px;">
+                                    @Html.ActionLink("Đăng ký", "Register", new { @class = "small" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

@@ -34,6 +34,7 @@ namespace WebApp.Models
         // Cấu hình DbSet
         public DbSet<KhoaHoc> KhoaHocs { get; set; }
         public DbSet<BaiHoc> BaiHocs { get; set; }
+        public DbSet<ChiTietBaiHoc> ChiTietBaiHocs { get; set; }
         public DbSet<BaiTap> BaiTaps { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<LuyenCode> LuyenTaps { get; set; }

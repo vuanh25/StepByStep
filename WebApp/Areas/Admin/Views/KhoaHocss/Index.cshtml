@@ -1,0 +1,238 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<link href="~/Public/css/LuyenCodeAdmin.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+
+
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="">
+                        <strong>DANH SÁCH KHÓC HỌC</strong>
+                    </div>
+                </div>
+                <button class="btn btn-success mg-tb" id="btnAdd" style="width:10.3em">
+                    Thêm khoá học
+                </button>
+            </div>
+            <div class="card-body">
+                <table>
+                    <thead>
+                        <tr class="mau_cho_cot ">
+                            <th class="pd-l">Tên Khoá học</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="KhoaHoc" class="font chieu_cao_dong ">
+                    </tbody>
+                </table>
+
+
+            </div>
+            <!-- /.card-body -->
+
+        </div>
+        <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="modalKH" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="panel panel-primary font ">
+                    <div class="panel-heading can_giua" id="modalTitle"></div>
+                    <div class="panel-body pd-lr">
+                        <input type="text" hidden id="IDKH" value="" />
+                        <div class="form-group">
+                            <label>Tên Khoá học</label>
+                            <input type="text" class="form-control" id="TenKhoaHoc" placeholder="Tên Khoá Học">
+                        </div>
+
+
+                        <div class="form-group cung-dong">
+                            <label class="pd-r">Ngôn ngữ</label>
+                            <select id="NgonNgu">
+                                <option value="0">C/C++</option>
+                                <option value="1">C#</option>
+                                <option value="2">Java</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnSubmit">Lưu</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            TaiDanhSachKhoaHoc();
+        });
+
+
+        //      XÓA
+        $(document).on('click', "button[name='delete']", function () {
+            let IDKH = $(this).closest('tr').attr('id');
+            var thong_bao = "Hãy nhấn OK để xác nhận xóa!"
+            if (confirm(thong_bao)) {
+                // true
+                $.ajax({
+                    url: '/Admin/KhoaHocss/Xoa',
+                    type: 'delete',
+                    data: {
+                        id: IDKH
+                    },
+                    success: function (data) {
+                        if (data.code == 200) {
+                            alert(data.msg);
+                            TaiDanhSachKhoaHoc();
+                        } else {
+                            alert(data.msg);
+                        }
+                    }
+                })
+            }
+        });
+
+
+
+
+        $(document).on('click', "button[name='edit']", function () {
+
+            $('#modalTitle').text('Chỉnh sửa thông tin khoá học');
+
+
+
+            let IDKH = $(this).closest('tr').attr('id');
+            $.ajax({
+                url: '/Admin/KhoaHocss/Edit',
+                type: 'get',
+                data: {
+                    id: IDKH
+                },
+                //    LẤY DỮ LIỆU
+                success: function (data) {
+                    if (data.code == 200) {
+                        // Nếu lấy dữ liệu thành công thì gán
+                        $('#TenKhoaHoc').val(data.L.TenKhoaHoc);
+                        $('#NgonNgu').val(data.L.IDNgonNgu);
+                        $('#modalKH').modal();
+
+                  
+
+
+                    } else {
+                        alert(data.msg);
+                    }
+                }
+            });
+        });
+
+        $('#btnSubmit').click(function () {
+
+            let TenKhoaHoc = $('#TenKhoaHoc').val();
+            let NgonNgu = $('#NgonNgu').val().trim();
+
+
+
+
+
+            if (TenKhoaHoc == null || NgonNgu == null) {
+                alert('Vui lòng điền đây đủ nội dung!');
+                return;
+            }
+            // thêm mới bài tập
+            $.ajax({
+                url: '/Admin/KhoaHocss/AddKH',
+                type: 'post',
+                data: {
+
+                    tenKH: TenKhoaHoc,
+                    ngonNgu: NgonNgu,
+                },
+                success: function (data) {
+                    if (data.code == 200) {
+                        alert(data.msg);
+                        TaiDanhSachKhoaHoc();
+                        $('#TenKhoaHoc').val('');
+                        $('#NgonNgu').val('');
+                    } else {
+                        alert(data.msg);
+                    }
+                }
+            })
+
+        });
+
+
+
+
+        $('#btnAdd').click(function () {
+            $('#modalTitle').text('Thêm mới khoá học');
+            $('#IDKH').val('');
+            $('#modalKH').modal();
+
+            // Them moi cho gia trị = null
+            $('#TenKhoaHoc').val('');
+        })
+
+
+        // LOAD DANH SACH
+        function TaiDanhSachKhoaHoc() {
+            $.ajax({
+                url: '/Admin/KhoaHocss/DsKH',
+                type: 'get',
+                success: function (data) {
+                    //    load lại không chèn cũ;
+                    $('#KhoaHoc').empty();
+
+                    if (data.code == 200) {
+                        $.each(data.ds, function (k, v) {
+
+                            let tr = '<tr class="dong-phan-cach" id="' + v.Id + '">'
+                            tr += '<td class="pd-l">' + v.TenKhoaHoc + '</td>';
+                            tr += '<td>';
+
+                            tr += '<button class = "btn btn-warning mg-lr float-end" name="edit">' + 'Chỉnh sửa chi tiết' + '</button>';
+                            tr += '<button class = "btn btn-danger float-end" name="delete">' + 'Xóa' + '</button>';
+
+                            tr += '</td>';
+                            tr += '</td>';
+                            $('#KhoaHoc').append(tr);
+                            console.log(data);
+                        });
+                    }
+                }
+            });
+        }
+    </script>
+}

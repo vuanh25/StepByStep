@@ -1,18 +1,18 @@
 ﻿@model IEnumerable<WebApp.Models.Entities.ChiTietBaiLuyen>
 @{
     ViewBag.Title = "ChiTiet";
-    Layout = "~/Views/Shared/_Layout_Ngan.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <link href="~/Public/css/Css_LuyenCode.css" rel="stylesheet" />
 
-<div class="can_giua">
-    <p class="noibat">@ViewBag.TenBaiLuyen</p>
+<div class="can_giua" style="margin-top: 56px;">
+    <p class="noibat font">@ViewBag.TenBaiLuyen</p>
 </div>
 
 
 
-<section id="services" class="services section-bg">
+<section id="services" class="services section-bg font">
     <div class="container-fluid">
         <div class="row row-sm">
             <div class="col-md-6 _boxzoom">
@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="_product-detail-content">
+                <div class="_product-detail-content font">
                     @foreach (var item in Model)
                     {
                         <h6>Vấn đề </h6>

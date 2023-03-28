@@ -1,11 +1,57 @@
-﻿﻿.bg-main {
+﻿@media only screen and (max-width: 1550px) {
+    .small-bg {
+        align-items: center;
+        display: flex;
+    }
+}
+
+@media only screen and (max-width: 1200px ) and (min-width: 550px) {
+    .block-head-text {
+        padding: 10px 15px;
+        background-color: white;
+        z-index: 1;
+        position: absolute;
+        right: 0;
+    }
+
+    .h11 {
+        font-size: 32px !important;
+    }
+
+    .h33 {
+        font-size: 21px !important;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .block-head-text {
+        padding: 8px 12px;
+        background-color: white;
+        z-index: 1;
+        position: absolute;
+        right: 0;
+    }
+    .h11{font-size: 18px !important;}
+    .h33{font-size:14px !important;}
+}
+
+.h11 {
+    font-size: 40px;
+}
+.h33 {
+    font-size: 28px;
+}
+
+﻿.bg-main {
     background-color: #1D2A35;
 }
 
 .bg-footer {
     background-color: #1D2A35;
 }
-
+.bg-dangnhap {
+    position:absolute;
+}
 .noUnderlined {
     text-decoration: none;
 }
@@ -26,6 +72,245 @@
     color: black;
 }
 
-input[type="checkbox"] {
-    opacity: 0.5;
+
+.font {
+    font-family: Montserrat;
 }
+
+.btn-bottom {
+    position: absolute;
+    bottom: 10px;
+}
+.pd-t-16{
+    padding-top: 16px;
+}
+
+
+.mg-t-16 {
+    margin-top: 10px;
+}
+
+.mg-lr {
+    margin: 0 0 10px 10px;
+}
+
+.mg-t-10 {
+    margin-top:10px;
+}
+
+.can_giua {
+    display: flex;
+    justify-content: center;
+}
+/*      font        */
+.font {
+    font-family: Montserrat;
+
+}
+
+.btn-dangnhap {
+   /* max-width: 344px;*/
+    background-color: #1D2A35;
+    color: white;
+    font-weight: 500;
+}
+/*      Nhãn hot        */
+.course-thumb {
+    position: relative;
+}
+
+.course-thumb a {
+    display: block;
+}
+
+.cl-badge {
+    width: 80px;
+    height: 83px;
+    overflow: hidden;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+}
+
+.cl-badge::before, .cl-badge::after {
+    position: absolute;
+    z-index: -1;
+    content: '';
+    display: block;
+    border: 10px solid #10138c;
+    border-top-color: transparent;
+    border-left-color: transparent;
+}
+
+.cl-badge::before {
+    top: 0;
+    right: 3px;
+    transform: rotate(-35deg);
+}
+
+.cl-badge::after {
+    bottom: 6px;
+    transform: rotate(35deg);
+    left: 0;
+}
+
+.cl-badge span {
+    position: absolute;
+    display: block;
+    width: 120px;
+    padding: 2px 0;
+    box-shadow: 0 5px 10px rgba(0,0,0,.1);
+    color: #fff;
+    text-align: center;
+    right: -10px;
+    font-weight: 600;
+    font-size: 10px;
+    top: 20px;
+    transform: rotate(-45deg);
+    background: var(--accent-color);
+}
+
+.cl-badge.hot span {
+    background: #e8505b;
+}
+
+.cl-badge.hot::before, .cl-badge.hot::after {
+    border: 10px solid #cd3e46;
+    border-top-color: transparent;
+    border-left-color: transparent;
+}
+
+
+/*          Miễn phí        */
+.view-content-header .course-type {
+    padding: 4px 6px 3px;
+    font-size: 10px;
+    font-weight:500;
+    color: white;
+    border-radius: 13px;
+}
+
+.view-content-header .course-type.online {
+    background: #ffab00;
+}
+
+.view-content-header .course-type.offline {
+    background: #869ffd;
+}
+
+.view-content-header .course-type.on-or-off {
+    background: #09d0da;
+}
+/*          Hover Header        */
+.white-big > a{
+    color: white;
+    font-weight: 400;
+    font-size:16px;
+}
+
+.white-big > a:hover {
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.btn-gray {
+    background-color: #a7a7a7;
+}
+
+/*          Hover CARD          */
+.home-product-item {
+    background-color: var(--while-color);
+    /* margin-bottom: 10px; */
+    position: relative;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border: 0.5px solid transparent;
+    box-shadow: 0 0.0625rem 0.125rem 0 rgb(0 0 0 / 10%);
+    transition: transform linear 0.1s;
+    will-change: transform;
+    cursor: pointer;
+}
+.home-product-item:hover {
+    transform: translateY(-1px);
+    border: 0.5px solid #1D2A35;
+    z-index: 1;
+    cursor: pointer;
+    padding: 10px;
+    box-shadow: 5px 10px 8px #888888;
+}
+
+
+/*          Hình tròn           */
+.hinh-tron {
+    background-color: white;
+    width: 8px;
+    height:8px;
+    border-radius: 4px;
+    margin: 12px 6px;
+    display:inline-flex;
+}
+
+/*          Chuyển vàng thẻ             */
+.chuyen-vang > h5:hover{
+    color: yellow;
+}
+
+.cung-dong {
+    display: inline-flex;
+}
+.a {
+    text-decoration: none;
+    color: none;
+    padding:0px;
+}
+
+
+/*              BG-Login                            */
+.wrap-block-head-text {
+    max-width: 555px;
+    width: 100%;
+    margin-bottom: 90px;
+    margin-right: 15%;
+}
+
+.wrap-block-head-text:before {
+
+    content: '';
+    background: url(https://codelearn.io/Themes/TheCodeCampPro/Resources/Images/landing-v2/head-left-bg.png) center center/contain no-repeat;
+    display: block;
+    left: -60%;
+    bottom: -110px;
+    width: 45vw;
+    height: 35vw;
+}
+
+.block-head-text {
+    margin-right: 20px;
+    padding: 15px 20px;
+    background-color: white;
+    z-index: 1;
+    position: absolute;
+    right: 0;
+}
+
+.TheThongKe{
+    background-color: #ffcdcd;
+    border-radius: 8px;
+    justify-content: center;
+    display: block;
+    margin: 8px 12px;
+    text-align: center;
+    color: #000000;
+
+
+}
+
+.number_count {
+    color: #e8505b;
+    font-size: 4em;
+    bottom: 10px;
+    font-weight: 800;
+}
+
+
