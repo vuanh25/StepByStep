@@ -54,7 +54,6 @@ namespace WebApp.Migrations
         [HttpGet]
         public ActionResult Login()
         {
-            Session["TenTaiKhoan"] = "0";
             string tendn = requestCookie("tendn");
             if (!string.IsNullOrEmpty(tendn))
             {
@@ -264,7 +263,6 @@ namespace WebApp.Migrations
         public ActionResult LogOut()
         {
             Session.Clear();
-            Session["TenTaiKhoan"] = "0";
             return RedirectToAction("Index", "Home");
         }
 

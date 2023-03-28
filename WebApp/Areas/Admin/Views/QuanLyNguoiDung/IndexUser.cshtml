@@ -1,0 +1,219 @@
+﻿@model WebApp.Models.Entities.User
+
+@{
+    ViewBag.Title = "IndexUser";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<link href="~/Public/css/LuyenCodeAdmin.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card font container">
+            <div class="card-header can_giua">
+                <div class="row">
+                    <div class="">
+                        <strong>QUẢN LÝ THÔNG TIN NGƯỜI DÙNG</strong>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                @*<button class=" btn btn-success mg-tb col-md-4" id="btnAdd" style="width:10.3em; margin-left: 12px">
+                    Thêm Tài Khoản
+                </button>*@
+
+
+                <div class="col-md-8" style="margin-top: 8px;">
+                    @*@using (Html.BeginForm("DsBT", "LuyenCodeAdmin", FormMethod.Get))
+                        {
+                            <div>
+                                Tìm theo tên bài tập: @Html.TextBox("TenBaiTap", ViewBag.CurrentFilter as string)
+                                <input type="submit" value="Tìm kiếm" />
+                            </div>
+                        }*@
+                </div>
+            </div>
+            <table>
+                <thead>
+                    <tr class="mau_cho_cot_user ">
+                        <th class="pd-l">Họ tên người dùng</th>
+                        <th>Email</th>
+                        <th>Tên đăng nhập</th>
+                        <th>Mật khẩu</th>
+                        <th></th>
+
+                    </tr>
+                </thead>
+                <tbody id="BT" class="font chieu_cao_dong ">
+                </tbody>
+            </table>
+            <!-- /.card-body -->
+
+        </div>
+        <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+</div>
+
+@*      THÊM MỚI BÀI TẬP   ---   CHỈNH SỬA        *@
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="modalBT" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="panel panel-primary font ">
+                    <div class="panel-heading can_giua" id="modalTitle"></div>
+                    <div class="panel-body pd-lr">
+                        <input type="text" hidden id="IDBT" value="" />
+                        <div class="form-group">
+                            <label>Tên bài tập</label>
+                            <input type="text" class="form-control" id="TenLuyenTap" placeholder="Tên bài tập">
+                        </div>
+                        <div class="form-group">
+                            <label>Lượt xem</label>
+                            <input type="text" class="form-control" id="LuotXem" placeholder="Số lượng yêu thích">
+                        </div>
+                        <div class="form-group">
+                            <label>Yêu thích</label>
+                            <input type="text" class="form-control" id="YeuThich" placeholder="Số lượng yêu thích">
+                        </div>
+                        <div class="form-group cung-dong">
+                            <label class="pd-r">Ngôn ngữ</label>
+                            <select id="NgonNgu">
+                                <option value="0">C/C++</option>
+                                <option value="1">C#</option>
+                                <option value="2">Java</option>
+                            </select>
+                        </div>
+                        <div class="form-group mg-l-30 cung-dong">
+                            <label class="pd-r">Cấp độ</label>
+                            <select id="CapDo">
+                                <option value="0">Dễ</option>
+                                <option value="1">Trung bình</option>
+                                <option value="2">Khó</option>
+                                <option value="3">Siêu khó</option>
+                            </select>
+                        </div>
+                        <div class="form-group mg-l-30 cung-dong">
+                            <label class="pd-r">Điểm</label>
+                            <input type="text" class="form-control" id="Diem" placeholder="Điểm tối đa" style=" border: 1px solid #000000; border-radius: 1px">
+                        </div>
+                        <div class="form-group">
+                            <label>Đề bài</label>
+                            <input type="text" class="form-control" id="DeBai" placeholder="Nội dung">
+                        </div>
+                        <div class="form-group">
+                            <label>Yêu cầu đầu vào</label>
+                            <input type="text" class="form-control" id="YeuCau" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label>Đầu vào</label>
+                            <input type="text" class="form-control" id="Dvao" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label>Đầu ra</label>
+                            <input type="text" class="form-control" id="Dra" placeholder="">
+                        </div>
+                        <div class="row">
+                            <div class="form-group  col-md-6">
+                                <label>Ví dụ đầu vào</label>
+                                <input type="text" class="form-control" id="Vdv" placeholder="0">
+                            </div>
+                            <div class="form-group  col-md-6">
+                                <label>Ví dụ đầu ra</label>
+                                <input type="text" class="form-control" id="Vdr" placeholder="0">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnSubmit">Lưu</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            TaiDsUser();
+        })
+
+        //      XÓA TaiKhoan 
+        $(document).on('click', "button[name='delete']", function () {
+            let IDBT = $(this).closest('tr').attr('id');
+            var thong_bao = "Hãy nhấn OK để xác nhận xóa vĩnh viễn tài khoản này!"
+            if (confirm(thong_bao)) {
+                // true
+                $.ajax({
+                    url: 'QuanLyNguoiDung/Xoa',
+                    type: 'delete',
+                    data: {
+                        id: IDBT
+                    },
+                    success: function (data) {
+                        if (data.code == 200) {
+                            alert(data.msg);
+                            TaiDsUser();
+                        } else {
+                            alert(data.msg);
+                        }
+                    }
+                })
+            }
+        });
+
+
+        // LOAD DANH SACH
+        function TaiDsUser() {
+            $.ajax({
+                url: '/QuanLyNguoiDung/DsUser',
+                type: 'get',
+                success: function (data) {
+                    //    load lại không chèn cũ;
+                    $('#BT').empty();
+
+                    if (data.code == 200) {
+                        $.each(data.ds, function (k, v) {
+
+                            let tr = '<tr class="dong-phan-cach" id="' + v.Id + '">'
+                            tr += '<td class="pd-l">' + v.TenUser + '</td>';
+                            tr += '<td>' + v.Email + '</td>';
+                            tr += '<td>' + v.TenTaiKHoan + '</td>';
+                            tr += '<td>' + v.MatKhau + '</td>';
+
+                            tr += '<td>';
+
+                            tr += '<button class = "btn btn-danger mg-lr float-end" name="edit">' + 'Khóa tài khoản' + '</button>';
+                            tr += '<button class = "btn btn-danger float-end" name="delete">' + 'Xóa' + '</button>';
+
+                            tr += '</td>';
+                            tr += '</td>';
+                            $('#BT').append(tr);
+
+                        })
+                    }
+                }
+            })
+        }
+    </script>
+}

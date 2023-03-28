@@ -55,18 +55,6 @@
                 }
                 else
                 {
-                    <tr class="active-row font">
-                        <td class="active-row"><a class="noUnderlined " href="@Url.Action("ChiTiet", "LuyenCode", new { @id = item.Id})">@item.TenLuyenTap</a></td>
-
-                <tr>
-                    <td><a class="noUnderlined text-black" href="@Url.Action("ChiTiet", "LuyenCode", new { @id = item.Id})">@item.TenLuyenTap</a></td>
-                    <td>@item.LuotXem</td>  
-                    <td>@item.YeuThich</td>
-                    <td>@item.DoKho</td>
-                </tr>
-                }
-                else
-                {
                     <tr class="active-row">
                         <td class="active-row"><a class="noUnderlined " href="@Url.Action("ChiTiet", "LuyenCode", new { @id = item.Id})" >@item.TenLuyenTap</a></td>
 

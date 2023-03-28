@@ -6,19 +6,24 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WebApp.Controllers;
 using WebApp.Models;
 using WebApp.Models.Entities;
 
 namespace WebApp.Areas.Admin.Controllers
 {
-    public class KhoaHocssController : Controller
+    public class KhoaHocssController : KiemTraController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Admin/KhoaHocs
         public ActionResult Index()
         {
-            return View();
+            if (KiemTraDangNhapAdmin())
+            {
+                return View();
+            }
+            return RedirectToAction("Login", "User");
         }
 
         [HttpGet]
