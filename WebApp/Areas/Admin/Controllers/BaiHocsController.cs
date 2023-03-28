@@ -6,40 +6,35 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WebApp.Controllers;
 using WebApp.Models;
 using WebApp.Models.Entities;
 
 namespace WebApp.Areas.Admin.Controllers
 {
-    public class BaiHocsController : Controller
+    public class BaiHocsController : KiemTraController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Admin/BaiHocs
         public ActionResult Index(string TenKhoaHoc)
         {
-           /* if (KiemTraDangNhapAdmin())
-            {*/
+            if (KiemTraDangNhapAdmin())
+            {
                 var khoahocs = db.KhoaHocs.Where(p => p.TenKhoaHoc.Contains(TenKhoaHoc)).ToList();
                 foreach (var item in khoahocs)
                 {
-                if (Equals(item.TenKhoaHoc,TenKhoaHoc))
-                {
-
-                    ViewBag.TenKhoaHoc = item.TenKhoaHoc;
-                    List<BaiHoc> baiHocs = db.BaiHocs.Where(x => x.KhoaHoc.IDKhoaHoc == item.IDKhoaHoc).ToList();
-                    return View(baiHocs);
-                }
-
+                    if (Equals(item.TenKhoaHoc,TenKhoaHoc))
+                    {
 
                         ViewBag.TenKhoaHoc = item.TenKhoaHoc;
-                        List<BaiHoc> baiHocs = db.BaiHocs.Where(x => x.IdKhoaHoc == item.IDKhoaHoc).ToList();
+                        List<BaiHoc> baiHocs = db.BaiHocs.Where(x => x.KhoaHoc.IDKhoaHoc == item.IDKhoaHoc).ToList();
                         return View(baiHocs);
                     }
                 }
                 return View();
-      /*      }
-            return RedirectToAction("Login", "User");*/
+            }
+            return RedirectToAction("Login", "User");
         }
 
 
