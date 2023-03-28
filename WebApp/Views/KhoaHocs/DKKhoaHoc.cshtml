@@ -2,24 +2,46 @@
 @{
     ViewBag.Title = "DKKhoaHoc";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.TenTaiKhoan = Session["TenTaiKhoan"];
+    ViewBag.VIP = Session["VIP"];
 }
 <link href="~/Public/css/Css_KhoaHoc.css" rel="stylesheet" />
 <div class="">
     <div class="Banner">
 
         <div class="center-khoahoc text-center">
-            <h3 class="text-KhoaHoc">HỌC HTML CĂN BẢN LÀM CHỦ KỸ NĂNG XÂY DỰNG WEBSITE CHỈ TRONG 60 BÀI HỌC</h3>  
+            <h3 class="text-KhoaHoc">HỌC HTML CĂN BẢN LÀM CHỦ KỸ NĂNG XÂY DỰNG WEBSITE CHỈ TRONG 60 BÀI HỌC</h3>
         </div>
         <div class="btnDK">
-            ĐĂNG KÝ NGAY
-        </div>
+            @if (ViewBag.TenTaiKhoan == null)
+            {
+                <a href="@Url.Action("Login","User")">Đăng ký</a>
+            }
+            else
+            {
+                if (ViewBag.VIP != null)
+                {
+                    <a onclick="thamlam" href="@Url.Action("Home","Index")">Đăng ký</a>
+                }
+                else
+                {
+                    <a href="@Url.Action("ChonPhuongThucThanhToan","Payment",new { id = 2})">Đăng ký</a>
+                }
+            }
 
-        
+        </div>
         <img style="width:100%; display: block;" src="~/Public/images/banner_khoahoc.jpg" />
     </div>
-    
+
 </div>
 <div style="width: 500px;">
-    
+
 </div>
+
+<script>
+        function thamlam() {
+            alert("Bạn đã có gói đăng ký rồi!!!");
+        }
+
+</script>
 

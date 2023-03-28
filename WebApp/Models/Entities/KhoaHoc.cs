@@ -19,6 +19,8 @@ namespace WebApp.Models.Entities
         [StringLength(500)]
         public string TenKhoaHoc { get; set; }
         public Nullable<long> IDNgonNgu { get; set; }
+        [Column(TypeName = "money")]
+        public decimal? GiaGoiKhoaHoc { get; set; }
 
     }
 }
