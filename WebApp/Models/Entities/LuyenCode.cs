@@ -24,7 +24,6 @@ namespace WebApp.Models.Entities
         [Required]
         public int LuotXem { get; set; }
 
-        //    public ChiTietBaiLuyen NoiDung { get; set; }
         public virtual NgonNgu NgonNgu { get; set; }
         public virtual DoKho DoKho { get; set; }
 
