@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.TenTaiKhoan = Session["TenTaiKhoan"];
 }
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <link href="~/Public/css/_Layout.css" rel="stylesheet" />
@@ -81,11 +82,11 @@
                     </div>
                 </div>
 
+
                 <div class="card-body">
                     <div class="view-content-header text-end">
-                        <span class="course-type offline">
-                            Có phí
-                        </span>
+                       
+
                     </div>
                     <h5 class="card-title">HTML - Cơ bản</h5>
                     <p class="card-text" style="height:72px">Viết mã HTML tạo các trang web</p>
@@ -120,96 +121,96 @@
     <br />
 
     @*              Dòng 2                   *@
-<div class="container d-flex flex-wrap justify-content-start justify-content-around ">
-    <div class="card home-product-item bg-white mg-t-16" style="width: 18rem;">
-        <div class="course-thumb ">
-            <a href="#">
-                <img src="https://xuanthulab.net/photo/java-4466.png" class="card-img-top" alt="...">
-            </a>
-            @*<div class="cl-badge hot">
-                    <span>Hot</span>
-                </div>*@
-        </div>
-
-        <div class="card-body">
-            <div class="view-content-header text-end">
-                <span class="course-type online">
-                    Miễn phí
-                </span>
+    <div class="container d-flex flex-wrap justify-content-start justify-content-around ">
+        <div class="card home-product-item bg-white mg-t-16" style="width: 18rem;">
+            <div class="course-thumb ">
+                <a href="#">
+                    <img src="https://xuanthulab.net/photo/java-4466.png" class="card-img-top" alt="...">
+                </a>
+                @*<div class="cl-badge hot">
+                        <span>Hot</span>
+                    </div>*@
             </div>
-            <h5 class="card-title">Lập trình Java</h5>
-            <p class="card-text" style="height:72px">Ngôn ngữ lập trình Java cơ bản</p>
-            <a href="#" class="btn btn-primary">Vào học</a>
-        </div>
-    </div>
-    @*    home-product-item       *@
-    <div class="card  bg-white mg-t-16" style="width: 18rem;">
-        <div class="course-thumb ">
-            <a href="#">
-                <img src="https://xuanthulab.net/photo/angular-4456.png" class="card-img-top" alt="...">
-            </a>
-            @*<div class="cl-badge hot">
-                    <span>Hot</span>
-                </div>*@
-        </div>
 
-        <div class="card-body">
-            <div class="view-content-header  text-end">
-                <span class="course-type online">
-                    Miễn phí
-                </span>
+            <div class="card-body">
+                <div class="view-content-header text-end">
+                    <span class="course-type online">
+                        Miễn phí
+                    </span>
+                </div>
+                <h5 class="card-title">Lập trình Java</h5>
+                <p class="card-text" style="height:72px">Ngôn ngữ lập trình Java cơ bản</p>
+                <a href="#" class="btn btn-primary">Vào học</a>
             </div>
-            <h5 class="card-title">Angular</h5>
-            <p class="card-text" style="height:72px">Một nền tảng cung cấp cách thức để xây dựng app chạy chạy trên web, desktop ...</p>
-            <div href="#" class="btn btn-gray">Sắp ra mắt</div>
         </div>
-    </div>
-    @*  home-product-item *@
-    <div class="card  bg-white mg-t-16" style="width: 18rem;">
-        <div class="course-thumb ">
-            <a href="#">
-                <img src="https://xuanthulab.net/photo/git-4462.png" class="card-img-top" alt="...">
-            </a>
-            @*<div class="cl-badge hot">
-                    <span>Hot</span>
-                </div>*@
-        </div>
-
-        <div class="card-body">
-            <div class="view-content-header  text-end">
-                <span class=" course-type online">
-                    Miễn phí
-                </span>
+        @*    home-product-item       *@
+        <div class="card  bg-white mg-t-16" style="width: 18rem;">
+            <div class="course-thumb ">
+                <a href="#">
+                    <img src="https://xuanthulab.net/photo/angular-4456.png" class="card-img-top" alt="...">
+                </a>
+                @*<div class="cl-badge hot">
+                        <span>Hot</span>
+                    </div>*@
             </div>
-            <h5 class="card-title">Git & GitHub</h5>
-            <p class="card-text" style="height:72px">Quản lý phiên bản phân tán với Git và Repository Git thông dụng GitHub</p>
-            <div href="#" class="btn btn-gray">Sắp ra mắt</div>
-        </div>
-    </div>
-    @*  home-product-item *@
-    <div class="card  bg-white mg-t-16" style="width: 18rem;">
-        <div class="course-thumb ">
-            <a href="#">
-                <img src="https://xuanthulab.net/photo/sql-4470.png" class="card-img-top" alt="...">
-            </a>
-            @*<div class="cl-badge hot">
-                    <span>Hot</span>
-                </div>*@
-        </div>
 
-        <div class="card-body">
-            <div class="view-content-header  text-end">
-                <span class=" course-type online">
-                    Miễn phí
-                </span>
+            <div class="card-body">
+                <div class="view-content-header  text-end">
+                    <span class="course-type online">
+                        Miễn phí
+                    </span>
+                </div>
+                <h5 class="card-title">Angular</h5>
+                <p class="card-text" style="height:72px">Một nền tảng cung cấp cách thức để xây dựng app chạy chạy trên web, desktop ...</p>
+                <div href="#" class="btn btn-gray">Sắp ra mắt</div>
             </div>
-            <h5 class="card-title">Học SQL</h5>
-            <p class="card-text" style="height:72px">Ngôn ngữ truy vấn có cấu trúc (SQL) phục vụ việc lưu trữ và xử lý thông tin </p>
-            <div href="#" class="btn btn-gray">Sắp ra mắt</div>
         </div>
-    </div>
+        @*  home-product-item *@
+        <div class="card  bg-white mg-t-16" style="width: 18rem;">
+            <div class="course-thumb ">
+                <a href="#">
+                    <img src="https://xuanthulab.net/photo/git-4462.png" class="card-img-top" alt="...">
+                </a>
+                @*<div class="cl-badge hot">
+                        <span>Hot</span>
+                    </div>*@
+            </div>
 
-</div>
+            <div class="card-body">
+                <div class="view-content-header  text-end">
+                    <span class=" course-type online">
+                        Miễn phí
+                    </span>
+                </div>
+                <h5 class="card-title">Git & GitHub</h5>
+                <p class="card-text" style="height:72px">Quản lý phiên bản phân tán với Git và Repository Git thông dụng GitHub</p>
+                <div href="#" class="btn btn-gray">Sắp ra mắt</div>
+            </div>
+        </div>
+        @*  home-product-item *@
+        <div class="card  bg-white mg-t-16" style="width: 18rem;">
+            <div class="course-thumb ">
+                <a href="#">
+                    <img src="https://xuanthulab.net/photo/sql-4470.png" class="card-img-top" alt="...">
+                </a>
+                @*<div class="cl-badge hot">
+                        <span>Hot</span>
+                    </div>*@
+            </div>
+
+            <div class="card-body">
+                <div class="view-content-header  text-end">
+                    <span class=" course-type online">
+                        Miễn phí
+                    </span>
+                </div>
+                <h5 class="card-title">Học SQL</h5>
+                <p class="card-text" style="height:72px">Ngôn ngữ truy vấn có cấu trúc (SQL) phục vụ việc lưu trữ và xử lý thông tin </p>
+                <div href="#" class="btn btn-gray">Sắp ra mắt</div>
+            </div>
+        </div>
+
+    </div>
 
     <br />
     <br />
@@ -223,56 +224,56 @@
         var dem = 0;
     }
 
-<div class="bg-dark text-white pd-t-16">
-    <div class="text-center " style="display: block;">
-        <h5 style="font-family: Montserrat; font-style: unset; ">BÀI TẬP THỊNH HÀNH</h5>
-    </div>
-    <br />
-    @using (Html.BeginForm())
-    {
-        @Html.ValidationSummary(true)
-        <div class="container font ">
-            <div class="row justify-content-around">
-
-           @foreach (var item in products)
-            {
-                dem++;
-                    
-                <div class="col-sm font can_giua">
-                    <a href="@Url.Action("ChiTiet", "LuyenCode", new { @id = item.Id}) " class="cung-dong a text-white">
-                        <div class="panel panel-default " style="justify-items: center; ">
-                            <div class="panel panel-heading text-white PageList can_giua chuyen-vang">
-                                <h5>@item.TenLuyenTap</h5>
-                            </div>
-                            <div class="panel-body ">
-                                <p class="can_giua">
-                                    <span>
-                                        <i class="far fa-fw fa-eye mr-5"></i> @item.LuotXem
-                                        <i class="heart-checkbox-true"></i>  @item.YeuThich
-                                    </span>
-                                    <br />
-                                </p>
-                                <div class="can_giua">
-                                    <p>
-                                        <img style="width : 250px" src="~/Content/images/b.jpg" />
-                                    </p>
-                                </div>
-                                <br />
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                    
-                if (dem == 4)
-                {
-                    break;
-                }
-            }
-            </div>
-
+    <div class="bg-dark text-white pd-t-16">
+        <div class="text-center " style="display: block;">
+            <h5 style="font-family: Montserrat; font-style: unset; ">BÀI TẬP THỊNH HÀNH</h5>
         </div>
-    }
-</div>
+        <br />
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+            <div class="container font ">
+                <div class="row justify-content-around">
+
+                    @foreach (var item in products)
+                    {
+                        dem++;
+
+                        <div class="col-sm font can_giua">
+                            <a href="@Url.Action("ChiTiet", "LuyenCode", new { @id = item.Id}) " class="cung-dong a text-white">
+                                <div class="panel panel-default " style="justify-items: center; ">
+                                    <div class="panel panel-heading text-white PageList can_giua chuyen-vang">
+                                        <h5>@item.TenLuyenTap</h5>
+                                    </div>
+                                    <div class="panel-body ">
+                                        <p class="can_giua">
+                                            <span>
+                                                <i class="far fa-fw fa-eye mr-5"></i> @item.LuotXem
+                                                <i class="heart-checkbox-true"></i>  @item.YeuThich
+                                            </span>
+                                            <br />
+                                        </p>
+                                        <div class="can_giua">
+                                            <p>
+                                                <img style="width : 250px" src="~/Content/images/b.jpg" />
+                                            </p>
+                                        </div>
+                                        <br />
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        if (dem == 4)
+                        {
+                            break;
+                        }
+                    }
+                </div>
+
+            </div>
+        }
+    </div>
 
 
 
@@ -297,3 +298,10 @@
     </div>
 
 </div>
+
+<script>
+        function thamlam() {
+            alert("Bạn đã có gói đăng ký rồi!!!");
+        }
+
+</script>

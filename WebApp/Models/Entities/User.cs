@@ -10,6 +10,7 @@ namespace WebApp.Models.Entities
     [Table("Users")]
     public class User
     {
+        
         [Key]
         public int IdUser { get; set; }
 
@@ -29,6 +30,9 @@ namespace WebApp.Models.Entities
         [StringLength(50)]
         [DataType(DataType.Password)]
         public string MatKhau { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MuaKhoaHoc> MuaKhoaHocs { get; set; }
 
         // Quan hệ nối ở dưới
 
