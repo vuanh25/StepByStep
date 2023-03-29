@@ -25,29 +25,12 @@
 
 </head>
 <div class="body1">
-
-    @*<section class="header clearfix">
-        <div class="container py-2">
-            <div class="row">
-                <div class="col-md-2 logo">
-                    <img src="~/Public/images/logo.png" alt="Logo" class="img-fluid" />
-                </div>
-                <div class="col-md-7" style="margin-top:40px">
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                </div>
-                <div class="col-md-4"></div>
-            </div>
-        </div>
-    </section>*@
-
     <section class="mainmenu clearfix bg-footer font" style="position: fixed; width: 100%; top: 0; z-index: 10;">
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-main">
                 <div class="container-fluid white-big">
-                    <a class="navbar-brand text-white" href="~/Home/Index">Trang chủ</a>
+                    @*<h3 class="hover">Hover Me</h3>*@
+                    <a class="hover1 text-white noUnderlined" style="margin-right: 4px;" href="~/Home/Index">Trang chủ</a>
                     <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -57,13 +40,13 @@
                                 <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Khoá học
                                 </a>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu font">
                                     <li class="">
                                         <a class="dropdown-item">@Html.Action("Genre", "KhoaHocs")</a>
                                     </li>
                                 </ul>
                             </li>
-                          <li class="nav-item white-big">
+                            <li class="nav-item white-big">
                                 <a class="nav-link text-white" href="@Url.Action("Index", "LuyenCode", new { @id = 1})">Luyện code</a>
                             </li>
 
@@ -71,17 +54,14 @@
                                 <a class="nav-link dropdown-toggle text-white" href="@Url.Action("Index", "CongDong", new { @id = 1})" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Cộng đồng
                                 </a>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu font" style="font-size: 16px; ">
                                     <li><a class="dropdown-item" href="@Url.Action("Index", "CauHoi")">Hỏi đáp</a></li>
                                     <li><a class="dropdown-item" href="@Url.Action("Index", "BaiViet")">Bài viết</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    @*  <li><hr class="dropdown-divider"></li>*@
                                 </ul>
                             </li>
-
-
                         </ul>
-                       @Html.Partial("LoginPartial")
+                        @Html.Partial("LoginPartial")
                     </div>
                 </div>
             </nav>
@@ -167,7 +147,7 @@
                                 <h6 class="text-uppercase fw-bold">Liên hệ</h6>
                                 <hr class="mb-4 mt-0 d-inline-block mx-auto"
                                     style="width: 60px; background-color: #7c4dff; height: 2px" />
-                                <p><i class="fas fa-home mr-3"></i>Hoàng Diệu 2, Quận 9, TP.Hồ Chí minh</p>
+                                <p><i class="fas fa-home mr-3"></i> TP.Hồ Chí minh</p>
                                 <p><i class="fas fa-envelope mr-3"></i> vuanhpham25@gmail.com</p>
                                 <p><i class="fas fa-phone mr-3"></i> + 84 234 567 88</p>
                                 <p><i class="fas fa-print mr-3"></i> + 84 234 567 89</p>

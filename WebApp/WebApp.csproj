@@ -105,6 +105,9 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -132,10 +135,6 @@
     </Reference>
     <Reference Include="System.Web.Optimization">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -230,7 +229,6 @@
     <Compile Include="Areas\Admin\Controllers\KhoaHocssController.cs" />
     <Compile Include="Areas\Admin\Controllers\LuyenCodeAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyNguoiDungController.cs" />
-
     <Compile Include="Controllers\BaiHocController.cs" />
     <Compile Include="Controllers\BaiVietController.cs" />
     <Compile Include="Controllers\CauHoiController.cs" />
@@ -238,9 +236,7 @@
     <Compile Include="Controllers\KiemTraController.cs" />
     <Compile Include="Controllers\LuyenCodeController.cs" />
     <Compile Include="Controllers\KhoaHocsController.cs" />
-
     <Compile Include="Controllers\PaymentController.cs" />
-
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -248,7 +244,6 @@
     <Compile Include="Migrations\202303230543214_UPDATE-dataCTBT.designer.cs">
       <DependentUpon>202303230543214_UPDATE-dataCTBT.cs</DependentUpon>-->
     <Compile Include="Controllers\UserController.cs" />
-
     <Compile Include="Migrations\202303280625058_InitialCreate.cs" />
     <Compile Include="Migrations\202303280625058_InitialCreate.Designer.cs">
       <DependentUpon>202303280625058_InitialCreate.cs</DependentUpon>
@@ -265,10 +260,6 @@
     <Compile Include="Migrations\202303280725446_capnhaplai khoahoa va muakhoahoc.Designer.cs">
       <DependentUpon>202303280725446_capnhaplai khoahoa va muakhoahoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202303281342348_doi ten khoa hoc thanh idkhoahoc.cs" />
-    <Compile Include="Migrations\202303281342348_doi ten khoa hoc thanh idkhoahoc.Designer.cs">
-      <DependentUpon>202303281342348_doi ten khoa hoc thanh idkhoahoc.cs</DependentUpon>
-
     <Compile Include="Controllers\PhanHoiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -280,7 +271,10 @@
     <Compile Include="Migrations\202303281250441_data.cs" />
     <Compile Include="Migrations\202303281250441_data.Designer.cs">
       <DependentUpon>202303281250441_data.cs</DependentUpon>
-
+    </Compile>
+    <Compile Include="Migrations\202303291319517_alo1111.cs" />
+    <Compile Include="Migrations\202303291319517_alo1111.Designer.cs">
+      <DependentUpon>202303291319517_alo1111.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities\ChiTietBaiHoc.cs" />
@@ -307,8 +301,10 @@
   <ItemGroup>
     <Content Include="Content\images\a.jpg" />
     <Content Include="Content\images\b.jpg" />
+    <Content Include="Content\images\baiviet.jpg" />
     <Content Include="Content\images\user-avatar.svg" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Public\css\Css_CongDong.css" />
     <Content Include="Public\css\Css_KhoaHoc.css" />
     <Content Include="Public\css\Css_LuyenCode.css" />
     <Content Include="Public\css\login.css" />
@@ -2596,7 +2592,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-
     <EmbeddedResource Include="Migrations\202303280625058_InitialCreate.resx">
       <DependentUpon>202303280625058_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
@@ -2609,15 +2604,14 @@
     <EmbeddedResource Include="Migrations\202303280725446_capnhaplai khoahoa va muakhoahoc.resx">
       <DependentUpon>202303280725446_capnhaplai khoahoa va muakhoahoc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303281342348_doi ten khoa hoc thanh idkhoahoc.resx">
-      <DependentUpon>202303281342348_doi ten khoa hoc thanh idkhoahoc.cs</DependentUpon>
-
     <EmbeddedResource Include="Migrations\202303281043477_init.resx">
       <DependentUpon>202303281043477_init.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303281250441_data.resx">
       <DependentUpon>202303281250441_data.cs</DependentUpon>
-
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303291319517_alo1111.resx">
+      <DependentUpon>202303291319517_alo1111.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
