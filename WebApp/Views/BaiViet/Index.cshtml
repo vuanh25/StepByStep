@@ -4,58 +4,82 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link href="~/Public/css/Css_CongDong.css" rel="stylesheet" />
 
-<div class="container" style="margin-top: 56px;">
+
+<div class="container font" style="margin-top: 56px;">
     <div class="col-md-12">
         <div class="mb-3">
             <br />
-            <a class="btn btn-outline-secondary fs-5" href="@Url.Action("TaoBaiViet", "BaiViet")">Tạo bài viết</a>
+            <a class="btn btn-success " href="@Url.Action("TaoBaiViet", "BaiViet")">Tạo bài viết</a>
         </div>
-        @foreach (var item in Model)
-        {
-            <!--<div class="counts">
-                <div class="counts-answered">
-                    <div class="mini-counts">
-                        <span>0</span>
-                    </div>
-                    <span>Trả lời</span>
-                </div>
-                <div class="counts-views text-danger">
-                    <div class="mini-counts">
-                        <span>@item.LuotXem</span>
-                    </div>
-                    <span>Lượt xem</span>
-                </div>
-            </div>
-            <div class="summary">
-                <a href="@Url.Action("ChiTietCauHoi")">
-                    <h4 class="h5 mb-5">
-                        <span class="mark-lookup">@item.TieuDe</span>
-                    </h4>
-                </a>
-                <div class="mb-5">
-                    <a href="#" class="post-tag">@item.NgonNgu</a>
-                </div>
-                <div class="font-size-xs mb-5 text-muted">
-                    <span>-->
-            @*<a href="#">@item.User.TenUser</a>
-                <em class="format-time font-w600">
-
-                </em>*@
-            <!--</span>
-                </div>
-            </div>-->
-
-
-            <a class="text-black text-decoration-none fs-4" href="@Url.Action("ChiTietBaiViet", new { @id = item.IdBaiViet})">@item.TieuDe</a>
-            <div class="mb-5">
-                <span class="fs-4">Lượt thích: @item.LuotThich</span>
-                <span class="fs-4">Lượt xem: @item.LuotXem</span>
-                <span class="fs-4">Phản hồi: 0</span>
-                <a href="#" class="text-black text-decoration-none fs-4">#@item.NgonNgu</a>
-            </div>
-            <hr>
-
-        }
-    </div>
+        
+        </div>
 </div>
+
+
+    <div class="container">
+        <div class="col-md-12 col-lg-12">
+
+            <article class="post vt-post" style="padding: 0px 16px;">
+                @foreach (var item in Model)
+                {
+                    <div class="row card2 " style="margin-bottom: 6px;">
+
+                        <div class="cung-dong" style="flex-direction: row-reverse;">
+                            <div class="btn btn-default text-blueX " style="width: 15rem; text-decoration: none; margin-top:0.5px; "><a href="#">by: Tác giả</a></div>
+                            @*<div class="liner"></div>*@
+                        </div>
+                        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4">
+                            <div class="post-type post-img can_giua"><a href="#"><img src="~/Content/images/baiviet.jpg" class="img-responsive" alt="image post" style="height: 10em; max-width: 400px;"></a></div>
+                            <div class="author-info author-info-2">
+                                <ul class="list-inline cung-dong">
+                                    <li class="info">
+                                        <p>Ngày đăng</p>
+                                        <strong>@item.NgayDang</strong>
+                                    </li>
+                                    <li class="info pd-l">
+                                        <p>Lượt xem</p>
+                                        <strong>@item.LuotXem</strong>
+                                    </li>
+                                    <li class="info pd-l">
+                                        <p>Yêu thích:</p>
+                                        <strong>@item.LuotThich  </strong>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-8">
+                            <div class="caption">
+                                <h3 class="md-heading">
+                                    <a class="text-black text-decoration-none fs-4 gioi_han_tieu_de" style="font-weight: 600 !important;" href="@Url.Action("ChiTietBaiViet", new { @id = item.IdBaiViet})">@item.TieuDe</a>
+                                </h3>
+                                <p class="gioi_han">@item.NoiDungBaiViet </p>
+                                <a class="btn btn-primary" href="#" role="button">Đọc thêm</a>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+
+            </article>
+
+
+
+
+        </div>
+    </div>
+
+
+<div class="pagination-wrap">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="clearfix"></div>
