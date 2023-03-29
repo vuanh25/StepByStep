@@ -12,8 +12,7 @@ namespace WebApp.Controllers
         // GET: KiemTra
         public bool KiemTraDangNhapAdmin()
         {
-            var TaiKhoan = Session["TenTaiKhoan"].ToString();
-            if (TaiKhoan.Equals("admin"))
+            if (Session["TenNguoiDung"] != null &&  Session["TenTaiKhoan"].Equals("admin"))
             {
                 return true;
             }
@@ -24,12 +23,12 @@ namespace WebApp.Controllers
         {
             try
             {
-                var TaiKhoan = Session["TenTaiKhoan"].ToString();
-                if (Session["TenTaiKhoan"].ToString() == "0")
+                if (Session["TenNguoiDung"] != null)
                 {
-                    return false;
+                    return true;
                 }
-                return true;
+                return false;
+                
             }
             catch (Exception)
             {

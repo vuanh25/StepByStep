@@ -226,6 +226,7 @@
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\KhoaHocssController.cs" />
     <Compile Include="Areas\Admin\Controllers\LuyenCodeAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyNguoiDungController.cs" />
     <Compile Include="Controllers\BaiHocController.cs" />
     <Compile Include="Controllers\BaiVietController.cs" />
     <Compile Include="Controllers\CauHoiController.cs" />
@@ -247,6 +248,10 @@
     <Compile Include="Migrations\202303281043477_init.cs" />
     <Compile Include="Migrations\202303281043477_init.Designer.cs">
       <DependentUpon>202303281043477_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303281250441_data.cs" />
+    <Compile Include="Migrations\202303281250441_data.Designer.cs">
+      <DependentUpon>202303281250441_data.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities\ChiTietBaiHoc.cs" />
@@ -270,6 +275,7 @@
   <ItemGroup>
     <Content Include="Content\images\a.jpg" />
     <Content Include="Content\images\b.jpg" />
+    <Content Include="Content\images\user-avatar.svg" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Public\css\Css_KhoaHoc.css" />
     <Content Include="Public\css\Css_LuyenCode.css" />
@@ -2491,6 +2497,7 @@
     <Content Include="Areas\Admin\Views\ChiTietBaiHocs\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietBaiHocs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietBaiHocs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyNguoiDung\IndexUser.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2555,6 +2562,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202303281043477_init.resx">
       <DependentUpon>202303281043477_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303281250441_data.resx">
+      <DependentUpon>202303281250441_data.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

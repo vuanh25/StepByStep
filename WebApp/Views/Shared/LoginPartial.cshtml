@@ -11,12 +11,18 @@
                 Xin chào  @Session["TenNguoiDung"]
             </a>
             <ul class="dropdown-menu">
+                @if (@Session["TenNguoiDung"] != null && @Session["TenNguoiDung"].Equals("admin") )
+                {
+                    <li class="dropdown-item noUnderlined font" style="font-size: 16px;">
+                        <a href="@Url.Action("IndexAdmin","Admin/Dashboard")">Quản lý trang</a>
+                    </li>
+                }
                 <li class="dropdown-item noUnderlined font" style="font-size: 16px;">
                     <a href="@Url.Action("ShowInfor","User")">Cài đặt</a>
                 </li>
                 <li><a class="dropdown-item noUnderlined text-red " style="font-size: 16px;" href="javascript:document.getElementById('logoutForm').submit(0)">Đăng xuất</a></li>
-            
-               
+
+
             </ul>
         </div>
     }
