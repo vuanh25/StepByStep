@@ -51,11 +51,11 @@ namespace WebApp.Areas.Admin.Controllers
 
         //                  XOA USER
         [HttpDelete]
-        public JsonResult Xoa(int id)
+        public JsonResult Xoa(int IdUser)
         {
             try
             {
-                var l = db.Users.SingleOrDefault(x => x.IdUser == id);
+                var l = db.Users.SingleOrDefault(x => x.IdUser == IdUser);
 
                 if (l != null)
                 {

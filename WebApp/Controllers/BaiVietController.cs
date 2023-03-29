@@ -52,7 +52,7 @@ namespace WebApp.Controllers
                 //c.DanhMuc = danhmuc;
                 db.BaiViets.Add(v);
                 db.SaveChanges();
-                return RedirectToAction("ListSach");
+                return RedirectToAction("Index");
             }
             return this.TaoBaiViet();
         }

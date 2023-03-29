@@ -67,7 +67,7 @@
 @*      THÊM MỚI BÀI TẬP   ---   CHỈNH SỬA        *@
 
 
-@using (Html.BeginForm())
+@*@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
@@ -148,7 +148,7 @@
             </div>
         </div>
     </div>
-}
+}*@
 
 
 
@@ -165,10 +165,10 @@
             if (confirm(thong_bao)) {
                 // true
                 $.ajax({
-                    url: 'QuanLyNguoiDung/Xoa',
+                    url: '/QuanLyNguoiDung/Xoa',
                     type: 'delete',
                     data: {
-                        id: IDBT
+                        IdUser: IDBT
                     },
                     success: function (data) {
                         if (data.code == 200) {
@@ -203,7 +203,7 @@
 
                             tr += '<td>';
 
-                            tr += '<button class = "btn btn-danger mg-lr float-end" name="edit">' + 'Khóa tài khoản' + '</button>';
+                            //tr += '<button class = "btn btn-danger mg-lr float-end" name="edit">' + '      ' + '</button>';
                             tr += '<button class = "btn btn-danger float-end" name="delete">' + 'Xóa' + '</button>';
 
                             tr += '</td>';
