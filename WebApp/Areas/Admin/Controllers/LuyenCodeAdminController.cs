@@ -37,6 +37,7 @@ namespace WebApp.Areas.Admin.Controllers
                               {
                                   Id = l.Id,
                                   TenLuyenTap = l.TenLuyenTap,
+                                  LuotXem = l.LuotXem,
                                   YeuThich = l.YeuThich,
                                   NgonNgu = l.NgonNgu.ToString(),
                                   CapDo = l.DoKho.ToString()
@@ -56,12 +57,13 @@ namespace WebApp.Areas.Admin.Controllers
 
 
         [HttpPost]
-        public JsonResult AddBT(string tenBT, int yeuThich, int ngonNgu,int doKho)
+        public JsonResult AddBT(string tenBT,int luotXem, int yeuThich, int ngonNgu,int doKho)
         {
             try
             {
                 var l = new LuyenCode();
                 l.TenLuyenTap = tenBT;
+                l.LuotXem = luotXem;
                 l.YeuThich = yeuThich;
                 l.NgonNgu = (Models.Enums.NgonNgu)ngonNgu;
                 l.DoKho = (Models.Enums.DoKho)doKho;
@@ -150,12 +152,13 @@ namespace WebApp.Areas.Admin.Controllers
         //          ĐỔ DỮ LIỆU ĐỂ --- CẬP NHẬP 
 
         [HttpPost]
-        public JsonResult CapNhap(int id, string TenLuyenTap, int YeuThich, int NgonNgu, int DoKho)
+        public JsonResult CapNhap(int id, string TenLuyenTap,int LuotXem, int YeuThich, int NgonNgu, int DoKho)
         {
             try
             {
                 var l = db.LuyenTaps.SingleOrDefault(x => x.Id == id);
                 l.TenLuyenTap = TenLuyenTap;
+                l.LuotXem = LuotXem;
                 l.YeuThich = YeuThich;
                 l.NgonNgu = (Models.Enums.NgonNgu)NgonNgu;
                 l.DoKho = (Models.Enums.DoKho)DoKho;

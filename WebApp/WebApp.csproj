@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -219,7 +220,6 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -229,12 +229,18 @@
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\KhoaHocssController.cs" />
     <Compile Include="Areas\Admin\Controllers\LuyenCodeAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyNguoiDungController.cs" />
+
     <Compile Include="Controllers\BaiHocController.cs" />
+    <Compile Include="Controllers\BaiVietController.cs" />
+    <Compile Include="Controllers\CauHoiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KiemTraController.cs" />
     <Compile Include="Controllers\LuyenCodeController.cs" />
     <Compile Include="Controllers\KhoaHocsController.cs" />
+
     <Compile Include="Controllers\PaymentController.cs" />
+
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -242,6 +248,7 @@
     <Compile Include="Migrations\202303230543214_UPDATE-dataCTBT.designer.cs">
       <DependentUpon>202303230543214_UPDATE-dataCTBT.cs</DependentUpon>-->
     <Compile Include="Controllers\UserController.cs" />
+
     <Compile Include="Migrations\202303280625058_InitialCreate.cs" />
     <Compile Include="Migrations\202303280625058_InitialCreate.Designer.cs">
       <DependentUpon>202303280625058_InitialCreate.cs</DependentUpon>
@@ -261,6 +268,19 @@
     <Compile Include="Migrations\202303281342348_doi ten khoa hoc thanh idkhoahoc.cs" />
     <Compile Include="Migrations\202303281342348_doi ten khoa hoc thanh idkhoahoc.Designer.cs">
       <DependentUpon>202303281342348_doi ten khoa hoc thanh idkhoahoc.cs</DependentUpon>
+
+    <Compile Include="Controllers\PhanHoiController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303281043477_init.cs" />
+    <Compile Include="Migrations\202303281043477_init.Designer.cs">
+      <DependentUpon>202303281043477_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303281250441_data.cs" />
+    <Compile Include="Migrations\202303281250441_data.Designer.cs">
+      <DependentUpon>202303281250441_data.cs</DependentUpon>
+
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities\ChiTietBaiHoc.cs" />
@@ -287,10 +307,14 @@
   <ItemGroup>
     <Content Include="Content\images\a.jpg" />
     <Content Include="Content\images\b.jpg" />
+    <Content Include="Content\images\user-avatar.svg" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Public\css\Css_KhoaHoc.css" />
     <Content Include="Public\css\Css_LuyenCode.css" />
     <Content Include="Public\css\login.css" />
+    <Content Include="Public\css\checkbox_heart.css" />
+    <Content Include="Public\css\Css_LuyenCode.css" />
+    <Content Include="Public\css\heart_checkbox.css" />
     <Content Include="Public\css\LuyenCodeAdmin.css" />
     <Content Include="Public\css\Site.css" />
     <Content Include="Public\css\_Layout.css" />
@@ -350,6 +374,8 @@
     <Content Include="Public\images\banner.jpg" />
     <Content Include="Public\images\banner_khoahoc.jpg" />
     <Content Include="Public\images\bgDangKy.png" />
+    <Content Include="Public\images\heart_check_false.png" />
+    <Content Include="Public\images\heart_check_true.png" />
     <Content Include="Public\images\logo.png" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -2503,6 +2529,7 @@
     <Content Include="Areas\Admin\Views\ChiTietBaiHocs\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietBaiHocs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietBaiHocs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyNguoiDung\IndexUser.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2532,6 +2559,14 @@
     <Content Include="Views\Shared\_Layout_Ngan.cshtml" />
     <Content Include="Views\LuyenCode\ChiTiet.cshtml" />
     <Content Include="Views\KhoaHocs\Genre.cshtml" />
+    <Content Include="Views\CauHoi\Index.cshtml" />
+    <Content Include="Views\CauHoi\ChiTietCauHoi.cshtml" />
+    <Content Include="Views\CauHoi\DatCauHoi.cshtml" />
+    <Content Include="Views\BaiViet\Index.cshtml" />
+    <Content Include="Views\BaiViet\ChiTietBaiViet.cshtml" />
+    <Content Include="Views\BaiViet\TaoBaiViet.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Views\BaiHoc\Index.cshtml" />
     <Content Include="Views\BaiHoc\ChiTietBaiHoc.cshtml" />
     <Content Include="Views\Shared\_UserLayout.cshtml" />
@@ -2550,6 +2585,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Views\KiemTra\" />
+    <Folder Include="Views\PhanHoi\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -2560,6 +2596,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+
     <EmbeddedResource Include="Migrations\202303280625058_InitialCreate.resx">
       <DependentUpon>202303280625058_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
@@ -2574,6 +2611,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303281342348_doi ten khoa hoc thanh idkhoahoc.resx">
       <DependentUpon>202303281342348_doi ten khoa hoc thanh idkhoahoc.cs</DependentUpon>
+
+    <EmbeddedResource Include="Migrations\202303281043477_init.resx">
+      <DependentUpon>202303281043477_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303281250441_data.resx">
+      <DependentUpon>202303281250441_data.cs</DependentUpon>
+
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -2610,8 +2654,11 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
   <Import Project="..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
