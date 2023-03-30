@@ -304,6 +304,7 @@
     <Content Include="Content\images\baiviet.jpg" />
     <Content Include="Content\images\user-avatar.svg" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Public\css\Css_ChiTietBaiViet.css" />
     <Content Include="Public\css\Css_CongDong.css" />
     <Content Include="Public\css\Css_KhoaHoc.css" />
     <Content Include="Public\css\Css_LuyenCode.css" />

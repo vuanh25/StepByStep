@@ -173,6 +173,8 @@
     });
 }
 
+<link href="~/Public/css/Css_KhoaHoc.css" rel="stylesheet" />
+
 <div class="landing-hero" id="payment-top">
     <div class="row landing-hero-text" style="border:black">
         <h2 class="text-black">Thông tin thanh toán</h2>
@@ -181,29 +183,48 @@
 <div class="page-single">
     <div class="container">
         <div class="row ipad-width">
-            <div class="form-style-1 user-pro col-6 align-self-center">
-                @using (Html.BeginForm())
-                {
-                    @*<h4>Thông tin thanh toán</h4>*@
-                    <p><label>Tên khách hàng :</label> @Model.User.TenUser</p>
-                    <p><label>Gói khoá học :</label> <strong>@Model.KhoaHoc.TenKhoaHoc</strong></p>
-                    <p><label>Số tiền :</label> <strong>@Convert.ToDecimal(@Model.KhoaHoc.GiaGoiKhoaHoc).ToString("#,##0") VND</strong></p>
-                    <div class="form-group">
-                        <label>Ngân hàng</label>
-                        @Html.DropDownList("cboBankCode", listItems, new { @class = "btn dropdown-toggle" })
-                    </div>
-                    <div class="form-group">
-                        <label>Ngôn ngữ</label>
-                        @Html.DropDownList("cboLanguage", ngonNgu, new { @class = "btn dropdown-toggle" })
-
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <input class="submit" type="submit" value="Xác nhận">
+            <div class="col-6">
+                <div class=" landing-hero-text p-5 text-center" style="border: black">
+                    <h2>Chọn phương thức thanh toán</h2>
+                    <h6 class="text-yellow">(Hiện tại chúng tôi chỉ chấp nhận thanh toán bằng VNPAY)</h6>
+                    <div class="landing-version page-single">
+                        <div class="container">
+                            <div class="col p-5 text-white">
+                                <img src="https://inkythuatso.com/uploads/images/2021/12/vnpay-logo-inkythuatso-01-13-16-26-42.jpg" style="width: auto; height: 150px; border-radius: 10px; margin-bottom: 12px;" alt="vnpay-logo">
+                                <br />
+                                @*<h2>CỔNG THANH TOÁN VNPAY</h2>*@
+                                @Html.ActionLink("Ví VNPAY", "ThongTinThanhToan", "Payment", htmlAttributes: new { @class = "btn btn-primary" })
+                            </div>
                         </div>
                     </div>
-                }
+                </div>
             </div>
+            <div class="col-6 mg-t-56">
+                <div class="form-style-1 user-pro col-6 align-self-center">
+                    @using (Html.BeginForm())
+                    {
+                        @*<h4>Thông tin thanh toán</h4>*@
+                        <p><label>Tên khách hàng :</label> @Model.User.TenUser</p>
+                        <p><label>Gói khoá học :</label> <strong>@Model.KhoaHoc.TenKhoaHoc</strong></p>
+                        <p><label>Số tiền :</label> <strong>@Convert.ToDecimal(@Model.KhoaHoc.GiaGoiKhoaHoc).ToString("#,##0") VND</strong></p>
+                        <div class="form-group">
+                            <label>Ngân hàng</label>
+                            @Html.DropDownList("cboBankCode", listItems, new { @class = "btn dropdown-toggle" })
+                        </div>
+                        <div class="form-group mg-t-16">
+                            <label>Ngôn ngữ</label>
+                            @Html.DropDownList("cboLanguage", ngonNgu, new { @class = "btn dropdown-toggle  mg-l-16" })
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <input class="submit btn-outline-primary btn mg-t-16" type="submit" value="Xác nhận">
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            
         </div>
     </div>
 </div>
