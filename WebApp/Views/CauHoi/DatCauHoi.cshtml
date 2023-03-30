@@ -5,72 +5,91 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-    <!-- Main content -->
-    <section class="content">
+<div class="container" style="margin-top: 56px">
+    <div class="col-md-12">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <!-- Default box -->
-        <div class="card">
-            <div class="card-header">
-                <div class="row">
-                    <div class="col-6 ">
-                        <strong>Danh sách bài học</strong>
-                    </div>
-                    <div class="col-6 float-end">
+            <div class="form-horizontal">
+                <br />
+                <h4>Đặt câu hỏi</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    Tiêu đề
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TieuDe, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TieuDe, "", new { @class = "text-danger" })
                     </div>
                 </div>
-            </div>
-            <div class="card-body">
 
-
-                <h2>Create</h2>
-
-
-                @using (Html.BeginForm())
-                {
-                    @Html.AntiForgeryToken()
-
-                    <div class="form-horizontal">
-                        <h4>ChiTietBaiHoc</h4>
-                        <hr />
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.NoiDungCauHoi, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.NoiDungCauHoi, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.NoiDungCauHoi, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.IdCauHoi, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.IdCauHoi, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.IdCauHoi, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Create" class="btn btn-default" />
-                            </div>
-                        </div>
+                <div class="form-group">
+                    Nội dung
+                    <div class="col-md-10">
+                        <textarea class="form-control" cols="4" rows="4" id="NoiDungCauHoi" name="NoiDungCauHoi" placeholder="Nhập nội dung"></textarea>
                     </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        Hình
+                        @Html.EditorFor(model => model.HinhAnh, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.HinhAnh, "", new { @class = "text-danger" })
+                        <input type="file" name="fileUpload" id="fileUpload" accept="image/*"
+                               style="display:none;" />
+                        <input type="button" id="btnUpload" value="Chọn" class="btn btn-default" />
+                        @*<img style="width: 300px" src="@Model.HinhAnh" id="pictureUpload" alt="hinh thumbnail" />*@
+                    </div>
+                </div>
+                @section upload
+    {
+                    <script>
+                        $(function () {
+                            $('#btnUpload').click(function () {
+                                $('#fileUpload').trigger('click');
+                            });
+                        });
+                        $('#fileUpload').change(function () {
+                            if (window.FormData !== undefined) {
+                                var fileUpload = $('#fileUpload').get(0);
+                                var files = fileUpload.files;
+                                var formData = new FormData();
+                                formData.append('file', files[0]);
+                                $.ajax(
+                                    {
+                                        type: 'POST',
+                                        url: '/CauHoi/ProcessUpload',
+                                        contentType: false,
+                                        processData: false,
+                                        data: formData,
+                                        success: function (urlImage) {
+                                            $('#pictureUpload').attr('src', urlImage);
+                                            $('#HinhAnh').val(urlImage);
+                                        },
+                                        error: function (err) {
+                                            alert('Error ', err.statusText);
+                                        }
+                                    });
+                            }
+                        });
+                    </script>
                 }
 
-                <div>
-                    @Html.ActionLink("Back to List", "Index")
+                <div class="form-group">
+                    Ngôn ngữ
+                    <div class="col-md-10">
+                        @Html.EnumDropDownListFor(model => model.NgonNgu, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.NgonNgu, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
                 </div>
             </div>
-            <!-- /.card-body -->
-
-        </div>
-        <!-- /.card -->
-
-    </section>
-    <!-- /.content -->
+        }
+    </div>
 </div>
-<!-- /.content-wrapper -->

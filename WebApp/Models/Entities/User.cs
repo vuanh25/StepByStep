@@ -31,9 +31,6 @@ namespace WebApp.Models.Entities
         [DataType(DataType.Password)]
         public string MatKhau { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MuaKhoaHoc> MuaKhoaHocs { get; set; }
-
         // Quan hệ nối ở dưới
 
     }

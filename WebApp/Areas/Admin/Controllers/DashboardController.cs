@@ -29,6 +29,12 @@ namespace WebApp.Areas.Admin.Controllers
                 var khoahoc = db.KhoaHocs.ToList();
                 ViewBag.khoahoc = khoahoc.Count;
 
+                var baiviet=db.BaiViets.ToList();
+                ViewBag.baiviet=baiviet.Count();
+
+                var cauhoi=db.CauHois.ToList();
+                ViewBag.cauhoi=cauhoi.Count;
+
                 return View();
             }
             return RedirectToAction("Login", "User");

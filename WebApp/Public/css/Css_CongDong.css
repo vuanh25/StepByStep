@@ -646,7 +646,7 @@ blockquote {
 .vt-post.post .author-info {
     border-radius: 0px 0px 0px 3px;
     border-bottom: none;
-    border-right: 1px solid #ddd;
+    border-right: none;
     padding: 15px 12px 15px 12px;
 }
 
@@ -767,5 +767,8 @@ blockquote {
     box-shadow: 1px 8px 20px grey;
     -webkit-transition: box-shadow .6s ease-in;
 }
- 
+
+element.style {
+    padding-right: 91px;
+}
 
