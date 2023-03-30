@@ -314,6 +314,7 @@
     <Content Include="Public\css\heart_checkbox.css" />
     <Content Include="Public\css\LuyenCodeAdmin.css" />
     <Content Include="Public\css\Site.css" />
+    <Content Include="Public\css\_CustomChiTiet.css" />
     <Content Include="Public\css\_Layout.css" />
     <Content Include="Public\dist\css\adminlte.css" />
     <Content Include="Public\dist\css\adminlte.min.css" />
@@ -367,12 +368,15 @@
     <Content Include="Public\dist\js\pages\dashboard.js" />
     <Content Include="Public\dist\js\pages\dashboard2.js" />
     <Content Include="Public\dist\js\pages\dashboard3.js" />
+    <Content Include="Public\images\404page.jpeg" />
     <Content Include="Public\images\banner-sm.jpg" />
     <Content Include="Public\images\banner.jpg" />
     <Content Include="Public\images\banner_khoahoc.jpg" />
     <Content Include="Public\images\bgDangKy.png" />
+
     <Content Include="Public\images\heart_check_false.png" />
     <Content Include="Public\images\heart_check_true.png" />
+
     <Content Include="Public\images\logo.png" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -2577,6 +2581,7 @@
     <Content Include="Views\Payment\ThongTinThanhToan.cshtml" />
     <Content Include="Views\Payment\ChonPhuongThucThanhToan.cshtml" />
     <Content Include="Views\Payment\Result.cshtml" />
+    <Content Include="Views\Home\PageNotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

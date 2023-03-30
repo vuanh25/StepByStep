@@ -27,46 +27,29 @@
             </div>
             <div class="card-body">
 
-                <p>
+              @*  <p>
                     @Html.ActionLink("Create New", "Create")
-                </p>
-                <p>
+                </p>*@
+                <span  class="badge text-bg-success">
                     @ViewBag.tenBaiHoc
-                </p>
-                <table class="table">
-                    <tr>
-                        
-                            
-                        
-                        <th>
-                            @Html.DisplayNameFor(model => model.NoiDung1)
-                        </th>
-                      
-                        <th>
-                            @Html.DisplayNameFor(model => model.IdBaiHoc)
-                        </th>
-                        <th></th>
-                    </tr>
-
+                </span>
+                <div class="row">
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.NoiDung1)
-                            </td>
-                         
-                            <td>
-                                @Html.DisplayFor(modelItem => item.IdBaiHoc)
-                            </td>
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.IdChiTietBaiHoc }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.IdChiTietBaiHoc }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.IdChiTietBaiHoc })
-                            </td>
-                        </tr>
-                    }
+                        <span style="margin-top:10px">Nội dung bài học</span>
+                        <div class="col-9">
+                            <label for="exampleFormControlTextarea1" class="form-label"></label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"> @Html.DisplayFor(modelItem => item.NoiDung1)</textarea>
+                        </div>
 
-                </table>
+
+                        <div class="col-3" style="margin-top:100px">
+                            <a href=" @Url.Action("Edit","ChiTietBaiHocs", new { id = item.IdChiTietBaiHoc })" class="btn btn-outline-warning " role="button" data-bs-toggle="button">Chỉnh sửa</a>
+                            <a href="@Url.Action("Delete","ChiTietBaiHocs", new { id = item.IdChiTietBaiHoc })" class="btn btn-outline-warning" role="button" data-bs-toggle="button">Xoá</a>
+                        </div>
+                    }
+                </div>
+              
 
             </div>
             <!-- /.card-body -->

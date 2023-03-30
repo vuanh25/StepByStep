@@ -29,6 +29,11 @@ namespace WebApp.Controllers
 
         }
 
+        public ActionResult PageNotFound()
+        {
+            return View();
+        }
+
         ////adding data to session
         ////assuming the method below will return list of Products
 
