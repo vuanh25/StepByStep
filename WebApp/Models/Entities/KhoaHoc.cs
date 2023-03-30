@@ -18,9 +18,14 @@ namespace WebApp.Models.Entities
         [Required]
         [StringLength(500)]
         public string TenKhoaHoc { get; set; }
-        public Nullable<long> IDNgonNgu { get; set; }
+
+   //     public Nullable<long> IDNgonNgu { get; set; }
+
         [Column(TypeName = "money")]
         public decimal? GiaGoiKhoaHoc { get; set; }
+
+        public virtual NgonNgu NgonNgu { get; set; }
+
 
     }
 }

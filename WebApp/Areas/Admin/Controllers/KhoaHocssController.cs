@@ -6,19 +6,24 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WebApp.Controllers;
 using WebApp.Models;
 using WebApp.Models.Entities;
 
 namespace WebApp.Areas.Admin.Controllers
 {
-    public class KhoaHocssController : Controller
+    public class KhoaHocssController : KiemTraController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Admin/KhoaHocs
         public ActionResult Index()
         {
-            return View();
+            if (KiemTraDangNhapAdmin())
+            {
+                return View();
+            }
+            return RedirectToAction("Login", "User");
         }
 
         [HttpGet]
@@ -32,7 +37,7 @@ namespace WebApp.Areas.Admin.Controllers
                           {
                               Id = l.IDKhoaHoc,
                               TenKhoaHoc = l.TenKhoaHoc,
-                              IdNgonNgu = l.IDNgonNgu
+                              IdNgonNgu = l.NgonNgu
                           }).ToList();
                 return Json(new { code = 200, ds = ds }, JsonRequestBehavior.AllowGet);
             }
@@ -51,7 +56,7 @@ namespace WebApp.Areas.Admin.Controllers
             {
                 var l = new KhoaHoc();
                 l.TenKhoaHoc = tenKH;
-                l.IDNgonNgu = (int)(Models.Enums.NgonNgu)ngonngu;
+                l.NgonNgu = (Models.Enums.NgonNgu)ngonngu;
                 db.KhoaHocs.Add(l);
                 db.SaveChanges();
                 return Json(new { code = 200, msg = "Thêm mới khoá học thành công!" }, JsonRequestBehavior.AllowGet);

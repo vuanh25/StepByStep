@@ -43,10 +43,12 @@
                 <thead>
                     <tr class="mau_cho_cot ">
                         <th class="pd-l">Tên bài tập</th>
+                        <th>Lượt xem</th>
                         <th>Yêu thích</th>
                         <th>Ngôn ngữ</th>
                         <th>Cấp độ</th>
                         <th></th>
+
                     </tr>
                 </thead>
                 <tbody id="BT" class="font chieu_cao_dong ">
@@ -80,10 +82,13 @@
                             <input type="text" class="form-control" id="TenLuyenTap" placeholder="Tên bài tập">
                         </div>
                         <div class="form-group">
+                            <label>Lượt xem</label>
+                            <input type="text" class="form-control" id="LuotXem" placeholder="Số lượng yêu thích">
+                        </div>
+                        <div class="form-group">
                             <label>Yêu thích</label>
                             <input type="text" class="form-control" id="YeuThich" placeholder="Số lượng yêu thích">
                         </div>
-
                         <div class="form-group cung-dong">
                             <label class="pd-r">Ngôn ngữ</label>
                             <select id="NgonNgu">
@@ -233,6 +238,7 @@
                         // Nếu lấy dữ liệu thành công thì gán
                         $('#TenLuyenTap').val(data.L.TenLuyenTap);
                         $('#YeuThich').val(data.L.YeuThich);
+                        $('#LuotXem').val(data.L.LuotXem);
 
                         // gán giá trị cho nút button
                         $('#IDBT').val(IDBT);
@@ -259,6 +265,7 @@
         $('#btnSubmit').click(function () {
 
             let TenLuyenTap = $('#TenLuyenTap').val();
+            let LuotXem = $('#LuotXem').val().trim();
             let YeuThich = $('#YeuThich').val().trim();
             let NgonNgu = $('#NgonNgu').val().trim();
             let CapDo = $('#CapDo').val().trim();
@@ -288,6 +295,7 @@
                     data: {
 
                         tenBT: TenLuyenTap,
+                        luotXem: LuotXem,
                         yeuThich: YeuThich,
                         ngonNgu: NgonNgu,
                         doKho: CapDo
@@ -297,6 +305,7 @@
                             alert(data.msg);
                             TaiDsBaiLuyen();
                             $('#TenLuyenTap').val('');
+                            $('#LuotXem').val('');
                             $('#YeuThich').val('');
                         } else {
                             alert(data.msg);
@@ -346,6 +355,7 @@
                     data: {
                         id: idBaiTap,
                         TenLuyenTap: TenLuyenTap,
+                        luotXem: LuotXem,
                         yeuThich: YeuThich,
                         ngonNgu: NgonNgu,
                         doKho: CapDo
@@ -381,7 +391,7 @@
                     success: function (data) {
                         if (data.code == 200) {
                             // Cập nhập CTBT thành công
-                         //   alert(data.msg);
+                            alert(data.msg);
                             //alert(data.msg);
                             $('#modalBT').modal('hide');
                             TaiDsBaiLuyen();
@@ -410,6 +420,7 @@
             // Them moi cho gia trị = null
             $('#TenLuyenTap').val('');
             $('#YeuThich').val('');
+            $('#LuotXem').val('');
             $('#DeBai').val('');
             $('#YeuCau').val('');
             $('#Dvao').val('');
@@ -434,6 +445,7 @@
 
                             let tr = '<tr class="dong-phan-cach" id="' + v.Id + '">'
                             tr += '<td class="pd-l">' + v.TenLuyenTap + '</td>';
+                            tr += '<td>' + v.LuotXem + '</td>';
                             tr += '<td>' + v.YeuThich + '</td>';
                             tr += '<td>' + v.NgonNgu + '</td>';
                             tr += '<td>' + v.CapDo + '</td>';

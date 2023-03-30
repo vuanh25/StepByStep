@@ -18,11 +18,8 @@ namespace WebApp.Models.Entities
         [StringLength(200)]
         public string TenBaiHoc { get; set; }
 
-        
-  
-
         public Nullable<long> IdKhoaHoc { get; set; }
-     
-    
+
+
     }
 }

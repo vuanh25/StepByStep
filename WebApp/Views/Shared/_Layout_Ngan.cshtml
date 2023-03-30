@@ -8,14 +8,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="~/Public/css/_Layout.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+          rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+          rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+          rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     @RenderSection("header", required: false)
+
+    <link href="~/Public/css/_Layout.css" rel="stylesheet" />
+
+
 </head>
-<body>
+<div class="body1">
     <section class="mainmenu clearfix bg-footer font" style="position: fixed; width: 100%; top: 0; z-index: 10;">
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-main">
                 <div class="container-fluid white-big">
-                    <a class="navbar-brand text-white" href="~/Home/Index">Trang chủ</a>
+                    @*<h3 class="hover">Hover Me</h3>*@
+                    <a class="hover1 text-white noUnderlined" style="margin-right: 4px;" href="~/Home/Index">Trang chủ</a>
                     <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -25,68 +40,28 @@
                                 <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Khoá học
                                 </a>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu font">
                                     <li class="">
                                         <a class="dropdown-item">@Html.Action("Genre", "KhoaHocs")</a>
                                     </li>
                                 </ul>
                             </li>
-
-                            <li class="nav-item white-big">
-                                <a class="nav-link text-white" href="#">Tri thức</a>
-                            </li>
-
                             <li class="nav-item white-big">
                                 <a class="nav-link text-white" href="@Url.Action("Index", "LuyenCode", new { @id = 1})">Luyện code</a>
                             </li>
-                            <li class="nav-item dropdown white-big">
-                                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Bài tập
+
+                            <li class="nav-item dropdown ">
+                                <a class="nav-link dropdown-toggle text-white" href="@Url.Action("Index", "CongDong", new { @id = 1})" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Cộng đồng
                                 </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <ul class="dropdown-menu font" style="font-size: 16px; ">
+                                    <li><a class="dropdown-item" href="@Url.Action("Index", "CauHoi")">Hỏi đáp</a></li>
+                                    <li><a class="dropdown-item" href="@Url.Action("Index", "BaiViet")">Bài viết</a></li>
+                                    @*  <li><hr class="dropdown-divider"></li>*@
                                 </ul>
                             </li>
-
-
-
                         </ul>
-
-                        @if (Request.IsAuthenticated)
-                        {
-                            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-                            {
-                                @Html.AntiForgeryToken()
-
-                                <div style="display:flex" class="nav-item dropdown align-content-end">
-                                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Xin chào @User.Identity.GetUserName()
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item noUnderlined text-red" href="javascript:document.getElementById('logoutForm').submit()">Đăng xuất</a></li>
-                                        <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="#">Loading...</a></li>
-                                    </ul>
-                                </div>
-                            }
-                        }
-                        else
-                        {
-                            <div style="display:flex" class="nav-item dropdown align-content-end">
-                                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Tài khoản
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="dropdown-item noUnderlined text-black">@Html.ActionLink("Đăng ký", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-                                    <li class="dropdown-item noUnderlined text-black">@Html.ActionLink("Đăng nhập", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Loading...</a></li>
-                                </ul>
-                            </div>
-                        }
+                        @Html.Partial("LoginPartial")
                     </div>
                 </div>
             </nav>
@@ -95,54 +70,114 @@
 
     </section>
 
-    <section class="maincontent clearfix">
+    @*              FOOTER               *@
+
+    <section class="maincontent clearfix font">
         @RenderBody()
     </section>
 
+    <section class="">
+        <!-- Remove the container if you want to extend the Footer to full width. -->
+        <div class="container-fluid my-1 ">
 
+            <!-- Footer -->
+            <footer class="text-center text-lg-start text-white"
+                    style="background-color: #1c2331">
+                <!-- Section: Social media -->
+                <section class="d-flex justify-content-between p-1">
+                </section>
+                <!-- Section: Social media -->
+                <!-- Section: Links  -->
+                <section class="">
+                    <div class="container text-center text-md-start mt-5">
+                        <!-- Grid row -->
+                        <div class="row mt-3">
+                            <!-- Grid column -->
+                            <div class="col-md-3 col-lg-4 col-xl-4 mx-auto mb-4">
+                                <!-- Content -->
+                                <h6 class="text-uppercase fw-bold">Học Từng Bước</h6>
+                                <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                                    style="width: 60px; background-color: #7c4dff; height: 2px" />
+                                <p>
+                                    Chúng tôi có mặt tại đây với mong muốn dành cho tất cả các bạn trẻ yêu lập trình đều có thể tự học một cách dễ dàng và thoải mái. Với các kiến thức mà chúng tôi mang lại - Bước Từng Bước tin tưởng các bạn trẻ sẽ có thể trang bị đầy đủ kiến thức lập trình cho bản thân để đi xa hơn nữa, cao hơn nữa. Chúc các bạn trẻ THÀNH CÔNG!
+                                </p>
+                            </div>
+                            <!-- Grid column -->
+                            <!-- Grid column -->
+                            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                                <!-- Links -->
+                                <h6 class="text-uppercase fw-bold">Thành viên</h6>
+                                <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                                    style="width: 60px; background-color: #7c4dff; height: 2px" />
+                                <p>
+                                    <a href="#!" class="text-white">Lương Xuân Nhất</a>
+                                </p>
+                                <p>
+                                    <a href="#!" class="text-white">Phạm Anh Vũ</a>
+                                </p>
+                                <p>
+                                    <a href="#!" class="text-white">Mai Chí Vỹ</a>
+                                </p>
 
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-
-
-
-    <section class="footer clearfix bg-footer py-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <h3 class="text-light">Chúng tôi là ai?</h3>
+                            </div>
+                            <!-- Grid column -->
+                            <!-- Grid column -->
+                            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                                <!-- Links -->
+                                <h6 class="text-uppercase fw-bold">Tài khoản liên hệ</h6>
+                                <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                                    style="width: 60px; background-color: #7c4dff; height: 2px" />
+                                <p>
+                                    <a href="#!" class="text-white">GitHub</a>
+                                </p>
+                                <p>
+                                    <a href="#!" class="text-white">Facebook</a>
+                                </p>
+                                <p>
+                                    <a href="#!" class="text-white">Telegram</a>
+                                </p>
+                                <p>
+                                    <a href="#!" class="text-white">Instagram</a>
+                                </p>
+                            </div>
+                            <!-- Grid column -->
+                            <!-- Grid column -->
+                            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                                <!-- Links -->
+                                <h6 class="text-uppercase fw-bold">Liên hệ</h6>
+                                <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                                    style="width: 60px; background-color: #7c4dff; height: 2px" />
+                                <p><i class="fas fa-home mr-3"></i> TP.Hồ Chí minh</p>
+                                <p><i class="fas fa-envelope mr-3"></i> vuanhpham25@gmail.com</p>
+                                <p><i class="fas fa-phone mr-3"></i> + 84 234 567 88</p>
+                                <p><i class="fas fa-print mr-3"></i> + 84 234 567 89</p>
+                            </div>
+                            <!-- Grid column -->
+                        </div>
+                        <!-- Grid row -->
+                    </div>
+                </section>
+                <!-- Section: Links  -->
+                <!-- Copyright -->
+                <div class="text-center p-3"
+                     style="background-color: rgba(0, 0, 0, 0.2)">
+                    © 2023 Copyright:
+                    <a class="text-white" href="#">LuongXuanNhat-PhamAnhVu-MaiChiVy</a>
                 </div>
-                <div class="col-md-3">
-                    <h3 class="text-light">Chính sách</h3>
-                </div>
-                <div class="col-md-3">
-                    <h3 class="text-light">Khu cộng đồng</h3>
-                </div>
-                <div class="col-md-3">
-                    <h3 class="text-light">Trợ giúp</h3>
-                </div>
-            </div>
+                <!-- Copyright -->
+            </footer>
+            <!-- Footer -->
+
         </div>
+
     </section>
 
-    <section class="copyright clearfix bg-footer py-2">
-        <div class="container text-center text-light  border-top border-light">
-            <div>
-                Bản quyền thuộc về Phạm Anh Vũ - Lương Xuân Nhất
-            </div>
-        </div>
-    </section>
+
     <script src="~/Scripts/bootstrap.bundle.js"></script>
     @RenderSection("footer", required: false)
     @RenderSection("scripts", required: false)
+    @RenderSection("upload", required: false)
+</div>
 </body>
 </html>
+
