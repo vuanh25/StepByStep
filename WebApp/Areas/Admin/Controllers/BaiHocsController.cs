@@ -18,7 +18,7 @@ namespace WebApp.Areas.Admin.Controllers
         // GET: Admin/BaiHocs
         public ActionResult Index(string TenKhoaHoc)
         {
-           /* if (KiemTraDangNhapAdmin())
+            /*if (KiemTraDangNhapAdmin())
             {*/
                 var khoahocs = db.KhoaHocs.Where(p => p.TenKhoaHoc.Contains(TenKhoaHoc)).ToList();
                 foreach (var item in khoahocs)
@@ -32,9 +32,9 @@ namespace WebApp.Areas.Admin.Controllers
                     }
                 }
                 return View();
-      /*      }
-            return RedirectToAction("Login", "User");*/
-        }
+    /*    }*/
+          /*  return RedirectToAction("Login", "User");*/
+    }
 
 
         public ActionResult IndexKhoaHoc()
@@ -67,6 +67,7 @@ namespace WebApp.Areas.Admin.Controllers
         // GET: Admin/BaiHocs/Create
         public ActionResult Create()
         {
+            ViewBag.IdKhoaHoc = new SelectList(db.KhoaHocs, "IDKhoaHoc", "TenKhoaHoc");
             return View();
         }
 
@@ -83,10 +84,10 @@ namespace WebApp.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.MaKhoaHoc = new SelectList(db.KhoaHocs, "IdKhoaHoc", "TenKhoaHoc", baiHoc.IdKhoaHoc);
             return View(baiHoc);
         }
-
+    /*    ViewBag.IdBaiHoc = new SelectList(db.BaiHocs, "IdBaiHoc", "TenBaiHoc");*/
         // GET: Admin/BaiHocs/Edit/5
         public ActionResult Edit(int? id)
         {
