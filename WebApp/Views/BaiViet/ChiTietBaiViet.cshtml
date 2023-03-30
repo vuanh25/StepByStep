@@ -10,46 +10,55 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="~/Public/css/checkbox_heart.css" rel="stylesheet" />
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<img src="~/Public/images/svg/person-circle.svg" />
 
-
-<div class="container">
-    <div class="media">
-        <h1 class="mb-10 font-size-h2">
-            @baiviet.TieuDe
-        </h1>
-        <div class="text-muted font-size-xs">
-            <span class="mr-5 mt-5 d-block d-md-inline">
-                <span class="font-italic">
-                    <i class="far fa-fw fa-eye mr-5"></i>
-                    @baiviet.LuotXem lượt xem
-                </span>
-                <span class="font-italic">
-                    <input class="far fa-fw fa-heart" type="checkbox" data-id="@baiviet.IdBaiViet" id="cbLike">
-                    <span id="luotthich" data-id="@baiviet.IdBaiViet" ></span> lượt thích
-                </span>
-                <span class="font-italic">
-                    <i class="far fa-fw fa-comment mr-5"></i>
-                    5 phản hồi
-                </span>
-                <a href="#" class="link-secondary">#@baiviet.NgonNgu</a>
+<div class="container " style="margin-top: 56px">
+    <div class="mb-3 font-size-h2">
+        <i class=""></i>
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+        </svg>
+        <a href="@Url.Action("ShowInfor", "User")" class="link-primary text-decoration-none fs-4">@ViewBag.TenTaiKhoan</a>
+    </div>
+    <h1>
+        @baiviet.TieuDe
+    </h1>
+    <div class="text-muted font-size-xs">
+        <span class="mr-5 mt-5 d-block d-md-inline">
+            <span class="font-italic">
+                <i class="far fa-fw fa-eye mr-5"></i>
+                @baiviet.LuotXem lượt xem
             </span>
-        </div>
+            <span class="font-italic">
+                <input class="far fa-fw fa-heart mr-5" type="checkbox" data-id="@baiviet.IdBaiViet" id="cbLike">
+                <span id="luotthich" data-id="@baiviet.IdBaiViet"></span> lượt thích
+            </span>
+            <span class="font-italic">
+                <i class="far fa-fw fa-comment mr-5"></i>
+                <span id="sophanhoi" data-id="@baiviet.IdBaiViet"></span> phản hồi
+            </span>
+            <a href="#" class="link-secondary">#@baiviet.NgonNgu</a>
+        </span>
+    </div>
 
-        <div class="mt-5 d-flex justify-content-between">
-            <p>@baiviet.NoiDungBaiViet</p>
-            <img src="@baiviet.HinhAnh" />
-        </div>
-        <div class="container">
-            <div class="col-md-4">
-                <hr />
-                <h2>Phản hồi</h2>
-                <div class="form-group">
-                    <label for="comment">Phản hồi:</label>
-                    <textarea class="form-control" cols="2" rows="2" id="phanhoi" placeholder="Thêm bình luận"></textarea>
-                </div>
-                <a class="btn btn-success" id="addComment" data-id="@baiviet.IdBaiViet" >Đăng</a>
-                <div id="dsphanhoi" data-id="@baiviet.IdBaiViet"></div>
+    <div class="mt-5 d-flex justify-content-between">
+        <p>@baiviet.NoiDungBaiViet</p>
+    </div>
+    <div>
+        <img style="width:20em" src="@baiviet.HinhAnh" />
+    </div>
+    <div class="container">
+        <div class="col-md-4">
+            <hr />
+            <h2>Phản hồi</h2>
+            <div class="form-group">
+                <label for="comment">Phản hồi:</label>
+                <textarea class="form-control" cols="2" rows="2" id="phanhoi" placeholder="Thêm bình luận"></textarea>
             </div>
+            <a class="btn btn-success" id="addComment" data-id="@baiviet.IdBaiViet">Đăng</a>
+            <br />
+            <div id="dsphanhoi" data-id="@baiviet.IdBaiViet"></div>
         </div>
     </div>
 </div>
@@ -75,6 +84,10 @@
                     if (data.code == 200) {
                         console.log(id);
                     }
+                    else {
+                        alert("Đăng nhập để thích !");
+                        $(this).checked(false);
+                    }
                 }
             });
             LuotThich();
@@ -90,12 +103,15 @@
                 url: '/PhanHoi/ThemPhanHoi',
                 type: 'post',
                 datatype: 'json',
-                data: { id: $(this).data('id'), noidung: noidung,loai: 0},
+                data: { id: $(this).data('id'), noidung: noidung, loai: 0 },
                 success: function (data) {
                     if (data.code == 200) {
                         $('#phanhoi').val('');
                         DsPhanHoi();
                         console.log(id);
+                    }
+                    else {
+                        alert("Đăng nhập để phản hồi !")
                     }
                 }
             });
@@ -106,7 +122,7 @@
                 url: '/BaiViet/LuotThich',
                 type: 'post',
                 datatype: 'json',
-                data: { idBaiViet: $('#luotthich').data('id')},
+                data: { idBaiViet: $('#luotthich').data('id') },
                 success: function (data) {
                     $('#luotthich').empty();
                     if (data.code == 200) {
@@ -122,14 +138,19 @@
                 url: '/PhanHoi/DsPhanHoi',
                 type: 'post',
                 datatype: 'json',
-                data: { idBaiViet: $('#dsphanhoi').data('id') },
+                data: { id: $('#dsphanhoi').data('id'), loai:0 },
                 success: function (data) {
                     $('#dsphanhoi').empty();
+                    $('#sophanhoi').empty();
                     if (data.code == 200) {
                         $.each(data.ds, function (k, v) {
-                            let tr = '<div>' + v.NoiDung + '</div>';
+                            let tr = '<div class="link-primary">' + v.User.TenTaiKHoan + '</div>'
+                            tr += '<div>' + v.NoiDung + '</div>';
+                            tr += '<hr />';
                             $('#dsphanhoi').append(tr);
                         })
+                        let lphanhoi = data.sophanhoi;
+                        $('#sophanhoi').append(lphanhoi);
                     }
                 }
             });
