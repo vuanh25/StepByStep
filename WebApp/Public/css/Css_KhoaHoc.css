@@ -1,5 +1,11 @@
 ﻿body {
 }
+.mg-t-56 {
+    margin-top: 56px;
+}
+.mg-l-16{
+    margin-left: 16px;
+}
 
 .Banner {
     display: flex;
