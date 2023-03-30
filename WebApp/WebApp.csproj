@@ -277,6 +277,10 @@
     <Compile Include="Migrations\202303291319517_alo1111.Designer.cs">
       <DependentUpon>202303291319517_alo1111.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202303301030309_update_ngaydang.cs" />
+    <Compile Include="Migrations\202303301030309_update_ngaydang.designer.cs">
+      <DependentUpon>202303301030309_update_ngaydang.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities\ChiTietBaiHoc.cs" />
     <Compile Include="Models\Entities\ChiTietBaiLuyen.cs" />
@@ -368,6 +372,7 @@
     <Content Include="Public\dist\js\pages\dashboard.js" />
     <Content Include="Public\dist\js\pages\dashboard2.js" />
     <Content Include="Public\dist\js\pages\dashboard3.js" />
+    <Content Include="Public\images\BaiViet\bv1.jpg" />
     <Content Include="Public\images\banner-sm.jpg" />
     <Content Include="Public\images\banner.jpg" />
     <Content Include="Public\images\banner_khoahoc.jpg" />
@@ -2582,6 +2587,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Public\images\HoiDap\" />
     <Folder Include="Views\KiemTra\" />
     <Folder Include="Views\PhanHoi\" />
   </ItemGroup>
@@ -2614,6 +2620,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303291319517_alo1111.resx">
       <DependentUpon>202303291319517_alo1111.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303301030309_update_ngaydang.resx">
+      <DependentUpon>202303301030309_update_ngaydang.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

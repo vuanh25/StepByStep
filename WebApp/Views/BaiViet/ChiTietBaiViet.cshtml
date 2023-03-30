@@ -15,41 +15,41 @@
 <!--<div class="container " style="margin-top: 56px; ">
     <div class="media">
         <h1 class="mb-10 font-size-h2">-->
-        @*    @baiviet.TieuDe*@
-        <!--</h1>
-        <div class="text-muted font-size-xs">
-            <span class="mr-5 mt-5 d-block d-md-inline">
-                <span class="font-italic">
-                    <i class="far fa-fw fa-eye mr-5"></i>
-                    
-                </span>
-                <span class="font-italic">
-                    <input class="far fa-fw fa-heart" type="checkbox" data-id="@baiviet.IdBaiViet" id="cbLike">
-                    <span id="luotthich" data-id="@baiviet.IdBaiViet"></span> lượt thích
-                </span>
-                <span class="font-italic">
-                    <i class="far fa-fw fa-comment mr-5"></i>
-                    5 phản hồi
-                </span>
-                <a href="#" class="link-secondary">#@baiviet.NgonNgu</a>
-            </span>
-        </div>
+@*    @baiviet.TieuDe*@
+<!--</h1>
+<div class="text-muted font-size-xs">
+    <span class="mr-5 mt-5 d-block d-md-inline">
+        <span class="font-italic">
+            <i class="far fa-fw fa-eye mr-5"></i>
 
-        <div class="mt-5 d-flex justify-content-between">
-            <p>@baiviet.NoiDungBaiViet</p>
-            <img src="@baiviet.HinhAnh" />
+        </span>
+        <span class="font-italic">
+            <input class="far fa-fw fa-heart" type="checkbox" data-id="@baiviet.IdBaiViet" id="cbLike">
+            <span id="luotthich" data-id="@baiviet.IdBaiViet"></span> lượt thích
+        </span>
+        <span class="font-italic">
+            <i class="far fa-fw fa-comment mr-5"></i>
+            5 phản hồi
+        </span>
+        <a href="#" class="link-secondary">#@baiviet.NgonNgu</a>
+    </span>
+</div>
+
+<div class="mt-5 d-flex justify-content-between">
+    <p>@baiviet.NoiDungBaiViet</p>
+    <img src="@baiviet.HinhAnh" />
+</div>
+<div class="container">
+    <div class="col-md-4">
+        <hr />
+        <h2>Phản hồi</h2>
+        <div class="form-group">
+            <label for="comment">Phản hồi:</label>
+            <textarea class="form-control" cols="2" rows="2" id="phanhoi" placeholder="Thêm bình luận"></textarea>
         </div>
-        <div class="container">
-            <div class="col-md-4">
-                <hr />
-                <h2>Phản hồi</h2>
-                <div class="form-group">
-                    <label for="comment">Phản hồi:</label>
-                    <textarea class="form-control" cols="2" rows="2" id="phanhoi" placeholder="Thêm bình luận"></textarea>
-                </div>
-                <a class="btn btn-success" id="addComment" data-id="@baiviet.IdBaiViet">Đăng</a>-->
-             @*   <div id="dsphanhoi" data-id="@baiviet.IdBaiViet"></div>*@
-            <!--</div>
+        <a class="btn btn-success" id="addComment" data-id="@baiviet.IdBaiViet">Đăng</a>-->
+@*   <div id="dsphanhoi" data-id="@baiviet.IdBaiViet"></div>*@
+<!--</div>
         </div>
     </div>
 </div>-->
@@ -81,7 +81,7 @@
                                 <i class="fa fa-tag "></i> <a href="#">@baiviet.NgonNgu</a>
                             </li>
                         </ul>
-                        <hr >
+                        <hr>
                         <p style="font-weight: 500;">@baiviet.NoiDungBaiViet</p>
 
                         <hr class="mb40">
@@ -153,13 +153,10 @@
 @section scripts
 {
     <script>
-
         $(document).ready(function () {
             LuotThich();
             DsPhanHoi();
         })
-
-
         $('#cbLike').click(function () {
             $.ajax({
                 url: '/BaiViet/Thich',
@@ -170,11 +167,14 @@
                     if (data.code == 200) {
                         console.log(id);
                     }
+                    else {
+                        alert("Đăng nhập để thích !");
+                        $(this).checked(false);
+                    }
                 }
             });
             LuotThich();
         });
-
         $('#addComment').click(function () {
             let noidung = $('#phanhoi').val().trim();
             if (noidung.length == 0) {
@@ -192,10 +192,12 @@
                         DsPhanHoi();
                         console.log(id);
                     }
+                    else {
+                        alert("Đăng nhập để phản hồi !")
+                    }
                 }
             });
         });
-
         function LuotThich() {
             $.ajax({
                 url: '/BaiViet/LuotThich',
@@ -211,25 +213,28 @@
                 }
             });
         }
-
         function DsPhanHoi() {
             $.ajax({
                 url: '/PhanHoi/DsPhanHoi',
                 type: 'post',
                 datatype: 'json',
-                data: { idBaiViet: $('#dsphanhoi').data('id') },
+                data: { id: $('#dsphanhoi').data('id'), loai: 0 },
                 success: function (data) {
                     $('#dsphanhoi').empty();
+                    $('#sophanhoi').empty();
                     if (data.code == 200) {
                         $.each(data.ds, function (k, v) {
-                            let tr = '<div>' + v.NoiDung + '</div>';
+                            let tr = '<div class="link-primary">' + v.User.TenTaiKHoan + '</div>'
+                            tr += '<div>' + v.NoiDung + '</div>';
+                            tr += '<hr />';
                             $('#dsphanhoi').append(tr);
                         })
+                        let lphanhoi = data.sophanhoi;
+                        $('#sophanhoi').append(lphanhoi);
                     }
                 }
             });
         }
-
     </script>
 }
 

@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using WebApp.Models.Entities;
 using WebApp.Models;
+using WebApp.Models.Enums;
+using System.Data.Entity;
 
 namespace WebApp.Controllers
 {
@@ -14,31 +16,36 @@ namespace WebApp.Controllers
         ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
-            var all_baiviet = db.BaiViets;
+            var all_baiviet = db.BaiViets
+                .Where(i => i.IdBaiViet > 0)
+                .Include(i => i.User);
             return View(all_baiviet);
         }
         public ActionResult ChiTietBaiViet(int id)
         {
             var baiviet = db.BaiViets.Where(m => m.IdBaiViet == id).First();
             baiviet.LuotXem++;
-            Session["BaiViet"]=baiviet;
-            ViewBag.LuotThich = baiviet.LuotThich;
+            Session["BaiViet"] = baiviet;
+            ViewBag.TenTaiKhoan = baiviet.User.TenTaiKHoan;
             UpdateModel(baiviet);
             db.SaveChanges();
             return View(baiviet);
         }
         public ActionResult TaoBaiViet()
         {
-            return View();
+            if (Session["TenTaiKhoan"] == null || Session["TenTaiKhoan"].ToString() == "")
+                return RedirectToAction("Login", "User");
+            else return View();
         }
         [HttpPost]
         public ActionResult TaoBaiViet(FormCollection collection, BaiViet v)
         {
+            var ten_user = Session["TenTaiKhoan"].ToString();
+            var user = db.Users.Single(u => u.TenTaiKHoan == ten_user);
             var tieude = collection["TieuDe"];
             var noidung = collection["NoiDungBaiViet"];
             var hinhanh = collection["HinhAnh"];
-            var ngonngu = collection["NgonNgu"];
-            var danhmuc = collection["DanhMuc"];
+            var ngonngu = Convert.ToInt32(collection["NgonNgu"]);
             if (string.IsNullOrEmpty(tieude))
             {
                 ViewData["Error"] = "Don't empty!";
@@ -48,8 +55,9 @@ namespace WebApp.Controllers
                 v.TieuDe = tieude;
                 v.NoiDungBaiViet = noidung;
                 v.HinhAnh = hinhanh;
-                //c.NgonNgu = ngonngu;
-                //c.DanhMuc = danhmuc;
+                v.NgayDang = DateTime.Now;
+                v.NgonNgu = (Models.Enums.NgonNgu)ngonngu;
+                v.User = user;
                 db.BaiViets.Add(v);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -62,19 +70,21 @@ namespace WebApp.Controllers
             {
                 return "";
             }
-            file.SaveAs(Server.MapPath(file.FileName));
-            return file.FileName;
+            file.SaveAs(Server.MapPath("~/Public/images/BaiViet/" + file.FileName));
+            return "/Public/images/BaiViet/" + file.FileName;
         }
 
         [HttpPost]
-        public JsonResult Thich(int idBaiViet,bool attr)
+        public JsonResult Thich(int idBaiViet, bool attr)
         {
             try
             {
+                if (Session["TenTaiKhoan"] == null || Session["TenTaiKhoan"].ToString() == "")
+                    return Json(new { code = 500, JsonRequestBehavior.AllowGet });
                 var baiviet = db.BaiViets.Where(m => m.IdBaiViet == idBaiViet).First();
                 if (attr)
                     baiviet.LuotThich++;
-                else 
+                else
                     baiviet.LuotThich--;
                 Session["BaiViet"] = baiviet;
                 UpdateModel(baiviet);
