@@ -25,8 +25,6 @@ namespace WebApp.Controllers
             Session["products"] = BT;
 
             var products = Session["products"] as List<LuyenCode>;
-
-
         }
 
         public ActionResult PageNotFound()

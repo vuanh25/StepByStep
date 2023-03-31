@@ -17,59 +17,49 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-6 ">
-                        <strong>Danh sách bài học</strong>
+                        <strong>Thêm nội dung cho bài học</strong>
                     </div>
                     <div class="col-6 float-end">
                     </div>
                 </div>
             </div>
             <div class="card-body">
-
-
-                <h2>Create</h2>
-
-
                 @using (Html.BeginForm())
                 {
                     @Html.AntiForgeryToken()
 
-            <div class="form-horizontal">
-                <h4>ChiTietBaiHoc</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(model => model.NoiDung1, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.NoiDung1, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.NoiDung1, "", new { @class = "text-danger" })
+                <div class="form-horizontal">
+                   
+                    <div class="form-group">
+                        <p class="fw-bolder" style="margin-left:20px">Nội dung</p>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.NoiDung1, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.NoiDung1, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="form-group">
+                        <p class="fw-bolder" style="margin-left:20px">Mã bài học</p>
+                        <div class="col-md-10">
+                            @Html.DropDownList("IdBaiHoc", null, htmlAttributes: new { @class = "form-control" })
+                            @*   @Html.EditorFor(model => model.IdBaiHoc, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.ValidationMessageFor(model => model.IdBaiHoc, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Lưu" class="btn btn-outline-warning" />
+                        </div>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Nội dung</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
-                </div>
-
-
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.IdBaiHoc, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.DropDownList("IdBaiHoc", null, htmlAttributes: new { @class = "form-control" })
-                        @*   @Html.EditorFor(model => model.IdBaiHoc, new { htmlAttributes = new { @class = "form-control" } })*@
-                        @Html.ValidationMessageFor(model => model.IdBaiHoc, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Create" class="btn btn-default" />
-                    </div>
-                </div>
-            </div>
                 }
 
                 <div>
-                    @Html.ActionLink("Back to List", "Index")
+                    @Html.ActionLink("Quay lại", "Index")
                 </div>
             </div>
             <!-- /.card-body -->

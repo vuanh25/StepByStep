@@ -36,7 +36,7 @@ namespace WebApp.Controllers
 
         public ActionResult ChonPhuongThucThanhToan(int? id)
         {
-            id = (id ?? 2);
+            id = (id ?? 9);
             Session["KhoaHocMuonMua"] = id;
             return View();
         }

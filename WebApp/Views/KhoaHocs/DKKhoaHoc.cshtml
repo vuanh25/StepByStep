@@ -1,4 +1,4 @@
-﻿
+﻿@model  IEnumerable<WebApp.Models.Entities.MuaKhoaHoc>
 @{
     ViewBag.Title = "DKKhoaHoc";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -19,13 +19,14 @@
             }
             else
             {
-                if (ViewBag.VIP != null)
+
+                if (ViewBag.ThongBao != null)
                 {
-                    <a onclick="thamlam" href="@Url.Action("Home","Index")">Mua khóa học</a>
+                    <a href="@Url.Action("Index", "BaiHoc", new {IdKhoaHoc = 9})" class="text-white">Bạn đã mua rồi </a>
                 }
                 else
                 {
-                    <a href="@Url.Action("ChonPhuongThucThanhToan","Payment",new { id = 4})" class="text-white">Đăng ký</a>
+                    <a href="@Url.Action("ChonPhuongThucThanhToan","Payment",new { id = 9})" class="text-white">Đăng ký</a>
                 }
             }
 
@@ -37,11 +38,4 @@
 <div style="width: 500px;">
 
 </div>
-
-<script>
-        function thamlam() {
-            alert("Bạn đã có gói đăng ký rồi!!!");
-        }
-
-</script>
 

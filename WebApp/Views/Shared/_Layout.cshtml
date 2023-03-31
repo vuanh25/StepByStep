@@ -61,7 +61,16 @@
                                         @*  <li><hr class="dropdown-divider"></li>*@
                                     </ul>
                                 </li>
+
+
+
                             </ul>
+                            <div class="navbar"  style="margin-right:200px">
+                                <form class="d-flex" role="search" action="/BaiHoc/Index">
+                                    <input class="form-control me-2 col-10" type="search" placeholder="Tìm kiếm khoá học" aria-label="Search" id="search" name="search" value="@ViewBag.Search">
+                                    <button class="btn  btn-outline-light" type="submit" style="white-space: nowrap;">Tìm kiếm</button>
+                                </form>
+                            </div>
                             @Html.Partial("LoginPartial")
                         </div>
                     </div>

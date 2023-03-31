@@ -1,0 +1,134 @@
+﻿@model IEnumerable<WebApp.Models.Entities.LuyenCode>
+
+
+@*      INDEX CỦA TRANG LUYỆN CODE      *@
+
+
+<link href="~/Public/css/Css_LuyenCode.css" rel="stylesheet" />
+<link href="~/Public/plugins/fontawesome-free/css/all.min.css" rel="stylesheet" />
+<link href="~/Public/css/checkbox_heart.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<div class="container  PageList font" style="margin-top:20px">
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <div class="row text-center">
+                <form class=" d-flex flex-row align-items-center " action="/LuyenCode/Search" style="text-align:center">
+                    <label for="search" class="mx-2 my-1">Tìm kiếm bài tập</label>
+                    <input type="search" class="form-control w-auto"
+                           id="search" name="search"
+                           value="@ViewBag.Search"
+                           placeholder="Nhập bài tập cần tìm" />
+                    <button type="submit" class="btn btn-primary mx-2">Tìm kiếm</button>
+                </form>
+            </div>
+
+
+            <table class="styled-table">
+                <thead>
+                    <tr class="font">
+                        <th style="width: 40em">Tên bài tập</th>
+                        <th style="width: 10em">Lượt xem</th>
+                        <th style="width: 10em">Lượt yêu thích</th>
+                        <th style="width: 10em">Cấp độ</th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+                    <tbody class="font">
+                        @if (item.Id % 2 == 1)
+                        {
+
+                            <tr>
+                                <td><a class="noUnderlined text-black" href="@Url.Action("ChiTiet", "LuyenCode", new { @id = item.Id})">@item.TenLuyenTap</a></td>
+                                <td>@item.LuotXem</td>
+                                <td>@item.YeuThich</td>
+                                @if (Convert.ToString(item.DoKho) == "De")
+                                {
+                                    <td class="btn btn-success" style="padding: 4px 8px; margin-top: 10px;">@item.DoKho</td>
+                                }
+                                @if (Convert.ToString(item.DoKho) == "TrungBinh")
+                                {
+                                    <td class="btn btn-warning" style="padding: 4px 8px; margin-top: 10px;">@item.DoKho</td>
+                                }
+                                @if (Convert.ToString(item.DoKho) == "Kho")
+                                {
+                                    <td class="btn btn-danger" style="padding: 4px 8px; margin-top: 10px;">@item.DoKho</td>
+                                }
+                                @if (Convert.ToString(item.DoKho) == "SieuKho")
+                                {
+                                    <td class="btn btn-dark" style="padding: 4px 8px; margin-top: 10px;">@item.DoKho</td>
+                                }
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr class="active-row">
+                                <td class="active-row"><a class="noUnderlined " href="@Url.Action("ChiTiet", "LuyenCode", new { @id = item.Id})">@item.TenLuyenTap</a></td>
+
+                                <td>@item.LuotXem</td>
+                                <td>@item.YeuThich</td>
+                                @if (Convert.ToString(item.DoKho) == "De")
+                                {
+                                    <td class="btn btn-success" style="padding: 4px 8px; margin-top: 10px;">@item.DoKho</td>
+                                }
+                                @if (Convert.ToString(item.DoKho) == "TrungBinh")
+                                {
+                                    <td class="btn btn-warning" style="padding: 4px 8px; margin-top: 10px;">@item.DoKho</td>
+                                }
+                                @if (Convert.ToString(item.DoKho) == "Kho")
+                                {
+                                    <td class="btn btn-danger" style="padding: 4px 8px; margin-top: 10px;">@item.DoKho</td>
+                                }
+                                @if (Convert.ToString(item.DoKho) == "SieuKho")
+                                {
+                                    <td class="btn btn-dark" style="padding: 4px 8px; margin-top: 10px;">@item.DoKho</td>
+                                }
+
+                            </tr>
+                        }
+
+
+
+                    </tbody>
+                }
+
+            </table>
+        </div>
+    </div>
+
+
+
+
+
+</div>
+
+<i class="fa-light fa-heart"></i>
+<br />
+
+
+<style>
+    .MenuTrang li {
+        display: inline;
+    }
+</style>
+<style type="text/css">
+    #mau-nut a {
+        clear: both;
+        background-color: orange;
+        color: snow;
+    }
+
+        #mau-nut a:hover {
+            background-color: darkcyan;
+            color: snow;
+        }
+</style>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+

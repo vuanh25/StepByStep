@@ -14,14 +14,22 @@ namespace WebApp.Controllers
     {
         ApplicationDbContext db = new ApplicationDbContext();
         // GET: LuyenCode
+       
         public ActionResult Index(int? page)
         {
+                
+                if (page == null) page = 1;
+                var BaiTap = (from s in db.LuyenTaps select s).OrderBy(m => m.Id);
+                int pageSize = 20;
+                int pageNum = page ?? 1;
+                return View(BaiTap.ToPagedList(pageNum, pageSize));
+        }
 
-            if (page == null) page = 1;
-            var BaiTap = (from s in db.LuyenTaps select s).OrderBy(m => m.Id);
-            int pageSize = 20;
-            int pageNum = page ?? 1;
-            return View(BaiTap.ToPagedList(pageNum, pageSize));
+
+        public ActionResult Search(string search="") {
+            List<LuyenCode> luyenCodes = db.LuyenTaps.Where(x=>x.TenLuyenTap.Contains(search)).ToList();    
+            ViewBag.Search = search;    
+            return View(luyenCodes);
         }
 
         
@@ -30,18 +38,27 @@ namespace WebApp.Controllers
         {
             if (KiemTraDangNhap())
             {
-                var baiviet = db.LuyenTaps.Where(m => m.Id == id).First();
-                baiviet.LuotXem++;
-                UpdateModel(baiviet);
-                db.SaveChanges();
-                ViewBag.TenBaiLuyen = baiviet.TenLuyenTap;
-                var BT = db.ChiTietBaiLuyens.Where(a => a.Id == id);
-                return View(BT);
+                
+                
+               
+                    var baiviet = db.LuyenTaps.Where(m => m.Id == id).First();
+                    baiviet.LuotXem++;
+                    UpdateModel(baiviet);
+                    db.SaveChanges();
+                    ViewBag.TenBaiLuyen = baiviet.TenLuyenTap;
+                    var BT = db.ChiTietBaiLuyens.Where(a => a.Id == id);
+                    return View(BT);
+               
+              
+            
             }
             return RedirectToAction("Login", "User");
         }
 
-        
+    
+     
+
+
 
     }
     public class ChiTietBaiHocController : Controller

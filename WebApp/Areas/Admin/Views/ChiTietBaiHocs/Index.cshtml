@@ -27,9 +27,9 @@
             </div>
             <div class="card-body">
 
-              @*  <p>
-                    @Html.ActionLink("Create New", "Create")
-                </p>*@
+                <p>
+                    @Html.ActionLink("Thêm nội dung", "Create")
+                </p>
                 <span  class="badge text-bg-success">
                     @ViewBag.tenBaiHoc
                 </span>
@@ -44,6 +44,7 @@
 
 
                         <div class="col-3" style="margin-top:100px">
+
                             <a href=" @Url.Action("Edit","ChiTietBaiHocs", new { id = item.IdChiTietBaiHoc })" class="btn btn-outline-warning " role="button" data-bs-toggle="button">Chỉnh sửa</a>
                             <a href="@Url.Action("Delete","ChiTietBaiHocs", new { id = item.IdChiTietBaiHoc })" class="btn btn-outline-warning" role="button" data-bs-toggle="button">Xoá</a>
                         </div>

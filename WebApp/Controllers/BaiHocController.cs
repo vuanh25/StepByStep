@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebApp.Models;
+using WebApp.Models.Entities;
 
 namespace WebApp.Controllers
 {
@@ -12,18 +13,40 @@ namespace WebApp.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
 
-        public ActionResult Index(int? IdKhoaHoc)
+      
+
+        public ActionResult Index(int? IdKhoaHoc, string search = "")
         {
-            var BaiHocss = db.BaiHocs.Where(p => p.IdKhoaHoc == IdKhoaHoc).ToList();
-            var KhoaHoc = db.KhoaHocs.Where(p => p.IDKhoaHoc == IdKhoaHoc).ToList();
-            foreach (var item in KhoaHoc)
+            if (!string.IsNullOrEmpty(search))
             {
+                var KhoaHoc1 = db.KhoaHocs.FirstOrDefault(p => p.TenKhoaHoc.Contains(search));
+                if (KhoaHoc1 != null)
                 {
-                    ViewBag.NameKhoaHoc = item.TenKhoaHoc;
+                    ViewBag.Search = search;
+                    var BaiHocss = db.BaiHocs.Where(p => p.IdKhoaHoc == KhoaHoc1.IDKhoaHoc).ToList();
+                    ViewBag.NameKhoaHoc = KhoaHoc1.TenKhoaHoc;
+                    return View(BaiHocss);
                 }
             }
-            return View(BaiHocss);
+            else if (IdKhoaHoc.HasValue)
+            {
+                var KhoaHoc = db.KhoaHocs.FirstOrDefault(p => p.IDKhoaHoc == IdKhoaHoc.Value);
+                if (KhoaHoc != null)
+                {
+                    ViewBag.NameKhoaHoc = KhoaHoc.TenKhoaHoc;
+                    var BaiHocss = db.BaiHocs.Where(p => p.IdKhoaHoc == IdKhoaHoc.Value).ToList();
+                    return View(BaiHocss);
+                }
+            }
+            else
+            {
+                return View();
+            }
+
+            return RedirectToAction("Index");
         }
+
+
 
 
         [HttpPost]

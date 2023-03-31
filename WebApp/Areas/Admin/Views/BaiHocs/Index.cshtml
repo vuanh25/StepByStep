@@ -30,24 +30,33 @@
             </div>
             <div class="card-body">
 
+                <form class="d-flex" role="search" action="/Admin/BaiHocs/Index">
+                    <input class="form-control me-2 col-5" type="search" placeholder="Tìm kiếm khoá học" aria-label="Search" id="search" name="search" value="@ViewBag.Search">
+                    <button class="btn  btn-outline-warning" type="submit" style="white-space: nowrap;">Tìm kiếm</button>
+                </form>
                 <div class="row">
                     @using (Html.BeginForm("Index", "BaiHocs", FormMethod.Get))
                     {
-                        <form class="form-inline">
-                            @Html.TextBox("TenKhoaHoc", ViewBag.CurrentFilter as string)
-                            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
-                        </form>
+                        @*<form class="form-inline">
+                    @Html.TextBox("TenKhoaHoc", ViewBag.CurrentFilter as string)
+                    <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" style="white-space: nowrap;">Tìm kiếm</button>
+                </form>*@
+
+
+
+
                     }
-                   
+
 
                     <div style="margin-left: 10px" class="noUnderlined">
                         @Html.ActionLink("Tạo bài học mới", "Create")
                     </div>
-                  
+
 
 
                 </div>
-              
+
+
                 <table class="table">
                     <tr>
                         <th>
@@ -67,9 +76,9 @@
                                     <a class="list-group-item p-1 pl-1  list-group-item-action list-group-item-warning" href="@Url.Action("Index","ChiTietBaiHocs",new { @IdBaiHoc = item.IdBaiHoc})">@Html.DisplayFor(modelItem => item.TenBaiHoc)</a>
                                 </td>
                                 <td>
-                                    <a href=" @Url.Action("Edit","BaiHocs", new { id = item.IdBaiHoc })" class="btn btn-outline-warning "  role="button" data-bs-toggle="button">Chỉnh sửa</a>
+                                    <a href=" @Url.Action("Edit","BaiHocs", new { id = item.IdBaiHoc })" class="btn btn-outline-warning " role="button" data-bs-toggle="button">Chỉnh sửa</a>
                                     <a href="@Url.Action("Delete","BaiHocs", new { id = item.IdBaiHoc })" class="btn btn-outline-warning" role="button" data-bs-toggle="button">Xoá</a>
-                                  
+
                                 </td>
                             </tr>
 
