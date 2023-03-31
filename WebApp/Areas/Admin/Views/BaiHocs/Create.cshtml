@@ -5,45 +5,77 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Create</h2>
 
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>BaiHoc</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.TenBaiHoc, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TenBaiHoc, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TenBaiHoc, "", new { @class = "text-danger" })
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-6 ">
+                        <strong>Tạo bài học mới</strong>
+                    </div>
+                    <div class="col-6 float-end">
+                    </div>
+                </div>
             </div>
-        </div>
+            <div class="card-body">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.IdKhoaHoc, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.IdKhoaHoc, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.IdKhoaHoc, "", new { @class = "text-danger" })
+         
+
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                     
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                           Tên bài học
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.TenBaiHoc, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TenBaiHoc, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                         
+                        @*    Khoá học*@
+                            <div class="col-md-10">
+                                @Html.DropDownList("IdKhoaHoc", null, htmlAttributes: new { @class = "form-control" })
+                            
+                                @Html.ValidationMessageFor(model => model.IdKhoaHoc, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Tạo mới" class="btn btn-outline-primary" />
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div>
+                    @Html.ActionLink("Quay lại", "Index")
+                </div>
+
+                @section Scripts {
+                    @Scripts.Render("~/bundles/jqueryval")
+                }
+
+
             </div>
-        </div>
+            <!-- /.card-body -->
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
         </div>
-    </div>
-}
+        <!-- /.card -->
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    </section>
+    <!-- /.content -->
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+<!-- /.content-wrapper -->

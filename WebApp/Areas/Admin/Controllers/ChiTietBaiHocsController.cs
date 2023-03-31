@@ -19,8 +19,8 @@ namespace WebApp.Areas.Admin.Controllers
         // GET: Admin/ChiTietBaiHocs
         public ActionResult Index(int? IdBaiHoc)
         {
-            if (KiemTraDangNhapAdmin())
-            {
+          /*  if (KiemTraDangNhapAdmin())
+            {*/
                 var Chitietbaihocs = db.ChiTietBaiHocs.Where(p => p.IdBaiHoc == IdBaiHoc).ToList();
                 var BaiHocs = db.BaiHocs.Where(p => p.IdBaiHoc == IdBaiHoc).ToList();
                 foreach (var item in BaiHocs)
@@ -28,8 +28,8 @@ namespace WebApp.Areas.Admin.Controllers
                     ViewBag.tenBaiHoc = item.TenBaiHoc;
                 }
                 return View(Chitietbaihocs);
-            }
-            return RedirectToAction("Login", "User");
+       /*     }
+            return RedirectToAction("Login", "User");*/
             
         }
 
@@ -51,6 +51,7 @@ namespace WebApp.Areas.Admin.Controllers
         // GET: Admin/ChiTietBaiHocs/Create
         public ActionResult Create()
         {
+            ViewBag.IdBaiHoc = new SelectList(db.BaiHocs, "IdBaiHoc", "TenBaiHoc");
             return View();
         }
 
@@ -58,8 +59,9 @@ namespace WebApp.Areas.Admin.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdChiTietBaiHoc,NoiDung1,NoiDung2,NoiDung3,NoiDung4,NoiDung5,NoiDung6,NoiDung7,NoiDung8,NoiDung9,NoiDung10,IdBaiHoc")] ChiTietBaiHoc chiTietBaiHoc)
+        public ActionResult Create([Bind(Include = "IdChiTietBaiHoc,NoiDung1,IdBaiHoc")] ChiTietBaiHoc chiTietBaiHoc)
         {
             if (ModelState.IsValid)
             {
@@ -67,6 +69,7 @@ namespace WebApp.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.MaBaiHoc = new SelectList(db.BaiHocs, "IdBaiHoc", "TenBaiHoc", chiTietBaiHoc.IdBaiHoc);
 
             return View(chiTietBaiHoc);
         }
