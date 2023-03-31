@@ -17,7 +17,7 @@ namespace WebApp.Models.Entities
         public string NoiDungBaiViet { get; set; }
         public string HinhAnh { get; set; }
 
-        public string NgayDang { get; set; }
+        public DateTime NgayDang { get; set; }
 
         public int LuotXem { get; set; }
 

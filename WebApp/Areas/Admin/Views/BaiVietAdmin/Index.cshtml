@@ -1,0 +1,181 @@
+﻿@model IEnumerable<WebApp.Models.Entities.BaiViet>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<link href="~/Public/css/LuyenCodeAdmin.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card font container">
+            <div class="card-header can_giua">
+                <div class="row">
+                    <div class="">
+                        <strong>DANH SÁCH BÀI VIẾT</strong>
+                    </div>
+
+                </div>
+            </div>
+            <table>
+                <thead>
+                    <tr class="mau_cho_cot ">
+                        <th class="pd-l">Tiêu đề bài viết</th>
+                        <th>Lượt xem</th>
+                        <th>Lượt thích</th>
+                        <th>Ngày đăng</th>
+                        <th>Ngôn ngữ</th>
+                        <th></th>
+
+                    </tr>
+                </thead>
+                <tbody id="BaiViet" class="font chieu_cao_dong ">
+                </tbody>
+            </table>
+            <!-- /.card-body -->
+
+        </div>
+        <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+</div>
+
+
+@*          CHI TIẾT BÀI VIẾT - PHẢN HỒI        *@
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="modalBaiViet" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="panel panel-primary font ">
+                    <div class="panel-heading can_giua" id="modalTitle"></div>
+                    <div class="panel-body pd-lr">
+                        <input type="text" hidden id="idBaiViet" value="" />
+
+                        <div>
+                            <label>Tiêu đề</label>
+                            <input type="text" class="form-control" id="TieuDe" value="" readonly>
+                        </div>
+                        <div>
+                            <label>Nội dung</label>
+                            <textarea class="form-control" cols="4" rows="4" id="NoiDung" name="NoiDung" value="" readonly></textarea>
+                        </div>
+                        <div>
+                            <label>Hình ảnh</label>
+                            <br />
+                            <img id="HinhAnh" style="height: auto; max-width: 400px;" src="" />
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@section scripts {
+
+    <script>
+        $(document).ready(function () {
+            TaiDsBaiViet();
+        })
+        
+        $(document).on('click', "button[name='details']", function () {
+            $('#modalTitle').text('Chi tiết bài viết');
+            let idBaiViet = $(this).closest('tr').attr('id');
+
+            $.ajax({
+                url: '/BaiVietAdmin/Details',
+                type: 'get',
+                data: {
+                    id: idBaiViet
+                },
+                //    LẤY DỮ LIỆU
+                success: function (data) {
+                    if (data.code == 200) {
+                        // Nếu lấy dữ liệu thành công thì gán
+                        $('#TieuDe').val(data.baiviet.TieuDe);
+                        $('#NoiDung').val(data.baiviet.NoiDungBaiViet);
+                        $("#HinhAnh").attr("src", data.baiviet.HinhAnh);
+                        $('#modalBaiViet').modal();
+
+                    } else {
+                        alert(data.msg);
+                    }
+                }
+            })
+        });
+
+
+        //      XÓA BÀI VIẾT
+        $(document).on('click', "button[name='delete']", function () {
+            let idBaiViet = $(this).closest('tr').attr('id');
+            var thong_bao = "Hãy nhấn OK để xác nhận xóa bài viết và tất cả phản hồi !"
+            if (confirm(thong_bao)) {
+                // true
+                $.ajax({
+                    url: '/BaiVietAdmin/Xoa',
+                    type: 'delete',
+                    data: {
+                        id: idBaiViet
+                    },
+                    success: function (data) {
+                        if (data.code == 200) {
+                            alert(data.msg);
+                            TaiDsBaiViet()
+                        } else {
+                            alert(data.msg);
+                        }
+                    }
+                })
+            }
+        });
+
+        // LOAD DANH SACH
+        function TaiDsBaiViet() {
+            $.ajax({
+                url: '/BaiVietAdmin/DsBaiViet',
+                type: 'get',
+                success: function (data) {
+                    //    load lại không chèn cũ;
+                    $('#BaiViet').empty();
+
+                    if (data.code == 200) {
+                        $.each(data.ds, function (k, v) {
+
+                            let tr = '<tr class="dong-phan-cach" id="' + v.IdBaiViet + '">'
+                            tr += '<td class="pd-l">' + v.TieuDe + '</td>';
+                            tr += '<td>' + v.LuotXem + '</td>';
+                            tr += '<td>' + v.LuotThich + '</td>';
+                            tr += '<td>' + v.NgayDang + '</td>';
+                            tr += '<td>' + v.NgonNgu + '</td>';
+                            tr += '<td>';
+
+                            tr += '<button class = "btn btn-danger float-end" name="delete">' + 'Xóa' + '</button>';
+                            tr += '<button class = "btn btn-warning mg-lr float-end" name="details">' + 'Chi tiết' + '</button>';
+
+                            tr += '</td>';
+                            $('#BaiViet').append(tr);
+
+                        })
+                    }
+                }
+            })
+        }
+    </script>
+}

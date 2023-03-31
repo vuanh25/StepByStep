@@ -47,10 +47,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=2.0.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.15\lib\net45\log4net.dll</HintPath>
@@ -224,6 +224,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaiHocsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaiVietAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CauHoiAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ChiTietBaiHocsController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\KhoaHocssController.cs" />
@@ -237,6 +239,7 @@
     <Compile Include="Controllers\LuyenCodeController.cs" />
     <Compile Include="Controllers\KhoaHocsController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
+    <Compile Include="Controllers\PhanHoiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -260,7 +263,6 @@
     <Compile Include="Migrations\202303280725446_capnhaplai khoahoa va muakhoahoc.Designer.cs">
       <DependentUpon>202303280725446_capnhaplai khoahoa va muakhoahoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\PhanHoiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -275,6 +277,14 @@
     <Compile Include="Migrations\202303291319517_alo1111.cs" />
     <Compile Include="Migrations\202303291319517_alo1111.Designer.cs">
       <DependentUpon>202303291319517_alo1111.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303301030309_update_ngaydang.cs" />
+    <Compile Include="Migrations\202303301030309_update_ngaydang.designer.cs">
+      <DependentUpon>202303301030309_update_ngaydang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303301552020_update_ngaydang1.cs" />
+    <Compile Include="Migrations\202303301552020_update_ngaydang1.designer.cs">
+      <DependentUpon>202303301552020_update_ngaydang1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities\ChiTietBaiHoc.cs" />
@@ -368,7 +378,11 @@
     <Content Include="Public\dist\js\pages\dashboard.js" />
     <Content Include="Public\dist\js\pages\dashboard2.js" />
     <Content Include="Public\dist\js\pages\dashboard3.js" />
+    <Content Include="Public\images\BaiViet\bv1.jpg" />
+    <Content Include="Public\images\CauHoi\ch1.jpg" />
+
     <Content Include="Public\images\404page.jpeg" />
+
     <Content Include="Public\images\banner-sm.jpg" />
     <Content Include="Public\images\banner.jpg" />
     <Content Include="Public\images\banner_khoahoc.jpg" />
@@ -2531,6 +2545,8 @@
     <Content Include="Areas\Admin\Views\ChiTietBaiHocs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietBaiHocs\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyNguoiDung\IndexUser.cshtml" />
+    <Content Include="Areas\Admin\Views\BaiVietAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\CauHoiAdmin\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2618,6 +2634,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303291319517_alo1111.resx">
       <DependentUpon>202303291319517_alo1111.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303301030309_update_ngaydang.resx">
+      <DependentUpon>202303301030309_update_ngaydang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303301552020_update_ngaydang1.resx">
+      <DependentUpon>202303301552020_update_ngaydang1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
