@@ -17,16 +17,17 @@ namespace WebApp.Areas.Admin.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Admin/BaiHocs
-        public ActionResult Index(string TenKhoaHoc)
+        public ActionResult Index(string search)
         {
 
             if (KiemTraDangNhapAdmin())
             {
 
-                var khoahocs = db.KhoaHocs.Where(p => p.TenKhoaHoc.Contains(TenKhoaHoc)).ToList();
+                var khoahocs = db.KhoaHocs.Where(p => p.TenKhoaHoc.Contains(search)).ToList();
+                ViewBag.Search = search;
                 foreach (var item in khoahocs)
                 {
-                    if (Equals(item.TenKhoaHoc,TenKhoaHoc))
+                    if (Equals(item.TenKhoaHoc, search))
                     {
 
                         ViewBag.TenKhoaHoc = item.TenKhoaHoc;
@@ -34,11 +35,12 @@ namespace WebApp.Areas.Admin.Controllers
                         return View(baiHocs);
                     }
                 }
+
                 return View();
 
-    }
-
             }
+
+
             return RedirectToAction("Login", "User");
         }
 
@@ -94,7 +96,7 @@ namespace WebApp.Areas.Admin.Controllers
             ViewBag.MaKhoaHoc = new SelectList(db.KhoaHocs, "IdKhoaHoc", "TenKhoaHoc", baiHoc.IdKhoaHoc);
             return View(baiHoc);
         }
-    /*    ViewBag.IdBaiHoc = new SelectList(db.BaiHocs, "IdBaiHoc", "TenBaiHoc");*/
+        /*    ViewBag.IdBaiHoc = new SelectList(db.BaiHocs, "IdBaiHoc", "TenBaiHoc");*/
         // GET: Admin/BaiHocs/Edit/5
         public ActionResult Edit(int? id)
         {

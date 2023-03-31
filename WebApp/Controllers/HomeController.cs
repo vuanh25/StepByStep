@@ -25,8 +25,6 @@ namespace WebApp.Controllers
             Session["products"] = BT;
 
             var products = Session["products"] as List<LuyenCode>;
-
-
         }
 
         public ActionResult PageNotFound()
@@ -34,21 +32,6 @@ namespace WebApp.Controllers
             return View();
         }
 
-        ////adding data to session
-        ////assuming the method below will return list of Products
-
-        //var products = Db.GetProducts();
-
-        ////Store the products to a session
-
-        //Session["products"]=products;
-
-        ////To get what you have stored to a session
-
-        //var products = Session["products"] as List<Product>;
-
-        ////to clear the session value
-
-        //Session["products"]=null;
+       
     }
 }

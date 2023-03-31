@@ -11,7 +11,7 @@ using WebApp.Models.Entities;
 
 namespace WebApp.Controllers
 {
-    public class KhoaHocsController : Controller
+    public class KhoaHocsController : KiemTraController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
@@ -27,14 +27,34 @@ namespace WebApp.Controllers
             return PartialView(khoahocs);
         }
 
-        public ActionResult DKKhoaHoc (int id)
+        public ActionResult DKKhoaHoc(string id)
         {
+            if (KiemTraDangNhap())
+            {
+
+                var user = db.Users.Where(p => p.TenUser == id).First();
+                var muakhoahoc = db.MuaKhoaHocs.Where(x => x.IdUser == user.IdUser).ToList();
+                foreach (var item in muakhoahoc)
+                {
+                    if (item.IdKhoaHoc == 9)
+                    {
+                        ViewBag.ThongBao = "Đã mua";
+                    }
+                    else
+                        ViewBag.ThongBao = "";
+                }
+                return View(/*muakhoahoc*/);
 
 
+            }
+            return RedirectToAction("Login", "User");
 
 
-        return View();
         }
+
+
+
+
 
 
     }

@@ -14,6 +14,7 @@ namespace WebApp.Controllers
     {
         ApplicationDbContext db = new ApplicationDbContext();
         // GET: LuyenCode
+
         public ActionResult Index(int? page)
         {
 
@@ -24,12 +25,23 @@ namespace WebApp.Controllers
             return View(BaiTap.ToPagedList(pageNum, pageSize));
         }
 
-        
-        
+
+        public ActionResult Search(string search = "")
+        {
+            List<LuyenCode> luyenCodes = db.LuyenTaps.Where(x => x.TenLuyenTap.Contains(search)).ToList();
+            ViewBag.Search = search;
+            return View(luyenCodes);
+        }
+
+
+
         public ActionResult ChiTiet(int? id)
         {
             if (KiemTraDangNhap())
             {
+
+
+
                 var baiviet = db.LuyenTaps.Where(m => m.Id == id).First();
                 baiviet.LuotXem++;
                 UpdateModel(baiviet);
@@ -37,11 +49,17 @@ namespace WebApp.Controllers
                 ViewBag.TenBaiLuyen = baiviet.TenLuyenTap;
                 var BT = db.ChiTietBaiLuyens.Where(a => a.Id == id);
                 return View(BT);
+
+
+
             }
             return RedirectToAction("Login", "User");
         }
 
-        
+
+
+
+
 
     }
     public class ChiTietBaiHocController : Controller

@@ -7,18 +7,18 @@ namespace WebApp.Migrations
     {
         public override void Up()
         {
-            AddColumn("dbo.MuaKhoaHoc", "KhoaHoc_IDKhoaHoc", c => c.Int());
+           /* AddColumn("dbo.MuaKhoaHoc", "KhoaHoc_IDKhoaHoc", c => c.Int());
             AddColumn("dbo.KhoaHocs", "GiaGoiKhoaHoc", c => c.Decimal(storeType: "money"));
             CreateIndex("dbo.MuaKhoaHoc", "KhoaHoc_IDKhoaHoc");
-            AddForeignKey("dbo.MuaKhoaHoc", "KhoaHoc_IDKhoaHoc", "dbo.KhoaHocs", "IDKhoaHoc");
+            AddForeignKey("dbo.MuaKhoaHoc", "KhoaHoc_IDKhoaHoc", "dbo.KhoaHocs", "IDKhoaHoc");*/
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.MuaKhoaHoc", "KhoaHoc_IDKhoaHoc", "dbo.KhoaHocs");
+         /*   DropForeignKey("dbo.MuaKhoaHoc", "KhoaHoc_IDKhoaHoc", "dbo.KhoaHocs");
             DropIndex("dbo.MuaKhoaHoc", new[] { "KhoaHoc_IDKhoaHoc" });
             DropColumn("dbo.KhoaHocs", "GiaGoiKhoaHoc");
-            DropColumn("dbo.MuaKhoaHoc", "KhoaHoc_IDKhoaHoc");
+            DropColumn("dbo.MuaKhoaHoc", "KhoaHoc_IDKhoaHoc");*/
         }
     }
 }

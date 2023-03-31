@@ -26,7 +26,7 @@ namespace WebApp.Controllers
             {
                 return RedirectToAction("Login", "User");
             }
-          ApplicationDbContext db = new ApplicationDbContext();
+            ApplicationDbContext db = new ApplicationDbContext();
             dynamic model = new ExpandoObject();
             model.User = db.Users.FirstOrDefault(x => x.TenTaiKHoan == username);
             var khoahocmuonmua = int.Parse(Session["KhoaHocMuonMua"].ToString());
@@ -36,7 +36,7 @@ namespace WebApp.Controllers
 
         public ActionResult ChonPhuongThucThanhToan(int? id)
         {
-            id = (id ?? 2);
+            id = (id ?? 9);
             Session["KhoaHocMuonMua"] = id;
             return View();
         }
@@ -105,8 +105,8 @@ namespace WebApp.Controllers
 
         public ActionResult Result()
         {
-            String s= "Something went wrong. Please go back";
-            if (Request.QueryString.Count>0)
+            String s = "Something went wrong. Please go back";
+            if (Request.QueryString.Count > 0)
             {
                 string vnp_HashSecret = ConfigurationManager.AppSettings["vnp_HashSecret"];//chuoi bi mat
                 var vnpayData = Request.QueryString;
@@ -135,7 +135,7 @@ namespace WebApp.Controllers
                 bool checkSignature = vnpay.ValidateSignature(vnp_SecureHash, vnp_HashSecret);
                 if (checkSignature)
                 {
-                    if (vnp_ResponseCode == "00" && vnp_TransactionStatus=="00")
+                    if (vnp_ResponseCode == "00" && vnp_TransactionStatus == "00")
                     {
                         int k = int.Parse(Session["KhoaHocMuonMua"].ToString());
                         Session["GoiKhoaHoc"] = null;
@@ -169,7 +169,7 @@ namespace WebApp.Controllers
             ViewBag.Result = s;
             return View();
         }
-        
+
 
 
 

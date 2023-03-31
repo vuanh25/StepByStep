@@ -14,22 +14,6 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Danh sách bài học</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Blank Page</li>
-                    </ol>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
-    </section>
-
     <!-- Main content -->
     <section class="content">
 
@@ -38,7 +22,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-6 ">
-                        Danh sách bài học
+                        Chỉnh sửa chi tiết bài học
                     </div>
                     <div class="col-6 float-end">
 
@@ -46,32 +30,28 @@
                 </div>
             </div>
             <div class="card-body">
-                <h2>Edit</h2>
-
-
                 @using (Html.BeginForm())
                 {
                     @Html.AntiForgeryToken()
 
                     <div class="form-horizontal">
-                        <h4>ChiTietBaiHoc</h4>
-                        <hr />
+
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         @Html.HiddenFor(model => model.IdChiTietBaiHoc)
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.NoiDung1, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <p class="fw-bolder" style="margin-left:20px">Nội dung</p>
                             <div class="col-md-10">
                                 @Html.EditorFor(model => model.NoiDung1, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.NoiDung1, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
-                        
+
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.IdBaiHoc, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
+                            <p class="fw-bolder" style="margin-left:20px">Mã bài học</p>
+                            <div class="col-md-2">
                                 @Html.EditorFor(model => model.IdBaiHoc, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.IdBaiHoc, "", new { @class = "text-danger" })
                             </div>
@@ -79,20 +59,19 @@
 
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Save" class="btn btn-default" />
+                                <input type="submit" value="Lưu" class="btn btn-outline-warning" />
                             </div>
                         </div>
                     </div>
                 }
 
                 <div>
-                    @Html.ActionLink("Back to List", "Index")
+
+                    @Html.ActionLink("Quay lại", "Index")
+
                 </div>
             </div>
             <!-- /.card-body -->
-            <div class="card-footer">
-                Footer
-            </div>
             <!-- /.card-footer-->
         </div>
         <!-- /.card -->
@@ -105,5 +84,4 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
 
