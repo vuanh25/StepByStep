@@ -16,11 +16,17 @@ namespace WebApp.Areas.Admin.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+
+
+
         // GET: Admin/ChiTietBaiHocs
+
+
+
         public ActionResult Index(int? IdBaiHoc)
         {
-          /*  if (KiemTraDangNhapAdmin())
-            {*/
+            if (KiemTraDangNhapAdmin())
+            {
                 var Chitietbaihocs = db.ChiTietBaiHocs.Where(p => p.IdBaiHoc == IdBaiHoc).ToList();
                 var BaiHocs = db.BaiHocs.Where(p => p.IdBaiHoc == IdBaiHoc).ToList();
                 foreach (var item in BaiHocs)
@@ -28,9 +34,10 @@ namespace WebApp.Areas.Admin.Controllers
                     ViewBag.tenBaiHoc = item.TenBaiHoc;
                 }
                 return View(Chitietbaihocs);
-       /*     }
-            return RedirectToAction("Login", "User");*/
-            
+            }
+            return RedirectToAction("Login", "User");
+
+
         }
 
         // GET: Admin/ChiTietBaiHocs/Details/5
@@ -92,10 +99,10 @@ namespace WebApp.Areas.Admin.Controllers
         // POST: Admin/ChiTietBaiHocs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost,ValidateInput(false)]
+        [HttpPost, ValidateInput(false)]
         [ValidateAntiForgeryToken]
-  
-        public ActionResult Edit([Bind(Include ="IdChiTietBaiHoc,NoiDung1,IdBaiHoc")] ChiTietBaiHoc chiTietBaiHoc)
+
+        public ActionResult Edit([Bind(Include = "IdChiTietBaiHoc,NoiDung1,IdBaiHoc")] ChiTietBaiHoc chiTietBaiHoc)
         {
             if (ModelState.IsValid)
             {

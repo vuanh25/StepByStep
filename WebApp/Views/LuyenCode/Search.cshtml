@@ -1,5 +1,4 @@
-﻿@model PagedList.IPagedList<WebApp.Models.Entities.LuyenCode>
-@using PagedList.Mvc;
+﻿@model IEnumerable<WebApp.Models.Entities.LuyenCode>
 
 
 @*      INDEX CỦA TRANG LUYỆN CODE      *@
@@ -16,7 +15,7 @@
 
 <br />
 <br />
-<div class="container  PageList font" style="margin-top:50px">
+<div class="container  PageList font" style="margin-top:20px">
     <div class="row">
         <div class="col-md-10 mx-auto">
             <div class="row text-center">
@@ -114,19 +113,6 @@
 <br />
 
 
-
-
-<div>
-    <div class="PageList">
-        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
-    </div>
-    <div class="PageList ">
-        @Html.PagedListPager(Model, page => Url.Action("Index", new
-        {
-            page = page
-        }))
-    </div>
-</div>
 <style>
     .MenuTrang li {
         display: inline;

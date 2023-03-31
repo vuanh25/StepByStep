@@ -2,18 +2,29 @@
 @{
     Layout = null;
 }
-
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Result</title>
+    <title>Thông báo</title>
 </head>
-<body>
-    <div>
-        <h1>@ViewBag.Result</h1>
+<body style="margin:0">
+    @*  <div>
+            <h1>@ViewBag.Result</h1>
+        </div>
+        @Html.ActionLink("Quay lại trang chủ", "Index", "Home")*@
+    <div class="card" style="width: 18rem;margin:auto; text-align:center">
+        <img src="https://media4.giphy.com/media/7kn27lnYSAE9O/giphy.gif?cid=ecf05e478mw7v8owfdtglqkenxcqbmg2d7siln61msq3ydch&rid=giphy.gif&ct=g" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Thông báo</h5>
+            <p class="card-text">@ViewBag.Result</p>
+            <a href="~/Home/Index" class="btn btn-primary stretched-link">Quay lại trang chủ</a>
+        </div>
     </div>
-    @Html.ActionLink("Quay lại trang chủ", "Home", "Index")
+
+
+    
 </body>
 </html>
