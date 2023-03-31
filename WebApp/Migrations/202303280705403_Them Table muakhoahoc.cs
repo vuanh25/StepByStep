@@ -7,7 +7,7 @@ namespace WebApp.Migrations
     {
         public override void Up()
         {
-            CreateTable(
+          /*  CreateTable(
                 "dbo.MuaKhoaHoc",
                 c => new
                     {
@@ -18,15 +18,15 @@ namespace WebApp.Migrations
                     })
                 .PrimaryKey(t => t.IdMua)
                 .ForeignKey("dbo.Users", t => t.IdUser, cascadeDelete: true)
-                .Index(t => t.IdUser);
+                .Index(t => t.IdUser);*/
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.MuaKhoaHoc", "IdUser", "dbo.Users");
+           /* DropForeignKey("dbo.MuaKhoaHoc", "IdUser", "dbo.Users");
             DropIndex("dbo.MuaKhoaHoc", new[] { "IdUser" });
-            DropTable("dbo.MuaKhoaHoc");
+            DropTable("dbo.MuaKhoaHoc");*/
         }
     }
 }
