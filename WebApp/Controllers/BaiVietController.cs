@@ -7,6 +7,9 @@ using WebApp.Models.Entities;
 using WebApp.Models;
 using WebApp.Models.Enums;
 using System.Data.Entity;
+using PagedList.Mvc;
+using PagedList;
+using System.Web.UI;
 
 namespace WebApp.Controllers
 {
@@ -14,12 +17,16 @@ namespace WebApp.Controllers
     {
         // GET: BaiViet
         ApplicationDbContext db = new ApplicationDbContext();
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
+            if (page == null) page = 1;
             var all_baiviet = db.BaiViets
                 .Where(i => i.IdBaiViet > 0)
-                .Include(i => i.User);
-            return View(all_baiviet);
+                .Include(i => i.User)
+                .ToList();
+            int pageSize = 10;
+            int pageNum = page ?? 1;
+            return View(all_baiviet.ToPagedList(pageNum, pageSize));
         }
         public ActionResult ChiTietBaiViet(int id)
         {
