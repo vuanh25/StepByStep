@@ -7,6 +7,7 @@ Code: ASP.NET MVC 5 with Entity Framework Code First , MSSQL ...
    Với người dùng đã đăng nhập (user) họ còn có thể chỉnh sửa thông tin cá nhân như tên người dùng, email, thay đổi mật khẩu. 
    User có thể đăng bài viết, đặt câu hỏi, bình luận, thả cảm xúc tương tác với các user khác. Họ có thể mua khóa học vip mà admin bỏ công sức tỉ mỉ tạo ra với ưu đãi rẻ, và thanh toán nhanh chóng với ví điện tử VNPay.
 </div>
+
 <div> <ul>
    Với chế độ dành riêng cho nhà quản lý (admin) thì sẽ có các chức năng chung:
 <li> Quản lý người dùng: Xem danh sách người dùng ( Thêm, xóa, sửa) />
@@ -19,15 +20,17 @@ Code: ASP.NET MVC 5 with Entity Framework Code First , MSSQL ...
 </div>
 
 
-<h3> Use Case Diagram </h3>
-<img src="https://github.com/LuongXuanNhat/MULTIPLE-CHOICE-EXAM-APP/assets/96036623/985fe26e-243b-4431-9cdd-6546b9f6a674" />
+<h3> Use Case General Diagram </h3>
+<img src="https://github.com/vuanh25/StepByStep/assets/96036623/1b9f38a2-1ee8-486d-a76b-96473b554c05" />
 
 <h3> ERD Diagram </h3>
-<img src="https://github.com/LuongXuanNhat/MULTIPLE-CHOICE-EXAM-APP/assets/96036623/5824f977-f4fd-498f-8935-55556d563c78" />
+<img src="https://github.com/vuanh25/StepByStep/assets/96036623/657972b2-af33-4a6b-8326-a89ebc7da0be" />
 
-<h3> Database Diagram </h3>
-<img src="https://github.com/LuongXuanNhat/MULTIPLE-CHOICE-EXAM-APP/assets/96036623/e6df153c-dec0-4020-91c4-f2cebe2653e4" />
+<h3> Class Diagram </h3>
+<img src="https://github.com/vuanh25/StepByStep/assets/96036623/6fcb277e-2629-42a1-bbd1-3a9d692b59e4" />
 
-<h3> Data files : ScriptData.sql </h3>
+<h3> Data files : ScriptDataFile.sql </h3>
+
+<h4> View report details: https://docs.google.com/document/d/1gzfI9fjamLnDYsKzuuSZm2oVcjVw8bcQ/edit?usp=sharing&ouid=118267159340052640855&rtpof=true&sd=true </h4>
 
 
