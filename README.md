@@ -31,6 +31,23 @@ Code: ASP.NET MVC 5 with Entity Framework Code First , MSSQL ...
 
 <h3> Data files : ScriptDataFile.sql </h3>
 
+<h3> Demo </h3>
+<h5>Video: </h5>
+<img src="https://github.com/vuanh25/StepByStep/assets/96036623/f1c0dd80-d5d5-425a-a9d1-88247a7cf01a" />
+<span> Giao diện trang chủ </span>
+<br/>
+<img src="https://github.com/vuanh25/StepByStep/assets/96036623/3d1daa51-5032-438d-b642-dc5eb2f3e490" />
+<span> Giao diện đăng nhập</span>
+<br/>
+<img src="https://github.com/vuanh25/StepByStep/assets/96036623/82f44068-008f-40fc-ba90-a435e54f0deb" />
+<span> Giao diện luyện code </span>
+<br/>
+<img src="https://github.com/vuanh25/StepByStep/assets/96036623/ccbbc507-c3c3-4ffb-9c5c-98a57b9ebadf" />
+<span> Giao diện bài viết </span>
+<br/>
+<img src="https://github.com/vuanh25/StepByStep/assets/96036623/93ebdc53-c97f-409d-9fe9-6a71c2ad26d9" />
+<span> Giao diện Admin - Trang quản lý </span>
+<br/>
 <h4> View report details: https://docs.google.com/document/d/1gzfI9fjamLnDYsKzuuSZm2oVcjVw8bcQ/edit?usp=sharing&ouid=118267159340052640855&rtpof=true&sd=true </h4>
 
 
