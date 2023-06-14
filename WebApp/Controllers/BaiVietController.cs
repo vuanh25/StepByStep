@@ -104,7 +104,6 @@ namespace WebApp.Controllers
                 throw;
             }
         }
-
         [HttpPost]
         public JsonResult LuotThich(int idBaiViet)
         {
