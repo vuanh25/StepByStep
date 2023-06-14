@@ -32,7 +32,7 @@ Code: ASP.NET MVC 5 with Entity Framework Code First , MSSQL ...
 <h3> Data files : ScriptDataFile.sql </h3>
 
 <h3> Demo </h3>
-<h5>Video: </h5>
+<h5>Video: https://youtu.be/V1NNAJGgZ4k </h5>
 <img src="https://github.com/vuanh25/StepByStep/assets/96036623/f1c0dd80-d5d5-425a-a9d1-88247a7cf01a" />
 <span> Giao diện trang chủ </span>
 <hr />
